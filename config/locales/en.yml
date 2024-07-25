@@ -1,4 +1,17 @@
 en:
-  home:
-    index:
-      greeting: "Hello world"
+  app_name: "Premium Soccer Field"
+  shared:
+    logo:
+      brand: "Premium Soccer Field"
+    search_bar:
+      search: "Search"
+    search_result:
+      search_result: "Result for '%{name}'"
+      not_found: "No field with name '%{name}'"
+  layouts:
+    header:
+      home: "Home"
+      login: "Login"
+  fields:
+    field:
+      view_details: "View details"

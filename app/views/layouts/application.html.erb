@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsTutorial</title>
+    <title><%= full_title yield :title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag "i18n" %>
     <%= javascript_include_tag "translations", skip_pipeline: true %>
   </head>
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-bg-color text-black">
+    <%= render "layouts/header" %>
+    <main class="container py-14">
       <%= yield %>
     </main>
     <%= render "layouts/footer" %>

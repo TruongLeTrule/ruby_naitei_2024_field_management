@@ -10,4 +10,9 @@ source: :user
   has_many :order_users, through: :order_relationships,
 source: :user
   has_many :ratings, dependent: :destroy
+
+  scope :name_like, ->(name){where("name LIKE ?", "%#{name}%") if name.present?}
+  scope :order_by, lambda {|attribute, direction = :asc|
+                     order(attribute => direction)
+                   }
 end

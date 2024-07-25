@@ -1,0 +1,15 @@
+<% if search_path %>
+  <%= form_with url: search_path,
+                method: :get,
+                class: "h-10 w-fit rounded-lg flex items-center bg-white" do
+  %>
+    <%= text_field_tag :search,
+        params[:search],
+        placeholder: t(".search"),
+        class: "h-8 px-4 border-none bg-none focus:ring-2 focus:ring-primary rounded-l-lg transition transition-all"
+    %>
+    <button type="submit" class="h-full bg-primary w-16 rounded-r-lg text-white text-xl">
+      <%= fa_icon("search") %>
+    </button>
+  <% end %>
+<% end %>
