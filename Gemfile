@@ -2,9 +2,11 @@ source "https://rubygems.org"
 git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
 ruby "3.2.2"
+gem "bcrypt", "3.1.18"
 gem "bootsnap", require: false
 gem "config"
 gem "faker"
+gem "figaro"
 gem "font-awesome-rails"
 gem "i18n-js", "3.8.0"
 gem "importmap-rails"

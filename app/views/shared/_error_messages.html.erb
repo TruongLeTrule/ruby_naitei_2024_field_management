@@ -1,0 +1,10 @@
+<% if object.errors.any? %>
+  <div class="error_explanation" style="color: red">
+    <%= t ".form_contain" %> <%= pluralize(object.errors.count, t(".error")) %>.
+    <ul style="color: red; margin: 0 0 30px">
+      <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

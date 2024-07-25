@@ -1,5 +1,5 @@
 vi:
-  app_name: "Premium Soccer Field"
+  app_name: "Quản lý sân bóng"
   shared:
     logo:
       brand: "Premium Soccer Field"
@@ -8,10 +8,48 @@ vi:
     search_result:
       search_result: "Kết quả tìm kiếm cho '%{name}'"
       not_found: "Không tồn tại sân tên '%{name}'"
+    error_messages:
+      error: "lỗi"
+      form_contain: "Biểu mẫu chứa"
   layouts:
     header:
       home: "Trang chủ"
       login: "Đăng nhập"
+    sign_up: "Đăng ký"
+    english: "Tiếng Anh"
+    vietnamese: "Tiếng Việt"
+    base_title: "Quản lý sân bóng"
   fields:
     field:
       view_details: "Xem chi tiết"
+  home:
+    index:
+      greeting: "Xin chào thế giới"
+  users:
+    new:
+      sign_up: "Đăng ký"
+      name: "Tên"
+      email: "Email"
+      password: "Mật khẩu"
+      password_confirmation: "Xác nhận"
+      submit: "Tạo tài khoản của tôi"
+      already_have_account: "Đã có tài khoản?"
+      login: "Đăng nhập"
+    create:
+      password_complexity: "Mật khẩu có ít nhất 3 loại ký tự: chữ thường, viết hoa, số, ký tự đặc biệt"
+      welcome: "Chào mừng!"
+      failed: "Đăng ký thất bại"
+      check_email: "Vui lòng kiểm tra email của bạn để kích hoạt tài khoản."
+    show:
+      user_not_found: "Không tìm thấy người dùng"
+  user_mailer:
+    account_activation:
+      subject: "Kích hoạt tài khoản"
+      sample_app: "Quản lý sân bóng"
+      hello: "Xin chào %{name}"
+      click_link: "Nhấn vào đường dẫn bên dưới để kích hoạt tài khoản của bạn:"
+      activate: "Kích hoạt tài khoản"
+  account_activations:
+    edit:
+      invalid: "Đường dẫn kích hoạt không hợp lệ"
+      activated: "Tài khoản đã được kích hoạt"

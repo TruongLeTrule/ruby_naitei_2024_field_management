@@ -8,10 +8,47 @@ en:
     search_result:
       search_result: "Result for '%{name}'"
       not_found: "No field with name '%{name}'"
+    error_messages:
+      error: "errors"
+      form_contain: "The form contains"
   layouts:
     header:
       home: "Home"
       login: "Login"
+    sign_up: "Sign up"
+    english: "English"
+    vietnamese: "Vietnamese"
   fields:
     field:
       view_details: "View details"
+  home:
+    index:
+      greeting: "Hello world"
+  users:
+    new:
+      sign_up: "Sign up"
+      name: "Name"
+      email: "Email"
+      password: "Password"
+      password_confirmation: "Confirmation"
+      submit: "Create my account"
+      already_have_account: "Already have an account?"
+      login: "Log in"
+    create:
+      password_complexity: "Password must contain at least 3 types of characters: lowercase, uppercase, number, special character"
+      welcome: "Welcome!"
+      failed: "Sign up failed"
+      check_email: "Please check your email to activate your account."
+    show:
+      user_not_found: "User not found"
+  user_mailer:
+    account_activation:
+      subject: "Account activation"
+      sample_app: "Premium Soccer Field"
+      hello: "Hi %{name}"
+      click_link: "Welcome to Premium Soccer Field! Click on the link below to activate your account:"
+      activate: "Activate"
+  account_activations:
+    edit:
+      invalid: "Invalid activation link"
+      activated: "Account activated"
