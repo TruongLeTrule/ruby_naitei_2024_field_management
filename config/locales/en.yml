@@ -14,10 +14,12 @@ en:
   layouts:
     header:
       home: "Home"
-      login: "Login"
+      login: "Log in"
+      logout: "Log out"
+      english: "English"
+      vietnamese: "Vietnamese"
+      language: "Language"
     sign_up: "Sign up"
-    english: "English"
-    vietnamese: "Vietnamese"
   fields:
     field:
       view_details: "View details"
@@ -41,6 +43,18 @@ en:
       check_email: "Please check your email to activate your account."
     show:
       user_not_found: "User not found"
+  sessions:
+    new:
+      login: "Log in"
+      email: "Email"
+      password: "Password"
+      remember_me: "Remember me on this computer"
+      sign_up: "Sign up"
+      submit: "Log in"
+      do_not_have_account: "Don't have an account?"
+    create:
+      invalid: "Invalid email/password combination"
+      not_activated: "Account not activated"
   user_mailer:
     account_activation:
       subject: "Account activation"

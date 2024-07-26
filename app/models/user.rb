@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   PERMITTED_ATTRIBUTES = %i(name email password password_confirmation).freeze
 
-  attr_accessor :activation_token
+  attr_accessor :activation_token, :remember_token
 
   has_many :vouchers, dependent: :destroy
   has_many :favourite_relationships, class_name: FavouriteField.name,
@@ -49,6 +49,27 @@ source: :field
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute :remember_digest, User.digest(remember_token)
+    remember_digest
+  end
+
+  def authenticated? attribute, token
+    digest = public_send "#{attribute}_digest"
+    return false unless digest
+
+    BCrypt::Password.new(digest).is_password? token
+  end
+
+  def forget
+    update_attribute :remember_digest, nil
+  end
+
+  def session_token
+    remember_digest || remember
   end
 
   private
