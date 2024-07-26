@@ -1,0 +1,11 @@
+<% if search_input.present? %>
+  <% if success %>
+    <p class="text-xl font-medium text-center mt-12 w-full">
+      <%= t ".search_result", deep_intepolation: true, name: search_input %>
+    </p>
+  <% else %>
+    <p class="text-xl font-medium text-center mt-52 w-full">
+      <%= t ".not_found", deep_intepolation:true, name: search_input %>
+    </p>
+  <% end %>
+<% end %>

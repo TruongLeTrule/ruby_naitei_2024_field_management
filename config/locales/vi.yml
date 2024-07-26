@@ -1,4 +1,17 @@
 vi:
-  home:
-    index:
-      greeting: "Xin chào thế giới"
+  app_name: "Premium Soccer Field"
+  shared:
+    logo:
+      brand: "Premium Soccer Field"
+    search_bar:
+      search: "Tìm kiếm"
+    search_result:
+      search_result: "Kết quả tìm kiếm cho '%{name}'"
+      not_found: "Không tồn tại sân tên '%{name}'"
+  layouts:
+    header:
+      home: "Trang chủ"
+      login: "Đăng nhập"
+  fields:
+    field:
+      view_details: "Xem chi tiết"

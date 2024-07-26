@@ -1,0 +1,56 @@
+@import './_color.scss';
+
+.pagy {
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  color: $black;
+  & > :not([hidden]) ~ :not([hidden]) {
+    --space-reverse: 0;
+    margin-right: calc(0.25rem * var(--space-reverse));
+    margin-left: calc(0.25rem * calc(1 - var(--space-reverse)));
+  }
+
+  a:not(.gap) {
+    display: block;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    background-color: $light-white;
+    padding: 0.25rem 0.75rem;
+    color: inherit;
+    cursor: pointer;
+    &:hover {
+      background-color: $hover-bg;
+    }
+    &:not([href]) {
+      /* disabled links */
+      cursor: default;
+      background-color: $disable;
+      color: $light-black;
+      opacity: 0.6;
+    }
+    &.current {
+      font-weight: 600;
+      opacity: 1;
+      background-color: $light-green;
+      color: $light-white;
+    }
+  }
+
+  label {
+    white-space: nowrap;
+    display: inline-block;
+    border-radius: 0.5rem;
+    background-color: $light-white;
+    padding: 0.125rem 0.75rem;
+    input {
+      line-height: 1.5rem;
+      border-radius: 0.375rem;
+      border-style: none;
+      background-color: $light-white;
+    }
+  }
+}
