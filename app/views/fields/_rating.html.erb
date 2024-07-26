@@ -1,0 +1,20 @@
+<div class="flex gap-x-4 items-center mt-2 text-lg">
+  <div class="border-r border-stone-400 pr-4">
+    <strong class="text-primary font-medium border-b border-primary pb-0.5 mr-2">
+      <%= average_rating %>
+    </strong>
+    <% average_rating.floor.times do %>
+      <span class="text-primary">
+        <%= fa_icon "star" %>
+      </span>
+    <% end %>
+    <% (Settings.max_ratings - average_rating.floor).times do %>
+      <span class="text-stone-400">
+        <%= fa_icon "star" %>
+      </span>
+    <% end %>
+  </div>
+  <strong class="font-medium border-b border-stone-400 pb-0.5">
+    <%= pluralize total_ratings, t(".rating") %>
+  </strong>
+</div>

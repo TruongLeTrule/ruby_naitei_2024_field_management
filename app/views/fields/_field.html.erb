@@ -2,11 +2,11 @@
   <%= link_to (image_tag "soccer_field.jpg",
       alt: field.name,
       class: "h-52 rounded-t-lg object-cover"),
-      "#"
+      field
   %>
   <div class="px-6 py-5">
     <h3 class="font-medium text-xl"><%= field.name %></h3>
     <p class="text-md mt-2 mb-1 line-clamp-2"><%= field.description %></p>
-    <%= link_to t(".view_details"), "#", class: "underline text-sm text-secondary py-4" %>
+    <%= link_to t(".view_details"), field , class: "underline text-sm text-secondary py-4" %>
   </div>
 </div>

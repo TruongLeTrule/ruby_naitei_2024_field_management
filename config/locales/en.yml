@@ -1,5 +1,17 @@
 en:
   app_name: "Premium Soccer Field"
+  number:
+    money:
+      exchange_rate: 0.00004
+    currency:
+      format:
+        delimiter: ","
+        format: "%u%n"
+        precision: 2
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "$"
   shared:
     logo:
       brand: "Premium Soccer Field"
@@ -19,11 +31,28 @@ en:
     english: "English"
     vietnamese: "Vietnamese"
   fields:
+    errors:
+      invalid: "Invalid field"
     field:
       view_details: "View details"
-  home:
-    index:
-      greeting: "Hello world"
+    rating:
+      rating: "rating"
+    price:
+      price_per_hour: "%{price} / hour"
+      book: "Book"
+    react:
+      loved: "%{count} loved"
+      booked: "%{count} booked"
+    show:
+      field_type: "Field type"
+      capacity: "Players"
+      ground: "Ground"
+      book: "Book"
+  field_type:
+    grass: "Grass"
+    concrete: "Concrete"
+    artificial_grass: "Artificial grass"
+    indoor: "Indoor"
   users:
     new:
       sign_up: "Sign up"

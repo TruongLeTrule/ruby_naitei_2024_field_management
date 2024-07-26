@@ -1,0 +1,28 @@
+<% provide :title, @field.name %>
+<div class="grid grid-cols-5 gap-x-14">
+  <%= image_tag "soccer_field.jpg", class: "col-span-3 w-full rounded-xl shadow-2xl" %>
+  <div class="col-span-2 flex flex-col justify-center">
+    <h2 class="text-3xl font-semibold">
+      <%= @field.name %>
+    </h2>
+    <%= render "rating",
+        average_rating: @field.average_rating,
+        total_ratings: @field.ratings.count
+    %>
+    <%= render "price", price: @field.default_price %>
+    <div class="text-xl mt-3 pl-6">
+      <%= render "detail", label: t(".field_type"), content: @field.field_type.name %>
+      <%= render "detail", label: t(".capacity"), content: @field.field_type.capacity %>
+      <%= render "detail", label: t(".ground"), content: t("field_type.#{@field.field_type.ground}") %>
+    </div>
+    <%= render "react",
+        loved_count: @field.favourite_users.count,
+        booked_count: @field.ordered_users.count
+    %>
+    <%= render "shared/primary_btn", label: t(".book") %>
+  </div>
+</div>
+<div class="mt-16">
+  <h3 class="text-2xl font-semibold"><%= t ".description" %></h3>
+  <p class="mt-4 text-lg"><%= @field.description %></p>
+</div>

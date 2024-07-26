@@ -7,7 +7,7 @@ class Field < ApplicationRecord
 source: :user
   has_many :order_relationships, class_name: OrderField.name,
     dependent: :destroy
-  has_many :order_users, through: :order_relationships,
+  has_many :ordered_users, through: :order_relationships,
 source: :user
   has_many :ratings, dependent: :destroy
 
@@ -15,4 +15,8 @@ source: :user
   scope :order_by, lambda {|attribute, direction = :asc|
                      order(attribute => direction)
                    }
+
+  def average_rating
+    ratings.average(:rating).to_f
+  end
 end
