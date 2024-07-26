@@ -1,0 +1,10 @@
+max_name_length: 50
+max_email_length: 255
+min_password_length: 8
+min_password_types: 3
+valid_email_regex: \A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z
+password:
+  lowercase: '[a-z]'
+  uppercase: '[A-Z]'
+  digit: \d
+  special: '[^a-zA-Z\d]'
