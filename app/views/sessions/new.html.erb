@@ -1,15 +1,9 @@
-<% provide :title, t(".sign_up") %>
+<% provide :title, t(".login") %>
 <div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
   <div class="bg-white items-center justify-center px-6 py-8 rounded shadow-md text-black w-full">
-    <h1 class="mb-8 text-3xl text-center"><%= t ".sign_up" %></h1>
+    <h1 class="mb-8 text-3xl text-center"><%= t ".login" %></h1>
     <div>
-        <%= form_for @user, class: "flex-1 flex flex-col" do |f| %>
-          <%= render "shared/error_messages", object: @user %>
-          <div class="mb-4 space-y-2">
-            <%= f.label :name, t(".name") %>
-            <%= f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
-          </div>
-
+        <%= form_for :session, class: "flex-1 flex flex-col" do |f| %>
           <div class="mb-4 space-y-2">
             <%= f.label :email, t(".email") %>
             <%= f.email_field :email, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
@@ -20,19 +14,21 @@
             <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
           </div>
 
-          <div class="mb-8 space-y-2">
-            <%= f.label :password_confirmation, t(".password_confirmation") %>
-            <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
+          <div class="mb-4">
+            <%= f.label :remember_me do %>
+              <%= f.check_box :remember_me, class:"text-green-500 shadow appearance-none border rounded focus:ring-0 focus:border-green-500" %>
+              <span><%= t ".remember_me" %></span>
+            <% end %>
           </div>
 
-          <div class="flex-1 flex-col flex items-center justify-between mb-4">
+          <div class="flex-1 flex-col flex items-center justify-between">
             <%= f.submit t(".submit"), class: "bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-4 w-2/3 rounded focus:outline-none focus:shadow-outline" %>
           </div>
         <% end %>
 
         <div class="mt-4 text-center">
-          <%= t ".already_have_account" %>
-          <%= link_to t(".login"), login_path, class: "text-green-500 hover:text-green-700" %>
+          <%= t ".do_not_have_account" %>
+          <%= link_to t(".sign_up"), signup_path, class: "text-green-500 hover:text-green-700" %>
         </div>
     </div>
   </div>

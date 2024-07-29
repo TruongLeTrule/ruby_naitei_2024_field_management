@@ -15,10 +15,11 @@ vi:
     header:
       home: "Trang chủ"
       login: "Đăng nhập"
+      logout: "Đăng xuất"
+      english: "Tiếng Anh"
+      vietnamese: "Tiếng Việt"
+      language: "Ngôn ngữ"
     sign_up: "Đăng ký"
-    english: "Tiếng Anh"
-    vietnamese: "Tiếng Việt"
-    base_title: "Quản lý sân bóng"
   fields:
     field:
       view_details: "Xem chi tiết"
@@ -42,6 +43,18 @@ vi:
       check_email: "Vui lòng kiểm tra email của bạn để kích hoạt tài khoản."
     show:
       user_not_found: "Không tìm thấy người dùng"
+  sessions:
+    new:
+      login: "Đăng nhập"
+      email: "Email"
+      password: "Mật khẩu"
+      remember_me: "Ghi nhớ tài khoản"
+      submit: "Đăng nhập"
+      sign_up: "Đăng ký"
+      do_not_have_account: "Chưa có tài khoản?"
+    create:
+      invalid: "Email/mật khẩu không hợp lệ"
+      not_activated: "Tài khoản chưa được kích hoạt"
   user_mailer:
     account_activation:
       subject: "Kích hoạt tài khoản"
