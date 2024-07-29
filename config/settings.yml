@@ -8,3 +8,4 @@ password:
   uppercase: '[A-Z]'
   digit: \d
   special: '[^a-zA-Z\d]'
+max_ratings: 5

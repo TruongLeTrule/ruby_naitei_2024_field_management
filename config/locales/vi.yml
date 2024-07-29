@@ -1,5 +1,17 @@
 vi:
   app_name: "Quản lý sân bóng"
+  number:
+    money:
+      exchange_rate: 1
+    currency:
+      format:
+        delimiter: "."
+        format: "%u%n"
+        precision: 0
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "₫"
   shared:
     logo:
       brand: "Premium Soccer Field"
@@ -21,11 +33,28 @@ vi:
       language: "Ngôn ngữ"
     sign_up: "Đăng ký"
   fields:
+    errors:
+      invalid: "Sân không tồn tại"
     field:
       view_details: "Xem chi tiết"
-  home:
-    index:
-      greeting: "Xin chào thế giới"
+    rating:
+      rating: "đánh giá"
+    price:
+      price_per_hour: "%{price} / giờ"
+      book: "Đặt sân"
+    react:
+      loved: "%{count} đã thích"
+      booked: "%{count} đã đặt"
+    show:
+      field_type: "Loại sân"
+      capacity: "Số người"
+      ground: "Mặt sân"
+      book: "Đặt sân"
+  field_type:
+    grass: "Sân cỏ thật"
+    concrete: "Sân xi măng"
+    artificial_grass: "Sân cỏ nhân tạo"
+    indoor: "Sân trong nhà"
   users:
     new:
       sign_up: "Đăng ký"
