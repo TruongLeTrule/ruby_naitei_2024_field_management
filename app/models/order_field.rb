@@ -2,7 +2,7 @@ class OrderField < ApplicationRecord
   CREATE_ATTRIBUTES = %i(date started_time finished_time).freeze
   UPDATE_ATTRIBUTES = %i(status).freeze
 
-  enum status: {pending: 0, approved: 1, cancel: 2}
+  enum status: {pending: 0, approved: 1, cancelling: 2, cancel: 3}
 
   belongs_to :user
   belongs_to :field
@@ -13,6 +13,10 @@ class OrderField < ApplicationRecord
   validate :times_are_valid
   validate :in_open_time
   validate :not_overlapping
+
+  def send_delete_order_email
+    OrderMailer.delete_order(self).deliver_now
+  end
 
   private
 

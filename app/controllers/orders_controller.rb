@@ -23,6 +23,9 @@ class OrdersController < ApplicationController
       case order_params[:status]
       when "approved"
         @schedule.update!(status: :rent)
+      when "cancelling"
+        @order.send_delete_order_email
+        @schedule.update!(status: :pending)
       when "cancel"
         @schedule.destroy!
       end

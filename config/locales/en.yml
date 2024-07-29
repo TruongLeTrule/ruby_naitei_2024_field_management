@@ -118,10 +118,23 @@ en:
       not_overlapped: "Must not be overlapped with other orders"
       invalid: "Invalid order"
     edit:
+      order: "Order"
+      order_id: "Order ID #%{order_id}"
+      field: "Field name: "
       edit: "Edit order"
       approve: "Approve"
       cancel: "Cancel"
+      confirm: "Are you sure?"
+      cancel_order: "This order is being cancelled. Please wait for the confirmation."
+      cancel_success: "This order has been cancelled."
     update:
       success: "Order updated"
       failed: "Order update failed"
       destroy: "Order canceled"
+    price:
+      price: "%{price}"
+  order_mailer:
+    delete_order:
+      subject: "Order canceled"
+      hello: "Hi %{name}"
+      cancel: "%{name} want to cancel the order %{order_id} at %{field_name}"
