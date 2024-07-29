@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_25_081841) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_28_090330) do
   create_table "favourite_fields", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "field_id", null: false
@@ -35,12 +35,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_25_081841) do
     t.bigint "field_type_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.time "open_time"
+    t.time "close_time"
     t.index ["field_type_id"], name: "index_fields_on_field_type_id"
   end
 
   create_table "order_fields", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.datetime "started_time"
-    t.datetime "finished_time"
+    t.time "started_time"
+    t.time "finished_time"
     t.date "date"
     t.float "final_price"
     t.integer "status"
@@ -76,14 +78,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_25_081841) do
   end
 
   create_table "unavailable_field_schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.datetime "started_time"
-    t.datetime "finished_time"
+    t.time "started_time"
+    t.time "finished_time"
     t.date "date"
     t.integer "status"
     t.bigint "field_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_field_id"
     t.index ["field_id"], name: "index_unavailable_field_schedules_on_field_id"
+    t.index ["order_field_id"], name: "index_unavailable_field_schedules_on_order_field_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -124,5 +128,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_25_081841) do
   add_foreign_key "reviews", "reviews", column: "parent_review_id"
   add_foreign_key "reviews", "users"
   add_foreign_key "unavailable_field_schedules", "fields"
+  add_foreign_key "unavailable_field_schedules", "order_fields"
   add_foreign_key "vouchers", "users"
 end

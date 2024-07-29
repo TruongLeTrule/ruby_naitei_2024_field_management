@@ -22,7 +22,8 @@ source: :field
                     uniqueness: true
   has_secure_password
   validates :password, presence: true,
-                    length: {minimum: Settings.min_password_length}
+                    length: {minimum: Settings.min_password_length},
+                    allow_nil: true
   validate :password_complexity
 
   before_save :downcase_email

@@ -1,0 +1,29 @@
+<% provide :title, t(".order") %>
+<div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
+  <div class="bg-white items-center justify-center px-6 py-8 rounded shadow-md text-black w-full">
+    <h1 class="mb-8 text-3xl text-center"><%= t ".order" %></h1>
+    <div>
+        <%= form_for @order, url: order_field_path, class: "flex-1 flex flex-col" do |f| %>
+          <%= render "shared/error_messages", object: @order %>
+          <div class="mb-4 space-y-2">
+            <%= f.label :date, t(".date") %>
+            <%= f.date_field :date, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
+          </div>
+
+          <div class="mb-4 space-y-2">
+            <%= f.label :started_time, t(".started_time") %>
+            <%= f.time_field :started_time, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
+          </div>
+
+          <div class="mb-4 space-y-2">
+            <%= f.label :finished_time, t(".finished_time") %>
+            <%= f.time_field :finished_time, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
+          </div>
+
+          <div class="flex-1 flex-col flex items-center justify-between mb-4">
+            <%= f.submit t(".order"), class: "bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-4 w-2/3 rounded focus:outline-none focus:shadow-outline" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

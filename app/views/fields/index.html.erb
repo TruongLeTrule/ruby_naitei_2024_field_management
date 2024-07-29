@@ -1,9 +1,9 @@
 <%= render "shared/search_bar", search_path: fields_path %>
 <% if @fields.present? %>
   <%= render "shared/search_result", search_input: params[:search], success: true %>
-  <seciton class="grid grid-cols-4 gap-x-24 gap-y-14 mt-10 mb-16">
+  <section class="grid grid-cols-4 gap-x-24 gap-y-14 mt-10 mb-16">
     <%= render @fields %>
-  </seciton>
+  </section>
   <%== pagy_nav @pagy %>
 <% else %>
   <%= render "shared/search_result", search_input: params[:search], success: false %>

@@ -16,4 +16,27 @@ class ApplicationController < ActionController::Base
   def default_url_options
     {locale: I18n.locale}
   end
+
+  def logged_in_user
+    return if logged_in?
+
+    store_location
+    flash[:danger] = t "users.errors.require_login"
+    redirect_to root_path status: :see_other
+  end
+
+  def valid_user?
+    return if current_user.id == @order.user_id
+
+    flash[:danger] = t "users.errors.invalid"
+    redirect_to root_path
+  end
+
+  def find_order_by_id
+    @order = OrderField.find_by id: params[:id]
+    return if @order
+
+    flash[:danger] = t "orders.errors.invalid"
+    redirect_to root_path
+  end
 end

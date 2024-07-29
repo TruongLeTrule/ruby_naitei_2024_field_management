@@ -31,6 +31,7 @@ en:
       english: "English"
       vietnamese: "Vietnamese"
       language: "Language"
+      profile: "Profile"
     sign_up: "Sign up"
   fields:
     errors:
@@ -50,6 +51,15 @@ en:
       capacity: "Players"
       ground: "Ground"
       book: "Book"
+      description: "Description"
+    new_order:
+      order: "Order"
+      date: "Date"
+      started_time: "Started time"
+      finished_time: "Finished time"
+    create_order:
+      success: "Order created"
+      failed: "Order failed"
   field_type:
     grass: "Grass"
     concrete: "Concrete"
@@ -72,6 +82,9 @@ en:
       check_email: "Please check your email to activate your account."
     show:
       user_not_found: "User not found"
+    errors:
+      require_login: "Please log in to continue"
+      invalid: "Invalid user"
   sessions:
     new:
       login: "Log in"
@@ -95,3 +108,20 @@ en:
     edit:
       invalid: "Invalid activation link"
       activated: "Account activated"
+  orders:
+    errors:
+      invalid: "Invalid order"
+      present_date: "Must be present and not in the past"
+      present_time: "Must be present and not in the past"
+      finished_time: "Must be after started time"
+      open_time: "Must be in open time"
+      not_overlapped: "Must not be overlapped with other orders"
+      invalid: "Invalid order"
+    edit:
+      edit: "Edit order"
+      approve: "Approve"
+      cancel: "Cancel"
+    update:
+      success: "Order updated"
+      failed: "Order update failed"
+      destroy: "Order canceled"

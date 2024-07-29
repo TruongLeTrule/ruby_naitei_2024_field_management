@@ -19,7 +19,7 @@
         loved_count: @field.favourite_users.count,
         booked_count: @field.ordered_users.count
     %>
-    <%= render "shared/primary_btn", label: t(".book") %>
+    <%= render "shared/primary_btn", label: (link_to t(".book"), order_field_path(@field)) %>
   </div>
 </div>
 <div class="mt-16">

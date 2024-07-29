@@ -31,6 +31,7 @@ vi:
       english: "Tiếng Anh"
       vietnamese: "Tiếng Việt"
       language: "Ngôn ngữ"
+      profile: "Hồ sơ"
     sign_up: "Đăng ký"
   fields:
     errors:
@@ -50,6 +51,15 @@ vi:
       capacity: "Số người"
       ground: "Mặt sân"
       book: "Đặt sân"
+      description: "Mô tả"
+    new_order:
+      order: "Đặt sân"
+      date: "Ngày"
+      started_time: "Bắt đầu"
+      finished_time: "Kết thúc"
+    create_order:
+      success: "Đặt sân thành công"
+      failed: "Đặt sân thất bại"
   field_type:
     grass: "Sân cỏ thật"
     concrete: "Sân xi măng"
@@ -72,6 +82,9 @@ vi:
       check_email: "Vui lòng kiểm tra email của bạn để kích hoạt tài khoản."
     show:
       user_not_found: "Không tìm thấy người dùng"
+    errors:
+      require_login: "Vui lòng đăng nhập để tiếp tục"
+      invalid: "Người dùng không hợp lệ"
   sessions:
     new:
       login: "Đăng nhập"
@@ -95,3 +108,20 @@ vi:
     edit:
       invalid: "Đường dẫn kích hoạt không hợp lệ"
       activated: "Tài khoản đã được kích hoạt"
+  orders:
+    errors:
+      invalid: "Đơn đặt sân không tồn tại"
+      present_date: "Phải là ngày hiện tại hoặc tương lai"
+      present_time: "Phải là thời gian hiện tại hoặc tương lai"
+      finished_time: "Phải sau thời gian bắt đầu"
+      open_time: "Phải trong thời gian mở cửa"
+      not_overlapped: "Không được trùng với các đơn đặt sân khác"
+      invalid: "Đơn đặt sân không hợp lệ"
+    edit:
+      edit: "Chỉnh sửa đơn đặt sân"
+      approve: "Xác nhận"
+      cancel: "Hủy"
+    update:
+      success: "Đơn đặt sân đã được cập nhật"
+      failed: "Cập nhật đơn đặt sân thất bại"
+      destroy: "Đơn đặt sân đã bị hủy"
