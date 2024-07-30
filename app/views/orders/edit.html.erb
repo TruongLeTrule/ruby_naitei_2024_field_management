@@ -1,15 +1,19 @@
 <% provide :title, t(".edit") %>
-<div>
-  <h1><%= t(".edit") %></h1>
-  <h1><%= @order.id %></h1>
-  <h1><%= @order.status %></h1>
-  <%= form_for @order, url: order_path(@order) do |f| %>
-    <%= f.hidden_field :status, value: :approved %>
-    <%= f.submit t(".approve"), class: "block mx-auto mt-10 bg-primary w-40 h-14 rounded-lg text-white font-semibold text-xl hover:opacity-50 transition-opacity" %>
-  <% end %>
-
-  <%= form_for @order, url: order_path(@order) do |f| %>
-    <%= f.hidden_field :status, value: :cancel %>
-    <%= f.submit t(".cancel"), class: "block mx-auto mt-10 bg-red-500 w-40 h-14 rounded-lg text-white font-semibold text-xl hover:opacity-50 transition-opacity" %>
+<div class="flex flex-1 flex-col justify-center items-center space-y-3">
+  <h1 class="text-3xl font-bold text-center"><%= t ".order" %></h1>
+  <h3 class="text-2xl font-semibold text-center"><%= t(".order_id", order_id: @order.id)%></h1>
+  <p class="text-2xl font-medium text-center text-primary"><%= t(".field") %><%= link_to @order.field.name, @order.field%>
+  <% case @order.status %>
+  <% when "pending" %>
+    <%= render "bill" %>
+    <%= render "pay_button" %>
+  <% when "approved" %>
+    <%= render "bill" %>
+    <%= render "cancel_button" %>
+  <% when "cancelling" %>
+    <%= render "bill" %>
+    <p class="text-xl text-center text-red-300"><%= t ".cancel_order" %></p>
+  <% else %>
+    <p class= "text-2xl text-canter text-red-500"><%= t ".cancel_success" %></p>
   <% end %>
 </div>

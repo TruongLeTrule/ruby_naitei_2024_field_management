@@ -118,10 +118,23 @@ vi:
       not_overlapped: "Không được trùng với các đơn đặt sân khác"
       invalid: "Đơn đặt sân không hợp lệ"
     edit:
+      order: "Đơn đặt sân"
+      order_id: "Mã số đơn đặt sân #%{order_id}"
+      field: "Tên sân: "
       edit: "Chỉnh sửa đơn đặt sân"
       approve: "Xác nhận"
       cancel: "Hủy"
+      confirm: "Bạn có chắc chắn?"
+      cancel_order: "Đơn đặt sân đang được hủy. Vui lòng chờ xác nhận."
+      cancel_success: "Đơn đặt sân đã được hủy"
     update:
       success: "Đơn đặt sân đã được cập nhật"
       failed: "Cập nhật đơn đặt sân thất bại"
       destroy: "Đơn đặt sân đã bị hủy"
+    price:
+      price: "%{price}"
+  order_mailer:
+    delete_order:
+      subject: "Hủy đơn đặt sân"
+      hello: "Xin chào %{name}"
+      cancel: "%{name} muốn hủy đơn đặt sân mang mã số %{order_id} tại sân %{field_name}"
