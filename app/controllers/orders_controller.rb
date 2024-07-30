@@ -1,12 +1,18 @@
 class OrdersController < ApplicationController
-  before_action :logged_in_user, only: %i(new create edit update destroy)
+  before_action :logged_in_user
   before_action :find_order_by_id, only: %i(show edit update destroy)
   before_action :find_schedule_by_order_id, only: :update
+  before_action :admin_user, only: %i(index show)
   before_action :valid_user?, only: %i(edit update destroy)
+  before_action :find_all_orders, only: :index
 
   def show; end
 
-  def index; end
+  def index
+    filter_order
+    sort_order
+    @pagy, @orders = pagy(@orders)
+  end
 
   def new
     @order = OrderField.new
@@ -27,6 +33,7 @@ class OrdersController < ApplicationController
         @order.send_delete_order_email
         @schedule.update!(status: :pending)
       when "cancel"
+        @order.send_confirm_delete_email
         @schedule.destroy!
       end
       successful_update
@@ -64,5 +71,22 @@ class OrdersController < ApplicationController
   def invalid_order
     flash[:danger] = t "orders.errors.invalid"
     redirect_to root_path
+  end
+
+  def find_all_orders
+    @orders = OrderField.includes(:user, :field).all
+  end
+
+  def filter_order
+    @orders = @orders.search_by_user_name(params[:user])
+                     .search_by_field_name(params[:field])
+                     .search_by_date(params[:date])
+                     .search_by_status(params[:status])
+  end
+
+  def sort_order
+    sort_column = params[:sort_column] || "id"
+    sort_direction = params[:sort_direction] || "asc"
+    @orders = @orders.order(sort_column => sort_direction)
   end
 end

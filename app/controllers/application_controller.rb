@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def valid_user?
-    return if current_user.id == @order.user_id
+    return if current_user.id == @order.user_id || current_user.admin?
 
     flash[:danger] = t "users.errors.invalid"
     redirect_to root_path
@@ -44,6 +44,13 @@ class ApplicationController < ActionController::Base
     return if @field = Field.find_by(id: params[:id] || params[:field])
 
     flash[:danger] = t "fields.errors.invalid"
+    redirect_to root_path
+  end
+
+  def admin_user
+    return if current_user.admin?
+
+    flash[:danger] = t "users.errors.invalid"
     redirect_to root_path
   end
 end

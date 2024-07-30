@@ -13,3 +13,4 @@ time_zone: Hanoi
 default_price: 100000
 date_format: "%d/%m/%Y"
 time_format: "%H:%M"
+date_time_format: "%H:%M %d/%m/%Y"
