@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     return I18n.locale = params[:locale] if params[:locale].present?
 
     I18n.locale = I18n.default_locale
-    redirect_to url_for(locale: I18n.default_locale)
+    redirect_to url_for(request.params.merge(locale: I18n.default_locale))
   end
 
   def default_url_options
@@ -38,6 +38,12 @@ class ApplicationController < ActionController::Base
     return if @order
 
     flash[:danger] = t "orders.errors.invalid"
+  end
+
+  def find_field_by_id
+    return if @field = Field.find_by(id: params[:id] || params[:field])
+
+    flash[:danger] = t "fields.errors.invalid"
     redirect_to root_path
   end
 end

@@ -57,14 +57,25 @@ en:
       date: "Date"
       started_time: "Started time"
       finished_time: "Finished time"
+      booking: "Booking"
+      booking_title: "Booking for %{name} field"
+      choosing: "Choosing:"
+    form:
+      book: "Book"
+      load: "Load"
     create_order:
       success: "Order created"
       failed: "Order failed"
+      open_time: "Open time"
   field_type:
     grass: "Grass"
     concrete: "Concrete"
     artificial_grass: "Artificial grass"
     indoor: "Indoor"
+  explain:
+    available: "Available"
+    unavailable: "Unavailable"
+    choosing: "Choosing"
   users:
     new:
       sign_up: "Sign up"
@@ -138,3 +149,9 @@ en:
       subject: "Order canceled"
       hello: "Hi %{name}"
       cancel: "%{name} want to cancel the order %{order_id} at %{field_name}"
+  activerecord:
+    attributes:
+      order_field:
+        date: "Date"
+        started_time: "Start time"
+        finished_time: "Finish time"

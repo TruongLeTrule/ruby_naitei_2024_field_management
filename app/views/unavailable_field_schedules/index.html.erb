@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "clock-container" do %>
+  <%= render partial: "fields/clock",
+             locals: {
+              type: "am",
+              open_close_time: @field.open_time.hour,
+              unavailable_schedules: @unavailable_field_schedules.am
+             }
+  %>
+  <%= render partial: "fields/clock",
+             locals: {
+              type: "pm",
+              open_close_time: @field.close_time.strftime("%I").to_i,
+              unavailable_schedules: @unavailable_field_schedules.pm
+             }
+  %>
+<% end %>

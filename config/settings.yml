@@ -9,7 +9,7 @@ password:
   digit: \d
   special: '[^a-zA-Z\d]'
 max_ratings: 5
-time_zone: Asia/Ho_Chi_Minh
+time_zone: Hanoi
 default_price: 100000
 date_format: "%d/%m/%Y"
 time_format: "%H:%M"

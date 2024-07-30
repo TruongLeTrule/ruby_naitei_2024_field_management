@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
+    get "/unavailable_field_schedules", to: "unavailable_field_schedules#index"
     resources :fields do
       member do
         get :order, to: "fields#new_order"
