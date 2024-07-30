@@ -41,6 +41,11 @@
       </li>
       <% if logged_in? %>
         <li>
+          <%= link_to t(".profile"), current_user,
+              class: ["text-xl font-semi-bold hover:opacity-50 transition-opacity",
+              ("active-nav" if user_path(current_user) == request.path)] %>
+        </li>
+        <li>
           <%= link_to t(".logout"), logout_path,
               class: "text-xl font-semi-bold hover:opacity-50 transition-opacity",
               data: { "turbo-method": :delete } %>
@@ -52,7 +57,6 @@
               ("active-nav" if login_path == request.path)] %>
         </li>
       <% end %>
-      </li>
     </ul>
   </nav>
 </header>

@@ -26,7 +26,9 @@ field_types.each do |field_type|
     field_type.fields.create! name: name,
                               default_price: default_price,
                               description:description,
-                              field_type_id:field_type_id
+                              field_type_id:field_type_id,
+                              open_time: "05:00",
+                              close_time: "22:00"
   end
 end
 
@@ -53,7 +55,7 @@ User.create! name: "admin",
                activated_at: activated_at
 end
 
-# Rating + Favourite + Order
+#Rating + Favourite + Order
 fields = Field.limit 5
 fields.each do |field|
   10.times do |id|
@@ -64,9 +66,9 @@ fields.each do |field|
     field.favourite_relationships.create! user_id: id + 1
 
     field.order_relationships.create! user_id: id + 1,
-                                      started_time: Time.zone.now + id.day,
-                                      finished_time: Time.zone.now + id.day + 1.hour,
-                                      date: Time.zone.today,
+                                      started_time: Time.zone.now,
+                                      finished_time: Time.zone.now + 1.hour,
+                                      date: Time.zone.today + id.days,
                                       final_price: rand(100_000..500_000),
                                       status: 1
   end

@@ -6,8 +6,14 @@ Rails.application.routes.draw do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
-    resources :fields
+    resources :fields do
+      member do
+        get :order, to: "fields#new_order"
+        post :order, to: "fields#create_order"
+      end
+    end
     resources :users
     resources :account_activations, only: :edit
+    resources :orders
   end
 end
