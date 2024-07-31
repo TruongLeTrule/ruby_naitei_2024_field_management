@@ -105,6 +105,7 @@ en:
       sign_up: "Sign up"
       submit: "Log in"
       do_not_have_account: "Don't have an account?"
+      forgot_password: "Forgot password?"
     create:
       invalid: "Invalid email/password combination"
       not_activated: "Account not activated"
@@ -115,10 +116,35 @@ en:
       hello: "Hi %{name}"
       click_link: "Welcome to Premium Soccer Field! Click on the link below to activate your account:"
       activate: "Activate"
+    password_reset:
+      subject: "Password reset"
+      click_link: "To reset your password click the link below:"
+      reset: "Reset password"
+      expired: "This link will expire in two hours."
+      ignore: "If you did not request your password reset to be reset, please ignore this email and your password will stay as it is."
   account_activations:
     edit:
       invalid: "Invalid activation link"
       activated: "Account activated"
+  password_resets:
+    new:
+      forgot_password: "Forgot password"
+      email: "Email"
+      submit: "Submit"
+    create:
+      email_sent: "Email sent with password reset instructions"
+      email_not_found: "Email address not found"
+    edit:
+      heading: "Reset password"
+      new_password: "New password"
+      confirmation: "Confirmation"
+      submit: "Submit"
+      user_not_found: "User not found"
+      invalid_user: "Invalid User"
+    update:
+      password_empty: "Password can't be empty"
+      password_reset: "Password has been reset"
+      expired: "This link has expired. Please request a new password reset link."
   orders:
     errors:
       invalid: "Invalid order"

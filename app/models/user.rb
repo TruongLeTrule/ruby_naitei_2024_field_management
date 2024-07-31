@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   PERMITTED_ATTRIBUTES = %i(name email password password_confirmation).freeze
+  RESET_PASSWORD_ATTRIBUTES = %i(password password_confirmation).freeze
 
-  attr_accessor :activation_token, :remember_token
+  attr_accessor :activation_token, :remember_token, :reset_token
 
   has_many :vouchers, dependent: :destroy
   has_many :favourite_relationships, class_name: FavouriteField.name,
@@ -71,6 +72,20 @@ source: :field
 
   def session_token
     remember_digest || remember
+  end
+
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_columns reset_digest: User.digest(reset_token),
+                   reset_sent_at: Time.zone.now
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    reset_sent_at < Settings.hours_expired.hours.ago
   end
 
   private
