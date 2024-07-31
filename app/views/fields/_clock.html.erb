@@ -1,0 +1,16 @@
+<div id="<%= type %>-clock" class="clock">
+  <div class="outside <%= type %>-available shadow-2xl"
+       style="--time: <%= open_close_time %>">
+    <%= render "fields/unavailable_schedules",
+                unavailable_schedules: unavailable_schedules,
+                type: type
+    %>
+    <div class="outside choosing"></div>
+    <div class="inside shadow-lg">
+      <span style="--i: 12"><b>12</b></span>
+      <span style="--i: 3"><b>3</b></span>
+      <span style="--i: 6"><b>6</b></span>
+      <span style="--i: 9"><b>9</b></span>
+    </div>
+  </div>
+</div>

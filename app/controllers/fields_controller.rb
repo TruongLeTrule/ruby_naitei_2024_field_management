@@ -25,12 +25,6 @@ class FieldsController < ApplicationController
   end
 
   private
-  def find_field_by_id
-    return if @field = Field.find_by(id: params[:id])
-
-    invalid_field
-  end
-
   def order_params
     params.require(:order_field).permit OrderField::CREATE_ATTRIBUTES
   end
@@ -41,8 +35,8 @@ class FieldsController < ApplicationController
   end
 
   def failed_create
-    flash.now[:danger] = t "fields.create_order.failed"
-    render :new_order, status: :unprocessable_entity
+    flash[:danger] = t "fields.create_order.failed"
+    redirect_to new_order_path(@order), status: :unprocessable_entity
   end
 
   def invalid_field

@@ -22,13 +22,15 @@ field_types.each do |field_type|
     name = Faker::Sports::Football.team
     default_price = rand 100_000..500_000
     description = Faker::Lorem.sentence(word_count: 10)
+    open_time = "08:00am"
+    close_time = "09:00pm"
     field_type_id = field_type.id
     field_type.fields.create! name: name,
                               default_price: default_price,
                               description:description,
                               field_type_id:field_type_id,
-                              open_time: "05:00",
-                              close_time: "22:00"
+                              open_time: open_time,
+                              close_time: close_time
   end
 end
 
@@ -66,10 +68,15 @@ fields.each do |field|
     field.favourite_relationships.create! user_id: id + 1
 
     field.order_relationships.create! user_id: id + 1,
-                                      started_time: Time.zone.now,
-                                      finished_time: Time.zone.now + 1.hour,
+                                      started_time: "08:00",
+                                      finished_time: "08:00" + 1.hour,
                                       date: Time.zone.today + id.days,
                                       final_price: rand(100_000..500_000),
                                       status: 1
+
+    field.unavailable_field_schedules.create! started_time: "08:00",
+                                              finished_time: "08:00" + 1.hour,
+                                              date: Time.zone.today + id.days,
+                                              status: 2
   end
 end

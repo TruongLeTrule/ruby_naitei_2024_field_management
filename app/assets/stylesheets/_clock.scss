@@ -1,0 +1,69 @@
+@import './_color.scss';
+@import './variable.scss';
+
+#clock-container {
+  min-height: $clock-size;
+}
+
+#am-clock,
+#pm-clock {
+  display: none;
+}
+
+.inside {
+  inset: 2rem;
+  position: absolute;
+  background-color: $light-white;
+  border-radius: $circle;
+  span {
+    position: absolute;
+    transform: rotate(calc(30deg * var(--i)));
+    inset: -5rem;
+    text-align: center;
+    color: $light-green;
+    b {
+      transform: rotate(calc(-30deg * var(--i)));
+      display: inline-block;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.outside {
+  position: relative;
+  border-radius: $circle;
+  width: $clock-size;
+  height: $clock-size;
+}
+
+.am-available {
+  background: conic-gradient(
+    $light-gray 0deg calc(30deg * var(--time)),
+    $light-green calc(30deg * var(--time)) 360deg
+  );
+}
+
+.pm-available {
+  background: conic-gradient(
+    $light-green 0deg calc(30deg * var(--time)),
+    $light-gray calc(30deg * var(--time)) 360deg
+  );
+}
+
+.unavailable {
+  position: absolute;
+  background: conic-gradient(
+    transparent 0deg calc(30deg * var(--start)),
+    $light-red calc(30deg * var(--start)) calc(30deg * var(--end)),
+    transparent calc(30deg * var(--end)) 360deg
+  );
+}
+
+.choosing {
+  position: absolute;
+  background: conic-gradient(
+    transparent 0deg calc(30deg * var(--start)),
+    $yellow calc(30deg * var(--start)) calc(30deg * var(--end)),
+    transparent calc(30deg * var(--end)) 360deg
+  );
+}

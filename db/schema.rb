@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_090330) do
     t.time "open_time"
     t.time "close_time"
     t.index ["field_type_id"], name: "index_fields_on_field_type_id"
+    t.index ["name"], name: "index_fields_on_name"
   end
 
   create_table "order_fields", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -1,5 +1,5 @@
 vi:
-  app_name: "Quản lý sân bóng"
+  app_name: "Premium Soccer Field"
   number:
     money:
       exchange_rate: 1
@@ -57,9 +57,20 @@ vi:
       date: "Ngày"
       started_time: "Bắt đầu"
       finished_time: "Kết thúc"
+      booking: "Đặt sân"
+      booking_title: "Đặt sân %{name}"
+      choosing: "Giờ đang chọn:"
+    form:
+      book: "Đặt sân"
+      load: "Tải lịch sân"
     create_order:
       success: "Đặt sân thành công"
       failed: "Đặt sân thất bại"
+      open_time: "Giờ mở cửa"
+    explain:
+      available: "Có thể đặt"
+      unavailable: "Không thể đặt"
+      choosing: "Đang chọn"
   field_type:
     grass: "Sân cỏ thật"
     concrete: "Sân xi măng"
@@ -138,3 +149,9 @@ vi:
       subject: "Hủy đơn đặt sân"
       hello: "Xin chào %{name}"
       cancel: "%{name} muốn hủy đơn đặt sân mang mã số %{order_id} tại sân %{field_name}"
+  activerecord:
+    attributes:
+      order_field:
+        date: "Ngày"
+        started_time: "Thời gian bắt đầu"
+        finished_time: "Thời gian kết thúc"
