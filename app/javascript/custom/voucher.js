@@ -1,7 +1,7 @@
 document.addEventListener('turbo:load', () => {
   const voucherSelect = document.getElementById('order_field_voucher_id')
   const voucherApply = document.getElementById('voucher-apply')
-  const baseUrl = voucherApply.getAttribute('href')
+  const baseUrl = voucherApply?.getAttribute('href')
   const inactive = [
     'cursor-not-allowed',
     'pointer-events-none',
@@ -11,13 +11,13 @@ document.addEventListener('turbo:load', () => {
   const active = ['text-primary', 'underline', 'active']
 
   const disableLink = () => {
-    voucherApply.classList.remove(...active)
-    voucherApply.classList.add(...inactive)
+    voucherApply?.classList.remove(...active)
+    voucherApply?.classList.add(...inactive)
   }
 
   const enableLink = () => {
-    voucherApply.classList.remove(...inactive)
-    voucherApply.classList.add(...active)
+    voucherApply?.classList.remove(...inactive)
+    voucherApply?.classList.add(...active)
   }
 
   voucherSelect &&
@@ -30,5 +30,5 @@ document.addEventListener('turbo:load', () => {
       voucherSelect.value == 0 ? disableLink() : enableLink()
     })
 
-  voucherSelect.value == 0 ? disableLink() : enableLink()
+  voucherSelect?.value == 0 ? disableLink() : enableLink()
 })

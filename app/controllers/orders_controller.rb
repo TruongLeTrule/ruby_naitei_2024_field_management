@@ -93,10 +93,10 @@ class OrdersController < ApplicationController
 
   def update_final_price
     voucher = Voucher.find_by id: session[:voucher_id]
-    return unless voucher&.valid? current_user
+    return unless voucher&.valid_voucher? current_user
 
     @order.update_attribute :final_price,
-                            voucher.get_discount_price(@order.final_price)
+                            voucher.calculate_discount_price(@order.final_price)
     voucher.destroy!
     session.delete :voucher_id
   end

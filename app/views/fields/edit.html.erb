@@ -1,0 +1,11 @@
+<% provide :title, t(".title", deep_intepolation: true, name: @field.name) %>
+<div class="flex justify-between items-center">
+  <h1 class="text-2xl font-semibold text-primary">
+    <%= t(".title", deep_intepolation: true, name: @field.name) %>
+  </h1>
+  <%= link_to @field, data: {"turbo-method": :delete,
+                             "turbo-confirm": t(".delete_confirm", deep_intepolation: true, field: @field.name)} do %>
+    <strong class="text-2xl text-light-red underline"><%= t ".delete_field" %></strong>
+  <% end %>
+</div>
+<%= render "field_form", field: @field %>

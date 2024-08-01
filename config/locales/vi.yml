@@ -1,5 +1,8 @@
 vi:
   app_name: "Premium Soccer Field"
+  js:
+    errors:
+      img_too_large: "Ảnh có kích thước quá lớn (< 5mb)"
   number:
     money:
       exchange_rate: 1
@@ -36,6 +39,9 @@ vi:
   fields:
     errors:
       invalid: "Sân không tồn tại"
+      too_large_img_size: "có kích thước quá lớn (<5mb)"
+      invalid_img_format: "có định dạng không hợp lệ (jpeg, png)"
+      valid_time: "Giờ đóng cửa phải trễ hơn giờ mở cửa"
     field:
       view_details: "Xem chi tiết"
     rating:
@@ -52,6 +58,7 @@ vi:
       ground: "Mặt sân"
       book: "Đặt sân"
       description: "Mô tả"
+      edit: "Cập nhật"
     new_order:
       order: "Đặt sân"
       date: "Ngày"
@@ -71,6 +78,28 @@ vi:
       available: "Có thể đặt"
       unavailable: "Không thể đặt"
       choosing: "Đang chọn"
+    index:
+      create: "Tạo sân"
+    new:
+      create: "Tạo sân mới"
+    create:
+      success: "Tạo sân thành công"
+    edit:
+      title: "Cập nhật sân %{name}"
+      delete_confirm: "Bạn có chắc là muốn xóa sân %{field}"
+      delete_field: "Xóa sân"
+    update:
+      success: "Cập nhật sân %{field} thành công"
+    field_form:
+      field_type: "Loại sân"
+      submit: "Lưu"
+      type_default_price: "Nhập giá mặc định"
+      type_field_name: "Nhập tên sân"
+      type_description: "Nhập mô tả"
+      preview_img: "Ảnh xem trước"
+    destroy:
+      success: "Xóa sân %{field} thành công"
+      has_uncompleted_order: "Không thể xóa vì tồn tại lịch đặt sân"
   field_type:
     grass: "Sân cỏ thật"
     concrete: "Sân xi măng"
@@ -236,3 +265,10 @@ vi:
         date: "Ngày"
         started_time: "Thời gian bắt đầu"
         finished_time: "Thời gian kết thúc"
+      field:
+        name: "Tên sân"
+        default_price: "Giá mặc định"
+        open_time: "Giờ mở cửa"
+        close_time: "Giờ đóng cửa"
+        description: "Mô tả"
+        image: "Hình ảnh"

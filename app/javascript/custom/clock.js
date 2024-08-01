@@ -12,8 +12,17 @@ const init = () => {
   const amOutsideChoosing = amClock?.querySelector('.outside.choosing')
   const pmOutsideChoosing = pmClock?.querySelector('.outside.choosing')
 
-  amBtn && amBtn.classList.add(...active)
-  if (amClock) amClock.style.display = 'block'
+  if (
+    !amBtn?.classList.contains('active') &&
+    !pmBtn?.classList.contains('active')
+  )
+    amBtn && amBtn.classList.add(...active)
+
+  if (amBtn?.classList.contains('active'))
+    amClock && (amClock.style.display = 'block')
+
+  if (pmBtn?.classList.contains('active'))
+    pmClock && (pmClock.style.display = 'block')
 
   amBtn &&
     amBtn.addEventListener('click', () => {
