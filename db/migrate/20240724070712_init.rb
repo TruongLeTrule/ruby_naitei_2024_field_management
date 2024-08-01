@@ -81,9 +81,8 @@ class Init < ActiveRecord::Migration[7.0]
     end
 
     create_table :vouchers do |t|
-      t.float :discount_price
-      t.float :discount_percent
-      t.integer :type
+      t.float :amount
+      t.integer :voucher_type
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

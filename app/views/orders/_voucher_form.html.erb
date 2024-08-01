@@ -1,0 +1,21 @@
+<%= form_with model: @order, url: order_path(@order) do |form| %>
+  <%= form.hidden_field :status, value: :approved %>
+  <%= form.select :voucher_id,
+                  options_for_select(get_vouchers, selected: 0),
+                  {},
+                  {class: "w-52 h-10 rounded-lg text-center ring-2 ring-gray-200 cursor-pointer focus:ring-primary outline-none border-none"}
+  %>
+  <%= link_to t(".apply"),
+              apply_voucher_path(order_id: @order.id),
+              data: {
+                turbo_method: :post,
+                turbo_confirm: t(".confirm_apply")
+              },
+              class: "text-primary underline ml-4",
+              id: "voucher-apply"
+  %>
+  <%= form.submit t(".approve"),
+                  class: "block mx-auto mt-8 bg-primary w-40 h-14 rounded-lg text-white font-semibold text-xl hover:opacity-50 transition-opacity cursor-pointer",
+                  data: {turbo_confirm: t(".confirm_order")}
+  %>
+<% end %>

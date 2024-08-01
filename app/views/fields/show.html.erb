@@ -9,7 +9,9 @@
         average_rating: @field.average_rating,
         total_ratings: @field.ratings.count
     %>
-    <%= render "price", price: @field.default_price %>
+    <div class="mt-6">
+      <%= render "price", price: @field.default_price %>
+    </div>
     <div class="text-xl mt-3 pl-6">
       <%= render "detail", label: t(".field_type"), content: @field.field_type.name %>
       <%= render "detail", label: t(".capacity"), content: @field.field_type.capacity %>

@@ -13,6 +13,7 @@ class OrderField < ApplicationRecord
   validate :times_are_valid
   validate :in_open_time
   validate :not_overlapping
+  validate :too_short_time
 
   scope :search_by_user_name, lambda {|name|
     joins(:user).where("users.name LIKE ?", "%#{name}%") if name.present?
@@ -103,6 +104,12 @@ class OrderField < ApplicationRecord
 
   def same_date? schedule
     schedule.date == date
+  end
+
+  def too_short_time
+    return if (finished_time.hour - started_time.hour) >= Settings.min_book_time
+
+    errors.add :base, I18n.t("orders.errors.too_short_time")
   end
 
   def times_overlap? schedule

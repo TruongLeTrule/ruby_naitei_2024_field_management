@@ -88,6 +88,10 @@ source: :field
     reset_sent_at < Settings.hours_expired.hours.ago
   end
 
+  def get_remain_account amount
+    money - amount
+  end
+
   private
 
   def downcase_email

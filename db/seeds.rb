@@ -57,7 +57,7 @@ User.create! name: "admin",
                activated_at: activated_at
 end
 
-#Rating + Favourite + Order
+# Rating + Favourite + Order
 fields = Field.limit 5
 fields.each do |field|
   10.times do |id|
@@ -68,15 +68,28 @@ fields.each do |field|
     field.favourite_relationships.create! user_id: id + 1
 
     field.order_relationships.create! user_id: id + 1,
-                                      started_time: "17:00",
-                                      finished_time: "18:00",
+                                      started_time: Time.zone.now,
+                                      finished_time: Time.zone.now + 1.hour,
                                       date: Time.zone.today + id.days,
                                       final_price: rand(100_000..500_000),
                                       status: 1
 
-    field.unavailable_field_schedules.create! started_time: "17:00",
-                                              finished_time: "18:00",
+    field.unavailable_field_schedules.create! started_time: Time.zone.now,
+                                              finished_time: Time.zone.now + 1.hour,
                                               date: Time.zone.today + id.days,
                                               status: 2
+  end
+end
+
+# Voucher
+users = User.limit 5
+users.each do |user|
+  5.times do |i|
+    type = i % 2
+    if type == 0
+      user.vouchers.create! voucher_type: type, amount: 0.5
+    else
+      user.vouchers.create! voucher_type: type, amount: 100_000
+    end
   end
 end

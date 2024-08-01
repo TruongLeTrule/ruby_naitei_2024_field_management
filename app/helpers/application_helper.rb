@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def exchange_money amount
-    amount * t("number.money.exchange_rate")
+    number_to_currency(amount * t("number.money.exchange_rate"))
   end
 
   def sortable column, title = nil

@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
     store_location
     flash[:danger] = t "users.errors.require_login"
-    redirect_to root_path status: :see_other
+    redirect_to login_path status: :see_other
   end
 
   def valid_user?
@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_order_by_id
-    @order = OrderField.find_by id: params[:id]
+    @order = OrderField.find_by id: params[:id] || params[:order_id]
     return if @order
 
     flash[:danger] = t "orders.errors.invalid"

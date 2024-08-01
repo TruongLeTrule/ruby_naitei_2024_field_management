@@ -1,6 +1,10 @@
-<%= render "price", price: handle_price(@order) %>
+<div class="mt-2">
+  <div id="current-price">
+    <%= render "price", price: @order.final_price %>
+  </div>
+</div>
 <div class="text-xl mt-3 pl-6">
-  <%= render "fields/detail", label: t("fields.new_order.date"), content: @order.date.strftime(Settings.date_format) %>
-  <%= render "fields/detail", label: t("fields.new_order.started_time"), content: @order.started_time.strftime(Settings.time_format) %>
-  <%= render "fields/detail", label: t("fields.new_order.finished_time"), content: @order.finished_time.strftime(Settings.time_format) %>
+  <%= render "fields/detail", label: t(".date"), content: @order.date.strftime(Settings.date_format) %>
+  <%= render "fields/detail", label: t(".started_time"), content: @order.started_time.strftime(Settings.time_format) %>
+  <%= render "fields/detail", label: t(".finished_time"), content: @order.finished_time.strftime(Settings.time_format) %>
 </div>

@@ -109,9 +109,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_090330) do
   end
 
   create_table "vouchers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.float "discount_price"
-    t.float "discount_percent"
-    t.integer "type"
+    t.float "amount"
+    t.integer "voucher_type"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

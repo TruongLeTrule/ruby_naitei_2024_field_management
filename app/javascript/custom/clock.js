@@ -7,45 +7,49 @@ const init = () => {
   const choosingTime = document.querySelector('#choosing-time')
   const amClock = document.querySelector('#am-clock')
   const pmClock = document.querySelector('#pm-clock')
-  const currentStart = choosingTime.querySelector('#start')
-  const currentFinish = choosingTime.querySelector('#finish')
-  const amOutsideChoosing = amClock.querySelector('.outside.choosing')
-  const pmOutsideChoosing = pmClock.querySelector('.outside.choosing')
+  const currentStart = choosingTime?.querySelector('#start')
+  const currentFinish = choosingTime?.querySelector('#finish')
+  const amOutsideChoosing = amClock?.querySelector('.outside.choosing')
+  const pmOutsideChoosing = pmClock?.querySelector('.outside.choosing')
 
-  amBtn.classList.add(...active)
-  amClock.style.display = 'block'
+  amBtn && amBtn.classList.add(...active)
+  if (amClock) amClock.style.display = 'block'
 
-  amBtn.addEventListener('click', () => {
-    amBtn.classList.add(...active)
-    pmBtn.classList.remove(...active)
+  amBtn &&
+    amBtn.addEventListener('click', () => {
+      amBtn.classList.add(...active)
+      pmBtn.classList.remove(...active)
 
-    amClock.style.display = 'block'
-    pmClock.style.display = 'none'
+      amClock.style.display = 'block'
+      pmClock.style.display = 'none'
 
-    setOutsideChoosing()
-  })
+      setOutsideChoosing()
+    })
 
-  pmBtn.addEventListener('click', () => {
-    pmBtn.classList.add(...active)
-    amBtn.classList.remove(...active)
+  pmBtn &&
+    pmBtn.addEventListener('click', () => {
+      pmBtn.classList.add(...active)
+      amBtn.classList.remove(...active)
 
-    pmClock.style.display = 'block'
-    amClock.style.display = 'none'
+      pmClock.style.display = 'block'
+      amClock.style.display = 'none'
 
-    setOutsideChoosing()
-  })
+      setOutsideChoosing()
+    })
 
-  startedTimeInput.addEventListener('change', () => {
-    choosingTime.style.display = 'block'
-    currentStart.textContent = startedTimeInput.value
-    setOutsideChoosing()
-  })
+  startedTimeInput &&
+    startedTimeInput.addEventListener('change', () => {
+      choosingTime.style.display = 'block'
+      currentStart.textContent = startedTimeInput.value
+      setOutsideChoosing()
+    })
 
-  finishedTimeInput.addEventListener('change', () => {
-    choosingTime.style.display = 'block'
-    currentFinish.textContent = finishedTimeInput.value
-    setOutsideChoosing()
-  })
+  finishedTimeInput &&
+    finishedTimeInput.addEventListener('change', () => {
+      choosingTime.style.display = 'block'
+      currentFinish.textContent = finishedTimeInput.value
+      setOutsideChoosing()
+    })
 
   const setOutsideChoosing = () => {
     let [finishHour, finishMinute] = finishedTimeInput.value

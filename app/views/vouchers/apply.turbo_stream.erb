@@ -1,0 +1,9 @@
+<%= turbo_stream.update "current-price" do %>
+  <%= render "orders/price", price: @price, voucher: @voucher %>
+<% end %>
+<%= turbo_stream.update "remain-account" do %>
+  <%= render "fields/detail", label: t("orders.account_info.remain_account"), content: exchange_money(current_user.get_remain_account @price) %>
+  <span class="absolute -right-24 top-0 text-base text-light-red font-normal">
+    -<%= exchange_money @price %>
+  </span>
+<% end %>

@@ -55,8 +55,8 @@ en:
     new_order:
       order: "Order"
       date: "Date"
-      started_time: "Started time"
-      finished_time: "Finished time"
+      started_time: "Start time"
+      finished_time: "Finish time"
       booking: "Booking"
       booking_title: "Booking for %{name} field"
       choosing: "Choosing:"
@@ -161,6 +161,7 @@ en:
       open_time: "Must be in open time"
       not_overlapped: "Must not be overlapped with other orders"
       invalid: "Invalid order"
+      too_short_time: "Time too short (< 1 hour)"
     edit:
       order: "Order"
       order_id: "Order ID #%{order_id}"
@@ -205,6 +206,20 @@ en:
       field: "Field name: "
       user: "User name: "
       status: "Status: "
+    voucher_form:
+      select_voucher: "Select voucher"
+      no_voucher: "No voucher"
+      apply: "Apply"
+      confirm_apply: "Apply this voucher?"
+      approve: "Confirm"
+      confirm_order: "Are you sure booking this field?"
+    bill:
+      date: "Date"
+      started_time: "Start time"
+      finished_time: "Finish time"
+    account_info:
+      current_account: "Current account"
+      remain_account: "Remain account"
   order_mailer:
     delete_order:
       subject: "Order canceled"
