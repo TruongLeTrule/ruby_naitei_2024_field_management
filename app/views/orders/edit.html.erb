@@ -1,4 +1,5 @@
 <% provide :title, t(".edit") %>
+<% provide :status_text, :cancelling %>
 <div class="flex flex-1 flex-col justify-center items-center space-y-3">
   <h1 class="text-3xl font-bold text-center"><%= t ".order" %></h1>
   <h3 class="text-2xl font-semibold text-center"><%= t(".order_id", order_id: @order.id)%></h1>

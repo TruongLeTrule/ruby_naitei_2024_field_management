@@ -144,11 +144,43 @@ en:
       destroy: "Order canceled"
     price:
       price: "%{price}"
+    table:
+      user: "User"
+      field: "Field name"
+      date: "Date"
+      started_time: "Started time"
+      finished_time: "Finished time"
+      status: "Status"
+      actions: "Actions"
+      created_at: "Created at"
+      updated_at: "Updated at"
+      final_price: "Price"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Cancel"
+    filter:
+      user: "User"
+      field: "Field"
+      date: "Date"
+      status: "Status"
+      search: "Search"
+    index:
+      all_orders: "All orders"
+    show:
+      order: "Order"
+      order_id: "Order ID #%{order_id}"
+      field: "Field name: "
+      user: "User name: "
+      status: "Status: "
   order_mailer:
     delete_order:
       subject: "Order canceled"
       hello: "Hi %{name}"
       cancel: "%{name} want to cancel the order %{order_id} at %{field_name}"
+    confirm_delete:
+      subject: "Cancel Confirmation"
+      hello: "Hi %{name}"
+      cancel: "Your order %{order_id} at %{field_name} has been cancelled."
   activerecord:
     attributes:
       order_field:

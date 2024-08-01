@@ -144,11 +144,43 @@ vi:
       destroy: "Đơn đặt sân đã bị hủy"
     price:
       price: "%{price}"
+    table:
+      user: "Người dùng"
+      field: "Tên sân"
+      date: "Ngày"
+      started_time: "Bắt đầu"
+      finished_time: "Kết thúc"
+      status: "Trạng thái"
+      actions: "Hành động"
+      created_at: "Thời gian tạo"
+      updated_at: "Thời gian cập nhật"
+      price: "Giá"
+      show: "Xem"
+      edit: "Chỉnh sửa"
+      destroy: "Hủy"
+    filter:
+      user: "Người dùng"
+      field: "Tên sân"
+      date: "Ngày"
+      status: "Trạng thái"
+      search: "Tìm kiếm"
+    index:
+      all_orders: "Tất cả đơn đặt sân"
+    show:
+      order: "Đơn đặt sân"
+      order_id: "Mã số đơn đặt sân #%{order_id}"
+      field: "Tên sân: "
+      user: "Tên người dùng: "
+      status: "Trạng thái: "
   order_mailer:
     delete_order:
       subject: "Hủy đơn đặt sân"
       hello: "Xin chào %{name}"
       cancel: "%{name} muốn hủy đơn đặt sân mang mã số %{order_id} tại sân %{field_name}"
+    confirm_delete:
+      subject: "Xác nhận hủy đặt sân"
+      hello: "Xin chào %{name}"
+      cancel: "Đơn đặt sân mang mã số %{order_id} tại sân %{field_name} đã được hủy."
   activerecord:
     attributes:
       order_field:

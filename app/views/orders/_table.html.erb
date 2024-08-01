@@ -1,0 +1,21 @@
+<table class="min-w-full bg-white border border-gray-300">
+  <thead class="bg-primary text-white">
+    <tr>
+      <th class="px-4 py-2 border-b border-gray-300 text-center">#</th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable(:id) %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable( "users.name", t(".user")) %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable( "fields.name", t(".field")) %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable(:date, t(".date")) %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable(:started_time, t(".started_time")) %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable(:finished_time, t(".finished_time")) %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable(:final_price, t(".price")) %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable(:status, t(".status")) %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable(:created_at, t(".created_at")) %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable(:updated_at, t(".updated_at")) %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= t ".actions" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "order", collection: @orders %>
+  </tbody>
+</table>

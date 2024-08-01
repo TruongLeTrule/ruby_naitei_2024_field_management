@@ -9,4 +9,16 @@ module ApplicationHelper
   def exchange_money amount
     amount * t("number.money.exchange_rate")
   end
+
+  def sortable column, title = nil
+    title ||= column.to_s.titleize
+    direction = if column.to_s == params[:sort_column]
+                  params[:sort_direction] == "asc" ? "desc" : "asc"
+                else
+                  "desc"
+                end
+    link_to title,
+            url_for(request.query_parameters.merge(sort_column: column,
+                                                   sort_direction: direction))
+  end
 end

@@ -68,14 +68,14 @@ fields.each do |field|
     field.favourite_relationships.create! user_id: id + 1
 
     field.order_relationships.create! user_id: id + 1,
-                                      started_time: "08:00",
-                                      finished_time: "08:00" + 1.hour,
+                                      started_time: "17:00",
+                                      finished_time: "18:00",
                                       date: Time.zone.today + id.days,
                                       final_price: rand(100_000..500_000),
                                       status: 1
 
-    field.unavailable_field_schedules.create! started_time: "08:00",
-                                              finished_time: "08:00" + 1.hour,
+    field.unavailable_field_schedules.create! started_time: "17:00",
+                                              finished_time: "18:00",
                                               date: Time.zone.today + id.days,
                                               status: 2
   end

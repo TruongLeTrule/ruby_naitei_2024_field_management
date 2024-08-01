@@ -14,8 +14,21 @@ class OrderField < ApplicationRecord
   validate :in_open_time
   validate :not_overlapping
 
+  scope :search_by_user_name, lambda {|name|
+    joins(:user).where("users.name LIKE ?", "%#{name}%") if name.present?
+  }
+  scope :search_by_field_name, lambda {|name|
+    joins(:user).where("fields.name LIKE ?", "%#{name}%") if name.present?
+  }
+  scope :search_by_date, ->(date){where(date:) if date.present?}
+  scope :search_by_status, ->(status){where(status:) if status.present?}
+
   def send_delete_order_email
     OrderMailer.delete_order(self).deliver_now
+  end
+
+  def send_confirm_delete_email
+    OrderMailer.confirm_delete(self).deliver_now
   end
 
   private
