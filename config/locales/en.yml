@@ -96,6 +96,13 @@ en:
     errors:
       require_login: "Please log in to continue"
       invalid: "Invalid user"
+      not_correct_user: "You are not the correct user."
+    edit:
+      edit_profile: "Edit Profile"
+      submit: "Save changes"
+    update:
+      failed: "Update failed"
+      success: "Profile updated"
   sessions:
     new:
       login: "Log in"
