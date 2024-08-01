@@ -92,6 +92,17 @@ source: :field
     money - amount
   end
 
+  def add_favourite_field field
+    favourite_fields << field
+  end
+
+  def remove_favourite_field field
+    favourite_fields.delete field
+  end
+
+  def favourite_field? field
+    favourite_fields.include? field
+  end
   private
 
   def downcase_email

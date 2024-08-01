@@ -1,0 +1,7 @@
+<% if current_user.present? %>
+  <div id="favourite_icon" class="inline">
+    <%= render(current_user.favourite_field?(@field) ? "remove_favourite" : "add_favourite") %>
+  </div>
+<% else %>
+  <%= fa_icon "heart-o" %>
+<% end %>

@@ -260,6 +260,9 @@ en:
       subject: "Cancel Confirmation"
       hello: "Hi %{name}"
       cancel: "Your order %{order_id} at %{field_name} has been cancelled."
+  favourites:
+    errors:
+     invalid: "Invalid"
   activerecord:
     attributes:
       order_field:

@@ -23,7 +23,7 @@
         booked_count: @field.ordered_users.count
     %>
     <div class="mt-10">
-      <% if current_user.admin? %>
+      <% if current_user&.admin? %>
         <%= link_to edit_field_path(@field) do %>
           <%= render "shared/primary_btn", label: t(".edit") %>
         <% end %>

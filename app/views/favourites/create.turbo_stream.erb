@@ -1,0 +1,6 @@
+<%= turbo_stream.update "favourite_icon" do %>
+  <%= render partial: "fields/remove_favourite" %>
+<% end %>
+<%= turbo_stream.update "loved-count" do %>
+  <%= t "fields.react.loved", deep_intepolation: true, count: @field.favourite_users.count %>
+<% end %>

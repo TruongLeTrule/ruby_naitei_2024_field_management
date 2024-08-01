@@ -1,7 +1,9 @@
 <div class="mt-6 pl-6 text-lg">
   <span class="text-primary border-r border-stone-400 pr-5">
-    <%= fa_icon "heart-o" %>
-    <%= t ".loved", deep_intepolation: true, count: loved_count %>
+    <%= render "favourite_icon" %>
+    <div id="loved-count" class="inline">
+      <%= t ".loved", deep_intepolation: true, count: loved_count %>
+    </div>
   </span>
   <span class="pl-5">
     <%= t ".booked", deep_intepolation: true, count: booked_count %>
