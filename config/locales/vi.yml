@@ -105,6 +105,7 @@ vi:
       submit: "Đăng nhập"
       sign_up: "Đăng ký"
       do_not_have_account: "Chưa có tài khoản?"
+      forgot_password: "Quên mật khẩu?"
     create:
       invalid: "Email/mật khẩu không hợp lệ"
       not_activated: "Tài khoản chưa được kích hoạt"
@@ -115,10 +116,35 @@ vi:
       hello: "Xin chào %{name}"
       click_link: "Nhấn vào đường dẫn bên dưới để kích hoạt tài khoản của bạn:"
       activate: "Kích hoạt tài khoản"
+    password_reset:
+      subject: "Đặt lại mật khẩu"
+      click_link: "Nhấn vào đường dẫn bên dưới để đặt lại mật khẩu của bạn:"
+      reset: "Đặt lại mật khẩu"
+      expired: "Đường dẫn này sẽ hết hạn sau hai giờ."
+      ignored: "Nếu bạn không yêu cầu đặt lại mật khẩu, hãy bỏ qua email này và mật khẩu của bạn sẽ được giữ nguyên."
   account_activations:
     edit:
       invalid: "Đường dẫn kích hoạt không hợp lệ"
       activated: "Tài khoản đã được kích hoạt"
+  password_resets:
+    new:
+      forgot_password: "Quên mật khẩu"
+      email: "Email"
+      submit: "Gửi yêu cầu đặt lại mật khẩu"
+    create:
+      email_sent: "Email đã được gửi với hướng dẫn đặt lại mật khẩu"
+      email_not_found: "Không tìm thấy địa chỉ email"
+    edit:
+      heading: "Đặt lại mật khẩu"
+      new_password: "Mật khẩu mới"
+      confirmation: "Xác nhận"
+      submit: "Gửi"
+      user_not_found: "Không tìm thấy người dùng"
+      invalid_user: "Người dùng không hợp lệ"
+    update:
+      password_empty: "Mật khẩu không thể để trống"
+      password_reset: "Mật khẩu đã được đặt lại"
+      expired: "Đường dẫn này đã hết hạn. Vui lòng yêu cầu một liên kết đặt lại mật khẩu mới."
   orders:
     errors:
       invalid: "Đơn đặt sân không tồn tại"

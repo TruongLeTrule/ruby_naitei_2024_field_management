@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
     resources :users
     resources :account_activations, only: :edit
+    resources :password_resets, except: %i(index show destroy)
     resources :orders
   end
 end
