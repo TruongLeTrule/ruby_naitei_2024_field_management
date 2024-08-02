@@ -1,14 +1,10 @@
-<% provide :title, t(".sign_up") %>
+<% provide :title, t(".edit_profile") %>
 <% provide :button_text, t(".submit") %>
 <div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
   <div class="bg-white items-center justify-center px-6 py-8 rounded shadow-md text-black w-full">
-    <h1 class="mb-8 text-3xl text-center"><%= t ".sign_up" %></h1>
+    <h1 class="mb-8 text-3xl text-center"><%= t ".edit_profile" %></h1>
     <div>
       <%= render "form" %>
-      <div class="mt-4 text-center">
-        <%= t ".already_have_account" %>
-        <%= link_to t(".login"), login_path, class: "text-green-500 hover:text-green-700" %>
-      </div>
     </div>
   </div>
 </div>

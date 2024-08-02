@@ -96,6 +96,13 @@ vi:
     errors:
       require_login: "Vui lòng đăng nhập để tiếp tục"
       invalid: "Người dùng không hợp lệ"
+      not_correct_user: "Bạn không phải là người dùng đúng."
+    edit:
+      edit_profile: "Chỉnh sửa hồ sơ"
+      submit: "Cập nhật"
+    update:
+      failed: "Cập nhật thất bại"
+      success: "Cập nhật thành công"
   sessions:
     new:
       login: "Đăng nhập"

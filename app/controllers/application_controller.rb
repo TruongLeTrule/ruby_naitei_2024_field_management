@@ -53,4 +53,19 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t "users.errors.invalid"
     redirect_to root_path
   end
+
+  def load_user
+    @user = User.find_by id: params[:id]
+    return if @user
+
+    flash[:danger] = t "users.show.user_not_found"
+    redirect_to root_path
+  end
+
+  def correct_user
+    return if current_user? @user
+
+    flash[:danger] = t "users.errors.not_correct_user"
+    redirect_to root_path, status: :see_other
+  end
 end
