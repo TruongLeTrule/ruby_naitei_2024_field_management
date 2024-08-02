@@ -1,0 +1,9 @@
+<div class="text-xl">
+  <%= render "fields/detail", label: t(".current_account"), content: exchange_money(current_user.money) %>
+  <div class="relative" id="remain-account">
+    <%= render "fields/detail", label: t(".remain_account"), content: exchange_money(current_user.get_remain_account @order.final_price) %>
+    <span class="absolute -right-24 top-0 text-base text-light-red font-normal">
+      -<%= exchange_money @order.final_price %>
+    </span>
+  </div>
+</div>

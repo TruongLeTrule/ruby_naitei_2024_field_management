@@ -1,6 +1,14 @@
-<div class="bg-gray-200 rounded-sm py-5 px-28 mt-6 text-3xl tracking-wide text-primary">
-  <%= t ".price",
-        deep_intepolation: true,
-        price: number_to_currency(exchange_money(price))
-  %>
+<div class="mt-6 relative bg-gray-200 rounded-sm py-5 px-28">
+  <strong class="text-3xl tracking-wide text-primary font-medium">
+    <%= exchange_money(price) %>
+  </strong>
+  <% if @voucher.present? %>
+    <strong class="absolute -top-4 -right-6 text-3xl text-light-green font-semibold rotate-12">
+      <% if @voucher.voucher_type == "percent" %>
+        -<%= (@voucher.amount * 100).round %>%
+      <% else %>
+        -<%= exchange_money(@voucher.amount) %>
+      <% end %>
+    </strong>
+  <% end %>
 </div>

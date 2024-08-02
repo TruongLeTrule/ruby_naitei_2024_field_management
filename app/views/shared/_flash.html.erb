@@ -7,7 +7,9 @@
     <% else "bg-gray-100 border-gray-500 text-gray-700" %>
   <% end %>
 
-  <div class="border-t-4 rounded-b px-4 py-3 shadow-md my-2 <%= alert_type %>">
-    <p class="font-bold"><%= message %></p>
+  <div class="border-t-4 rounded-b px-4 py-4 shadow-md <%= alert_type %>">
+    <div class="container">
+      <p class="font-bold text-lg"><%= message %></p>
+    </div>
   </div>
 <% end %>

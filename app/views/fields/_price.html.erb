@@ -1,6 +1,6 @@
-<div class="bg-gray-200 rounded-sm py-5 px-28 mt-6 text-3xl tracking-wide text-primary">
+<div class="bg-gray-200 rounded-sm py-5 px-28 text-3xl tracking-wide text-primary">
   <%= t ".price_per_hour",
         deep_intepolation: true,
-        price: number_to_currency(exchange_money(price))
+        price: exchange_money(price)
   %>
 </div>

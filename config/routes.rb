@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
     get "/unavailable_field_schedules", to: "unavailable_field_schedules#index"
+    post "/apply_voucher", to: "vouchers#apply"
     resources :fields do
       member do
         get :order, to: "fields#new_order"

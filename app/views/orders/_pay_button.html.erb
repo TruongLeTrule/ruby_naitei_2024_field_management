@@ -1,4 +1,0 @@
-<%= form_for @order, url: order_path(@order) do |f| %>
-  <%= f.hidden_field :status, value: :approved %>
-  <%= f.submit t("orders.edit.approve"), class: "block mx-auto mt-10 bg-primary w-40 h-14 rounded-lg text-white font-semibold text-xl hover:opacity-50 transition-opacity cursor-pointer" %>
-<% end %>

@@ -48,6 +48,7 @@ class FieldsController < ApplicationController
     @field.order_relationships.build(
       user_id: current_user.id,
       status: :pending,
+      final_price: get_final_price,
       **order_params
     )
   end
@@ -59,5 +60,11 @@ class FieldsController < ApplicationController
       status: :pending,
       **order_params
     )
+  end
+
+  def get_final_price
+    started_time = Time.zone.parse params.dig(:order_field, :started_time)
+    finished_time = Time.zone.parse params.dig(:order_field, :finished_time)
+    @field.default_price * (finished_time.hour - started_time.hour)
   end
 end

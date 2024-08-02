@@ -161,6 +161,7 @@ vi:
       open_time: "Phải trong thời gian mở cửa"
       not_overlapped: "Không được trùng với các đơn đặt sân khác"
       invalid: "Đơn đặt sân không hợp lệ"
+      too_short_time: "Thời gian đặt quá ít (< 1 giờ)"
     edit:
       order: "Đơn đặt sân"
       order_id: "Mã số đơn đặt sân #%{order_id}"
@@ -205,6 +206,21 @@ vi:
       field: "Tên sân: "
       user: "Tên người dùng: "
       status: "Trạng thái: "
+    voucher_form:
+      select_voucher: "Chọn mã giảm giá"
+      no_voucher: "Đã hết mã giảm giá"
+      apply: "Áp dụng"
+      approve: "Xác nhận"
+      confirm_apply: "Áp dụng mã giảm giá này?"
+      confirm_order: "Bạn xác nhận đặt sân này?"
+    bill:
+      date: "Ngày"
+      started_time: "Bắt đầu"
+      finished_time: "Kết thúc"
+    account_info:
+      current_account: "Tài khoản hiện tại"
+      remain_account: "Tài khoản còn lại"
+      confirm_apply: "Áp dụng mã giảm giá này?"
   order_mailer:
     delete_order:
       subject: "Hủy đơn đặt sân"

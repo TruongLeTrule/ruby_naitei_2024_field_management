@@ -28,7 +28,8 @@ class OrdersController < ApplicationController
 
       case order_params[:status]
       when "approved"
-        @schedule.update!(status: :rent)
+        update_final_price
+        @schedule.update! status: :rent
       when "cancelling"
         @order.send_delete_order_email
         @schedule.update!(status: :pending)
@@ -88,5 +89,15 @@ class OrdersController < ApplicationController
     sort_column = params[:sort_column] || "id"
     sort_direction = params[:sort_direction] || "asc"
     @orders = @orders.order(sort_column => sort_direction)
+  end
+
+  def update_final_price
+    voucher = Voucher.find_by id: session[:voucher_id]
+    return unless voucher&.valid? current_user
+
+    @order.update_attribute :final_price,
+                            voucher.get_discount_price(@order.final_price)
+    voucher.destroy!
+    session.delete :voucher_id
   end
 end
