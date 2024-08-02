@@ -1,6 +1,6 @@
 <% provide :title, @field.name %>
-<section class="grid grid-cols-5 gap-x-14">
-  <%= image_tag "soccer_field.jpg", class: "col-span-3 w-full rounded-xl shadow-2xl" %>
+<section class="grid grid-cols-5 gap-x-14 mt-8">
+  <%= image_tag get_image(@field), class: "col-span-3 w-full rounded-xl shadow-2xl" %>
   <div class="col-span-2 flex flex-col justify-center">
     <h2 class="text-3xl font-semibold">
       <%= @field.name %>
@@ -22,7 +22,17 @@
         loved_count: @field.favourite_users.count,
         booked_count: @field.ordered_users.count
     %>
-    <%= render "shared/primary_btn", label: (link_to t(".book"), order_field_path(@field)) %>
+    <div class="mt-10">
+      <% if current_user.admin? %>
+        <%= link_to edit_field_path(@field) do %>
+          <%= render "shared/primary_btn", label: t(".edit") %>
+        <% end %>
+      <% else %>
+        <%= link_to order_field_path(@field) do %>
+          <%= render "shared/primary_btn", label: t(".book") %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </section>
 <section class="mt-16">

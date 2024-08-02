@@ -32,6 +32,10 @@ class OrderField < ApplicationRecord
     OrderMailer.confirm_delete(self).deliver_now
   end
 
+  def uncomplete?
+    Time.zone.parse("#{date} #{finished_time}") > Time.zone.now
+  end
+
   private
 
   def date_is_valid
@@ -107,7 +111,11 @@ class OrderField < ApplicationRecord
   end
 
   def too_short_time
-    return if (finished_time.hour - started_time.hour) >= Settings.min_book_time
+    if started_time.nil? ||
+       finished_time.nil? ||
+       (finished_time.hour - started_time.hour) >= Settings.min_book_time
+      return
+    end
 
     errors.add :base, I18n.t("orders.errors.too_short_time")
   end

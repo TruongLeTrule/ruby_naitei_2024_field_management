@@ -18,20 +18,18 @@ end
 # Field
 field_types = FieldType.all
 field_types.each do |field_type|
-  10.times do
-    name = Faker::Sports::Football.team
-    default_price = rand 100_000..500_000
-    description = Faker::Lorem.sentence(word_count: 10)
-    open_time = "08:00am"
-    close_time = "09:00pm"
-    field_type_id = field_type.id
-    field_type.fields.create! name: name,
-                              default_price: default_price,
-                              description:description,
-                              field_type_id:field_type_id,
-                              open_time: open_time,
-                              close_time: close_time
-  end
+  name = Faker::Sports::Football.unique.team
+  default_price = rand 100_000..500_000
+  description = Faker::Lorem.sentence(word_count: 10)
+  open_time = "08:00am"
+  close_time = "09:00pm"
+  field_type_id = field_type.id
+  field_type.fields.create! name: name,
+                            default_price: default_price,
+                            description:description,
+                            field_type_id:field_type_id,
+                            open_time: open_time,
+                            close_time: close_time
 end
 
 # User

@@ -23,6 +23,7 @@
                         step: 1800,
                         min: @field.open_time,
                         include_seconds: false,
+                        value: @order.started_time.strftime(Settings.time_format),
                         class: "border-none bg-transparent cursor-pointer text-lg"
     %>
   </div>
@@ -32,6 +33,7 @@
                         step: 1800,
                         max: @field.close_time,
                         include_seconds: false,
+                        value: @order.finished_time.strftime(Settings.time_format),
                         class: "border-none bg-transparent cursor-pointer text-lg"
     %>
   </div>

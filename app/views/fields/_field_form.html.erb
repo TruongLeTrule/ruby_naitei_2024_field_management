@@ -1,0 +1,70 @@
+<%= form_with model: field,
+              class: "grid grid-cols-2 mt-14" do |form|
+%>
+  <div class="flex flex-col gap-8 text-xl items-center">
+    <%= render "shared/error_messages", object: field, single: true %>
+    <div class="flex items-center">
+      <%= form.label t(".field_type"), class: "inline-block w-32 mr-4" %>
+      <%= form.select :field_type_id,
+                      options_for_select(get_field_types,
+                                        selected: field.field_type_id || first_field_type
+                                        ),
+                      {},
+                      {class: "w-52 h-10 rounded-lg text-center ring-2 ring-gray-200 cursor-pointer focus:ring-primary outline-none border-none"}
+      %>
+    </div>
+    <div class="flex items-center">
+      <%= form.label :name, class: "inline-block w-32 mr-4" %>
+      <%= form.text_field :name,
+                          placeholder: t(".type_field_name"),
+                          class: "w-52 h-10 rounded-lg ring-2 ring-gray-200 focus:ring-primary outline-none border-none" %>
+    </div>
+    <div class="flex items-center">
+      <%= form.label :default_price, class: "inline-block w-32 mr-4" %>
+      <%= form.number_field :default_price,
+                            step: 50_000,
+                            placeholder: t(".type_default_price"),
+                            class: "w-52 h-10 rounded-lg ring-2 ring-gray-200 focus:ring-primary outline-none border-none"
+      %>
+    </div>
+    <div class="flex items-center">
+      <%= form.label :open_time, class: "inline-block w-32 mr-4" %>
+      <%= form.time_field :open_time,
+                          value: field.open_time&.strftime(Settings.time_format),
+                          class: "w-52 h-10 rounded-lg ring-2 ring-gray-200 focus:ring-primary outline-none border-none"
+      %>
+    </div>
+    <div class="flex items-center">
+      <%= form.label :close_time, class: "inline-block w-32 mr-4" %>
+      <%= form.time_field :close_time,
+                          value: field.close_time&.strftime(Settings.time_format),
+                          class: "w-52 h-10 rounded-lg ring-2 ring-gray-200 focus:ring-primary outline-none border-none"
+      %>
+    </div>
+    <div class="flex items-center">
+      <%= form.label :description, class: "inline-block w-32 mr-4" %>
+      <%= form.text_area :description,
+                          placeholder: t(".type_description"),
+                          class: "resize-none w-52 h-32 rounded-lg ring-2 ring-gray-200 focus:ring-primary outline-none border-none"
+      %>
+    </div>
+  </div>
+  <div class="flex flex-col gap-8 items-center justify-center">
+    <%= image_tag get_image(field),
+                  alt: t(".preview_img"),
+                  id: "preview-img",
+                  class: "rounded-lg shadow-xl w-full h-96 object-cover"
+    %>
+    <%= form.file_field :image,
+                        accept: Settings.image_format,
+                        class: "block w-full text-sm text-slate-400
+                                file:mr-4 file:py-2 file:px-4
+                                file:rounded-full file:border-0
+                                file:text-sm file:font-semibold
+                                file:text-primary file:underline
+                                hover:file:text-light-green
+                                file:bg-transparent text-center cursor-pointer"
+    %>
+  </div>
+  <%= form.submit t(".submit"), class: "mt-14 col-span-2 block mx-auto bg-primary w-32 h-12 rounded-lg text-white font-semibold text-xl hover:opacity-50 transition-opacity cursor-pointer" %>
+<% end %>

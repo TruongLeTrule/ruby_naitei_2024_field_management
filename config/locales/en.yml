@@ -1,5 +1,8 @@
 en:
   app_name: "Premium Soccer Field"
+  js:
+    errors:
+      img_too_large: "Image size too large (< 5mb)"
   number:
     money:
       exchange_rate: 0.00004
@@ -36,6 +39,11 @@ en:
   fields:
     errors:
       invalid: "Invalid field"
+      too_large_img_size: "size too large (<5mb)"
+      invalid_img_format: "has invalid format (jpeg, png)"
+      too_short_time: "Time too short (< 1 hour)"
+      img_too_large: "Image size too large (< 5mb)"
+      valid_time: "Close time must be later than open time"
     field:
       view_details: "View details"
     rating:
@@ -52,6 +60,7 @@ en:
       ground: "Ground"
       book: "Book"
       description: "Description"
+      edit: "Edit"
     new_order:
       order: "Order"
       date: "Date"
@@ -67,6 +76,28 @@ en:
       success: "Order created"
       failed: "Order failed"
       open_time: "Open time"
+    index:
+      create: "Create new"
+    new:
+      create: "Create new field"
+    create:
+      success: "Create field successful"
+    edit:
+      title: "Update %{name} field"
+      delete_confirm: "Are you sure to delete %{field} field"
+      delete_field: "Delete field"
+    update:
+      success: "Update field %{field} successful"
+    field_form:
+      field_type: "Field type"
+      submit: "Submit"
+      type_default_price: "Type default price here"
+      type_field_name: "Type field name here"
+      type_description: "Type description here"
+      preview_img: "Preview image"
+    destroy:
+      success: "Delete %{field} field successful"
+      has_uncompleted_order: "Cannot delete because uncompleted order exists"
   field_type:
     grass: "Grass"
     concrete: "Concrete"
@@ -235,3 +266,10 @@ en:
         date: "Date"
         started_time: "Start time"
         finished_time: "Finish time"
+      field:
+        name: "Field name"
+        default_price: "Default price"
+        open_time: "Open time"
+        close_time: "Close time"
+        description: "Description"
+        image: "Image"

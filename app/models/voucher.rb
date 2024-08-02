@@ -5,7 +5,7 @@ class Voucher < ApplicationRecord
 
   scope :ordered_by_type_amount, ->{order :voucher_type, :amount}
 
-  def get_discount_price current_price
+  def calculate_discount_price current_price
     if voucher_type == "percent"
       current_price * (1 - amount)
     else
@@ -13,7 +13,7 @@ class Voucher < ApplicationRecord
     end
   end
 
-  def valid? current_user
+  def valid_voucher? current_user
     user == current_user
   end
 end
