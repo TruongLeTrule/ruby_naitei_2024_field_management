@@ -1,21 +1,47 @@
 document.addEventListener('turbo:load', () => {
-  const dropdownButtons = document.getElementsByClassName('dropdownButton');
-  const dropdownMenus = document.getElementsByClassName('dropdownMenu');
+  const dropdownBtn = document.getElementById('dropdownButton')
+  const dropdownMenu = document.getElementById('dropdownMenu')
+  const filterPriceBtn = document.getElementById('filter-price-btn')
+  const filterPriceList = document.getElementById('filter-price-list')
+  const filterTypeBtn = document.getElementById('filter-type-btn')
+  const filterTypeList = document.getElementById('filter-type-list')
+  const languageBtn = document.getElementById('language-dropdown-btn')
+  const languageMenu = document.getElementById('language-dropdown-menu')
+  const statsBtn = document.getElementById('stats-dropdown-btn')
+  const statsMenu = document.getElementById('stats-dropdown-menu')
 
-  if (dropdownButtons.length > 0 && dropdownMenus.length > 0) {
-    Array.from(dropdownButtons).forEach((button, index) => {
-      const menu = dropdownMenus[index];
-
-      button.addEventListener('click', (event) => {
-        event.stopPropagation();
-        menu.classList.toggle('hidden');
-      });
-    });
-
-    window.addEventListener('click', () => {
-      Array.from(dropdownMenus).forEach(menu => {
-        menu.classList.add('hidden');
-      });
-    });
+  if (dropdownBtn && dropdownMenu) {
+    dropDown(dropdownBtn, dropdownMenu)
   }
-});
+
+  if (filterPriceBtn && filterPriceList) {
+    dropDown(filterPriceBtn, filterPriceList)
+  }
+
+  if (filterTypeBtn && filterTypeList) {
+    dropDown(filterTypeBtn, filterTypeList)
+  }
+
+  if (languageBtn && languageMenu) {
+    dropDown(languageBtn, languageMenu)
+  }
+
+  if (statsBtn && statsMenu) {
+    dropDown(statsBtn, statsMenu)
+  }
+})
+
+const dropDown = (triggerBtn, dropDownList) => {
+  triggerBtn.addEventListener('click', () => {
+    dropDownList.classList.toggle('hidden')
+  })
+
+  window.addEventListener('click', (event) => {
+    if (
+      !triggerBtn.contains(event.target) &&
+      !dropDownList.contains(event.target)
+    ) {
+      dropDownList.classList.add('hidden')
+    }
+  })
+}

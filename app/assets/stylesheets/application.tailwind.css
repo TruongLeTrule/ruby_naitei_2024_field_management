@@ -5,7 +5,12 @@
 
 @layer components {
   .active-nav {
-    color: theme("colors.primary");
+    color: theme('colors.primary');
     text-decoration: underline;
+  }
+
+  .active-filter {
+    color: theme('colors.white');
+    background-color: theme('colors.primary') !important;
   }
 }
