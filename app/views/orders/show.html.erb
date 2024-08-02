@@ -7,5 +7,7 @@
   <p class="text-2xl font-medium text-center text-secondary"><%= t ".user" %><%= link_to @order.user.name, @order.user %>
   <p class="text-2xl font-medium text-center text-red-400"><%= t ".status" %><%= @order.status %>
   <%= render "bill" %>
-  <%= render "cancel_button" %>
+  <% unless @order.cancel? %>
+    <%= render "cancel_button" %>
+  <% end %>
 </div>

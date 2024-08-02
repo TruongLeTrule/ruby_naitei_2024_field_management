@@ -15,6 +15,10 @@ source: :field
 source: :field
   has_many :ratings, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_one_attached :image do |attachable|
+    attachable.variant :display, resize_to_limit: [Settings.limit_img_size,
+                                                  Settings.limit_img_size]
+  end
 
   validates :name, presence: true, length: {maximum: Settings.max_name_length}
   validates :email, presence: true,
@@ -26,6 +30,23 @@ source: :field
                     length: {minimum: Settings.min_password_length},
                     allow_nil: true
   validate :password_complexity
+
+  scope :search_by_name, lambda {|name|
+    where("name LIKE ?", "%#{name}%") if name.present?
+  }
+  scope :search_by_email, lambda {|email|
+    where("email LIKE ?", "%#{email}%") if email.present?
+  }
+  scope :search_by_status, lambda {|activated|
+    if activated == "false"
+      where(activated: [nil, false])
+    elsif activated == "true"
+      where(activated: true)
+    end
+  }
+  scope :order_by, lambda {|attribute = :id, direction = :asc|
+                     order(Arel.sql("#{attribute} #{direction}"))
+                   }
 
   before_save :downcase_email
   before_create :create_activation_digest

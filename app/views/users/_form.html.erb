@@ -1,6 +1,29 @@
 <%= form_for @user, class: "flex-1 flex flex-col" do |f| %>
   <%= render "shared/error_messages", object: @user %>
   <div class="mb-4 space-y-2">
+    <div class="flex items-center justify-center">
+      <%= image_tag get_profile_image(@user),
+                    alt: t("user.show.profile_img"),
+                    id: "preview-profile-img",
+                    class: "h-32 w-32 rounded-full border-4 border-white"
+      %>
+    </div>
+    <div class="flex items-center justify-center">
+      <%= f.file_field :image,
+                          accept: Settings.image_format,
+                          class: "block w-full text-sm text-slate-400
+                                  file:mr-4 file:py-2 file:px-4
+                                  file:rounded-full file:border-0
+                                  file:text-sm file:font-semibold
+                                  file:text-primary file:underline
+                                  file:cursor-pointer file:bg-transparent
+                                  hover:file:text-light-green cursor-pointer
+                                  focus:outline-none"
+      %>
+    </div>
+  </div>
+
+  <div class="mb-4 space-y-2">
     <%= f.label :name, t("users.new.name") %>
     <%= f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
   </div>

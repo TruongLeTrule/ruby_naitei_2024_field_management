@@ -14,7 +14,11 @@ Rails.application.routes.draw do
         post :order, to: "fields#create_order"
       end
     end
-    resources :users
+    resources :users do
+      member do
+        post :active, to: "users#update_active"
+      end
+    end
     resources :account_activations, only: :edit
     resources :password_resets, except: %i(index show destroy)
     resources :orders
