@@ -296,6 +296,9 @@ en:
   favourites:
     errors:
      invalid: "Invalid"
+  booking_history:
+    index:
+      history: "Booking History"
   activerecord:
     attributes:
       order_field:

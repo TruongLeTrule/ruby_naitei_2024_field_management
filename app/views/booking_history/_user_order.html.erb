@@ -1,0 +1,14 @@
+<tr class="hover:bg-green-100">
+  <td class="px-4 py-2 buser_order-b buser_order-gray-300 text-center"><%= user_order_counter + 1 %></td>
+  <td class="px-4 py-2 buser_order-b buser_order-gray-300 text-center"><%= user_order.field.name %></td>
+  <td class="px-4 py-2 buser_order-b buser_order-gray-300 text-center"><%= user_order.date.strftime(Settings.date_format) %></td>
+  <td class="px-4 py-2 buser_order-b buser_order-gray-300 text-center"><%= user_order.started_time.strftime(Settings.time_format) %></td>
+  <td class="px-4 py-2 buser_order-b buser_order-gray-300 text-center"><%= user_order.finished_time.strftime(Settings.time_format) %></td>
+  <td class="px-4 py-2 buser_order-b buser_order-gray-300 text-center"><%= exchange_money(user_order.final_price) %></td>
+  <td class="px-4 py-2 buser_order-b buser_order-gray-300 text-center"><%= user_order.status %></td>
+  <td class="px-4 py-2 buser_order-b buser_order-gray-300 text-center"><%= user_order.created_at.strftime(Settings.date_time_format) %></td>
+  <td class="px-4 py-2 buser_order-b buser_order-gray-300 text-center"><%= user_order.updated_at.strftime(Settings.date_time_format) %></td>
+  <td class="px-4 py-2 buser_order-b buser_order-gray-300 text-center">
+    <%= link_to t("orders.table.show"), edit_order_path(user_order), class: "text-blue-600 hover:underline" %>
+  </td>
+</tr>
