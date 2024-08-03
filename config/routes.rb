@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     resources :account_activations, only: :edit
     resources :password_resets, except: %i(index show destroy)
     resources :orders
+    resources :favourites, only: %i(create destroy)
   end
 end

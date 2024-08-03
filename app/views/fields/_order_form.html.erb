@@ -10,7 +10,7 @@
                         id: 'date-input',
                         class: "border-none bg-transparent cursor-pointer text-lg"
     %>
-    <%= link_to t(".load"),
+    <%= link_to t("fields.form.load"),
                 unavailable_field_schedules_path(field_id: @field.id),
                 data: {turbo_frame: "clock-container"},
                 id: "find-schedule-link",
@@ -23,7 +23,6 @@
                         step: 1800,
                         min: @field.open_time,
                         include_seconds: false,
-                        value: @order.started_time.strftime(Settings.time_format),
                         class: "border-none bg-transparent cursor-pointer text-lg"
     %>
   </div>
@@ -33,9 +32,8 @@
                         step: 1800,
                         max: @field.close_time,
                         include_seconds: false,
-                        value: @order.finished_time.strftime(Settings.time_format),
                         class: "border-none bg-transparent cursor-pointer text-lg"
     %>
   </div>
-  <%= form.submit t(".book"), class: "cursor-pointer mx-auto mt-2 bg-primary w-40 h-14 rounded-lg text-white font-semibold text-xl hover:opacity-50 transition-opacity" %>
+  <%= form.submit t("fields.form.book"), class: "cursor-pointer mx-auto mt-2 bg-primary w-40 h-14 rounded-lg text-white font-semibold text-xl hover:opacity-50 transition-opacity" %>
 <% end %>

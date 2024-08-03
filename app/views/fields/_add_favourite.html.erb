@@ -1,0 +1,6 @@
+<%= form_for(current_user.favourite_relationships.build, url: favourites_path, html: {class: "inline"}) do |f| %>
+  <%= hidden_field_tag :field, @field.id %>
+  <button type = "submit">
+    <%= fa_icon "heart-o" %>
+  </button>
+<% end %>

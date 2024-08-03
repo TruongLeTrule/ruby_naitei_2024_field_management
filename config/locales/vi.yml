@@ -259,6 +259,9 @@ vi:
       subject: "Xác nhận hủy đặt sân"
       hello: "Xin chào %{name}"
       cancel: "Đơn đặt sân mang mã số %{order_id} tại sân %{field_name} đã được hủy."
+  favourites:
+    errors:
+     invalid: "Không hợp lệ"
   activerecord:
     attributes:
       order_field:
