@@ -76,7 +76,7 @@ en:
       book: "Book"
       load: "Load"
     create_order:
-      success: "Order created"
+      success: "Continue order"
       failed: "Order failed"
       open_time: "Open time"
     index:
@@ -101,6 +101,11 @@ en:
     destroy:
       success: "Delete %{field} field successful"
       has_uncompleted_order: "Cannot delete because uncompleted order exists"
+    rating:
+      rating: "Rating"
+      comment: "Comment"
+      here: "Write something here"
+      submit: "Create"
     filters:
       most_rated: "Most rated"
       newest: "Newest"
@@ -299,6 +304,23 @@ en:
   booking_history:
     index:
       history: "Booking History"
+  ratings:
+    errors:
+      not_found: "Rating not found"
+    create:
+      success: "Create rating successful"
+      failed: "Create rating failed"
+    edit:
+      submit: "Edit"
+    delete:
+      confirm: "Are you sure delete this rating?"
+      submit: "Delete"
+    update:
+      success: "Update success"
+      failed: "Update failed"
+    destroy:
+      success: "Delete success"
+      failed: "Delete failed"
   activerecord:
     attributes:
       order_field:

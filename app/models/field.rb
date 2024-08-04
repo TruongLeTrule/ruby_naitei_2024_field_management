@@ -25,17 +25,17 @@ source: :user
                                    message: I18n.t(
                                      "fields.errors.invalid_img_format"
                                    )},
-                    size:          {less_than: Settings.max_img_size.megabytes,
-                                    message: I18n.t(
-                                      "fields.errors.too_large_img_size"
-                                    )}
+                    size: {less_than: Settings.max_img_size.megabytes,
+                           message: I18n.t(
+                             "fields.errors.too_large_img_size"
+                           )}
   validate :validate_time
 
   scope :name_like, lambda {|name|
                       where("name LIKE ?", "%#{name}%") if name.present?
                     }
   scope :order_by, lambda {|attribute, direction|
-                     order((attribute || :created_at) => (direction || :asc))
+                     order(attribute || :created_at => direction || :asc)
                    }
   scope :most_rated, (lambda do
     left_outer_joins(:ratings)

@@ -24,5 +24,6 @@ Rails.application.routes.draw do
     resources :password_resets, except: %i(index show destroy)
     resources :orders
     resources :favourites, only: %i(create destroy)
+    resources :ratings
   end
 end

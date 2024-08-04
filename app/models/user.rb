@@ -124,6 +124,15 @@ source: :field
   def favourite_field? field
     favourite_fields.include? field
   end
+
+  def order_field? field
+    order_relationships.approved.exists? field_id: field.id
+  end
+
+  def rating_field? field
+    ratings.exists? field_id: field.id
+  end
+
   private
 
   def downcase_email
