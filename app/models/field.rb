@@ -31,10 +31,21 @@ source: :user
                                     )}
   validate :validate_time
 
-  scope :name_like, ->(name){where("name LIKE ?", "%#{name}%") if name.present?}
-  scope :order_by, lambda {|attribute, direction = :asc|
-                     order(attribute => direction)
+  scope :name_like, lambda {|name|
+                      where("name LIKE ?", "%#{name}%") if name.present?
+                    }
+  scope :order_by, lambda {|attribute, direction|
+                     order((attribute || :created_at) => (direction || :asc))
                    }
+  scope :most_rated, (lambda do
+    left_outer_joins(:ratings)
+      .group(:id)
+      .order("AVG(ratings.rating) DESC")
+      .includes(image_attachment: :blob)
+  end)
+  scope :field_type, lambda {|field_type_id|
+                       where(field_type_id:) if field_type_id.present?
+                     }
 
   def average_rating
     ratings.average(:rating).to_f

@@ -2,13 +2,19 @@ class FieldsController < ApplicationController
   before_action :find_field_by_id, except: %i(create new index)
   before_action :logged_in_user, only: %i(new_order create_order)
   before_action :admin_user, only: %i(new create edit update destroy)
+  before_action :set_default_params, only: :index
 
   def show; end
 
   def edit; end
 
   def index
-    @pagy, @fields = pagy Field.name_like(params[:search]).order_by(:created_at)
+    type = params[:type] == "all" ? nil : params[:type]
+
+    @pagy, @fields = pagy Field.order_by(params[:order], params[:sort])
+                               .name_like(params[:search])
+                               .field_type(type)
+                               .most_rated
   end
 
   def new
@@ -116,5 +122,11 @@ class FieldsController < ApplicationController
     return 0 if started_time.nil? || finished_time.nil?
 
     @field.default_price * (finished_time.hour - started_time.hour)
+  end
+
+  def set_default_params
+    return unless request.query_parameters.empty?
+
+    redirect_to fields_path(type: :all, most_rated: true)
   end
 end

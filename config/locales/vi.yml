@@ -103,6 +103,14 @@ vi:
     destroy:
       success: "Xóa sân %{field} thành công"
       has_uncompleted_order: "Không thể xóa vì tồn tại lịch đặt sân"
+    filters:
+      most_rated: "Đánh giá cao"
+      newest: "Mới nhất"
+      low_to_high: "Thấp đến cao"
+      high_to_low: "Cao đến thấp"
+      type: "Loại sân"
+      price: "Giá"
+      all: "Tất cả"
   field_type:
     grass: "Sân cỏ thật"
     concrete: "Sân xi măng"

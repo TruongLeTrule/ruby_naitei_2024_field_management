@@ -35,4 +35,16 @@ module FieldsHelper
   def get_image field
     field.image.attached? ? field.image : "soccer_field.jpg"
   end
+
+  def all_field_types
+    FieldType.all
+  end
+
+  # Return true if request params contain all active params
+  def active? active_params
+    active_params = active_params.transform_keys(&:to_s)
+                                 .transform_values(&:to_s)
+                                 .to_a
+    (active_params - request.query_parameters.to_a).empty?
+  end
 end

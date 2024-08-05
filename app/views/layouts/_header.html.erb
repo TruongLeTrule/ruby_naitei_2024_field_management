@@ -10,17 +10,17 @@
       <li class="relative inline-block text-left">
         <div>
           <button type="button"
-                  id="dropdownButton"
+                  id="language-dropdown-btn"
                   class="text-xl font-semi-bold hover:opacity-50 transition-opacity focus:outline-none
-                        cursor-pointer inline-flex gap-x-3 items-center dropdownButton">
+                        cursor-pointer inline-flex gap-x-3 items-center">
             <%= t ".language" %>
             <%= fa_icon "caret-down" %>
           </button>
         </div>
 
-        <div id="dropdownMenu"
+        <div id="language-dropdown-menu"
             class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1
-                bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dropdownMenu"
+                bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
             role="menu" aria-orientation="vertical"
             aria-labelledby="dropdownButton">
           <%= link_to t(".english"), {locale: :en},
@@ -41,17 +41,17 @@
           <li class="relative inline-block text-left">
         <div>
           <button type="button"
-                  id="dropdownButton"
+                  id="stats-dropdown-btn"
                   class="text-xl font-semi-bold hover:opacity-50 transition-opacity focus:outline-none
-                        cursor-pointer inline-flex gap-x-3 items-center dropdownButton">
+                        cursor-pointer inline-flex gap-x-3 items-center">
             <%= t ".stats" %>
             <%= fa_icon "caret-down" %>
           </button>
         </div>
 
-        <div id="dropdownMenu"
+        <div id="stats-dropdown-menu"
             class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1
-                bg-white ring-1 ring-black ring-opacity-5 focus:outline-none dropdownMenu"
+                bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu" aria-orientation="vertical"
             aria-labelledby="dropdownButton">
           <%= link_to t(".orders"), orders_path,
