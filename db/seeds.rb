@@ -56,6 +56,7 @@ User.create! name: "admin",
 end
 
 # Rating + Favourite + Order
+$order_id = 0
 fields = Field.limit 5
 fields.each do |field|
   10.times do |id|
@@ -66,16 +67,18 @@ fields.each do |field|
     field.favourite_relationships.create! user_id: id + 1
 
     field.order_relationships.create! user_id: id + 1,
-                                      started_time: Time.zone.now,
-                                      finished_time: Time.zone.now + 1.hour,
-                                      date: Time.zone.today + id.days,
+                                      started_time: "16:00",
+                                      finished_time: "17:00",
+                                      date: Time.zone.today + (id + 1).days,
                                       final_price: rand(100_000..500_000),
                                       status: 1
 
-    field.unavailable_field_schedules.create! started_time: Time.zone.now,
-                                              finished_time: Time.zone.now + 1.hour,
-                                              date: Time.zone.today + id.days,
-                                              status: 2
+    field.unavailable_field_schedules.create! started_time: "16:00",
+                                              finished_time: "17:00",
+                                              date: Time.zone.today + (id + 1).days,
+                                              status: 2,
+                                              order_field_id: $order_id + 1
+    $order_id = $order_id + 1
   end
 end
 

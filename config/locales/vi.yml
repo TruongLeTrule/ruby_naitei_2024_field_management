@@ -346,6 +346,21 @@ vi:
       type_review: "Nhập bình luận ở đây"
       send: "Gửi"
       cancel: "Hủy"
+  activities:
+    index:
+      activity: "Hoạt động"
+    actions:
+      created: "tạo"
+      updated: "cập nhật"
+      deleted: "xóa"
+      viewed: "xem"
+    trackable_types:
+      user: "người dùng"
+      field: "sân"
+      orderfield: "đơn đặt sân"
+      favouritefield: "sân yêu thích"
+      rating: "đánh giá"
+      review: "nhận xét"
   activerecord:
     attributes:
       order_field:

@@ -1,0 +1,8 @@
+<% provide :title, t(".activity") %>
+<h1 class="text-3xl font-bold mb-6 text-gray-800"><%= t(".activity") %></h1>
+<ul class="space-y-4">
+  <%= render partial: "activity", collection: @activities %>
+</ul>
+<div class="mt-4">
+  <%== pagy_nav @pagy %>
+</div>

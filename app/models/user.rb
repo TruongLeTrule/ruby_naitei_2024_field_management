@@ -22,7 +22,7 @@ source: :field
 
   validates :name, presence: true, length: {maximum: Settings.max_name_length}
   validates :email, presence: true,
-                    length: {maximum: Settings.max_email_length},
+                    length: {maximum: Settings.max_length_255},
                     format: {with: Regexp.new(Settings.valid_email_regex, "i")},
                     uniqueness: true
   has_secure_password
@@ -161,5 +161,13 @@ source: :field
     return unless types < Settings.min_password_types
 
     errors.add :password, I18n.t("users.create.password_complexity")
+  end
+
+  def create_activity
+    create_action(:created, self)
+  end
+
+  def update_activity
+    create_action(:updated, self)
   end
 end

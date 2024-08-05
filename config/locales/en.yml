@@ -160,7 +160,7 @@ en:
       failed: "Update failed"
       success: "Profile updated"
     index:
-      all_user: "Tất Cả Người Dùng"
+      all_user: "All users"
     table:
       name: "Name"
       email: "Email"
@@ -348,6 +348,21 @@ en:
       type_review: "Type comment here"
       cancel: "Cancel"
       send: "Send"
+  activities:
+    index:
+      activity: "Activity List"
+    actions:
+      created: "created"
+      updated: "updated"
+      deleted: "deleted"
+      viewed: "viewed"
+    trackable_types:
+      user: "user"
+      field: "field"
+      orderfield: "order field"
+      favouritefield: "favourite field"
+      rating: "rating"
+      review: "review"
   activerecord:
     attributes:
       order_field:

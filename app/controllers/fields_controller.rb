@@ -8,6 +8,7 @@ class FieldsController < ApplicationController
 
   def show
     @pagy, @ratings = pagy @field.ratings
+    create_action(current_user, :viewed, @field)
   end
 
   def index
