@@ -46,6 +46,7 @@ source: :user
   scope :field_type, lambda {|field_type_id|
                        where(field_type_id:) if field_type_id.present?
                      }
+  scope :favourite_by_current_user, ->(ids){where id: ids if ids.present?}
 
   def average_rating
     ratings.average(:rating).to_f

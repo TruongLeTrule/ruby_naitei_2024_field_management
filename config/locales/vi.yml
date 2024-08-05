@@ -111,6 +111,7 @@ vi:
       type: "Loại sân"
       price: "Giá"
       all: "Tất cả"
+      favourite: "Yêu thích"
   field_type:
     grass: "Sân cỏ thật"
     concrete: "Sân xi măng"

@@ -109,6 +109,7 @@ en:
       type: "Type"
       price: "Price"
       all: "All"
+      favourite: "Favourite"
   field_type:
     grass: "Grass"
     concrete: "Concrete"

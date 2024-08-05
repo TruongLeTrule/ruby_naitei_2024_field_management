@@ -14,6 +14,9 @@ class FieldsController < ApplicationController
     @pagy, @fields = pagy Field.order_by(params[:order], params[:sort])
                                .name_like(params[:search])
                                .field_type(type)
+                               .favourite_by_current_user(
+                                 find_favourite_field_ids
+                               )
                                .most_rated
   end
 
@@ -128,5 +131,9 @@ class FieldsController < ApplicationController
     return unless request.query_parameters.empty?
 
     redirect_to fields_path(type: :all, most_rated: true)
+  end
+
+  def find_favourite_field_ids
+    current_user&.favourite_field_ids if params[:favourite]
   end
 end

@@ -6,7 +6,7 @@
   <button class="w-28 h-10 bg-gray-200 text-xs rounded-md hover:opacity-70 transition-opacity"
           id="filter-price-btn">
     <%= t ".price" %>
-    <%= fa_icon "chevron-down", class: "ml-2 text-gray-500" %>
+    <%= fa_icon "caret-down", class: "ml-2 text-gray-500" %>
   </button>
   <div id="filter-price-list" class="flex flex-col absolute hidden shadow-lg">
     <%= render "filter_btn", active_params: {order: :default_price, sort: :asc}, label: t(".low_to_high"), not_rounded: true %>
@@ -17,7 +17,7 @@
   <button class="w-28 h-10 bg-gray-200 text-xs rounded-md hover:opacity-70 transition-opacity"
           id="filter-type-btn">
     <%= t ".type" %>
-    <%= fa_icon "chevron-down", class: "ml-2 text-gray-500" %>
+    <%= fa_icon "caret-down", class: "ml-2 text-gray-500" %>
   </button>
   <div id="filter-type-list" class="flex flex-col absolute hidden shadow-lg">
     <%= render "filter_btn", active_params: {type: :all}, label: t(".all"), not_rounded: true %>
@@ -26,3 +26,6 @@
     <% end %>
   </div>
 </div>
+<%= render("filter_btn", active_params: {favourite: true},
+                         label: fa_icon("heart-o") + t(".favourite")) if current_user.present?
+%>
