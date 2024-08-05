@@ -35,6 +35,9 @@ en:
       vietnamese: "Vietnamese"
       language: "Language"
       profile: "Profile"
+      stats: "Stats"
+      orders: "Orders"
+      users: "Users"
     sign_up: "Sign up"
   fields:
     errors:
@@ -124,6 +127,7 @@ en:
       check_email: "Please check your email to activate your account."
     show:
       user_not_found: "User not found"
+      profile_picture: "Profile Picture"
     errors:
       require_login: "Please log in to continue"
       invalid: "Invalid user"
@@ -134,6 +138,26 @@ en:
     update:
       failed: "Update failed"
       success: "Profile updated"
+    index:
+      all_user: "Tất Cả Người Dùng"
+    table:
+      name: "Name"
+      email: "Email"
+      money: "Money"
+      activated: "Activated"
+      created_at: "Created At"
+      updated_at: "Updated At"
+      actions: "Actions"
+    user:
+      show: "Show"
+    action:
+      ban: "Ban"
+      activate: "Activate"
+      confirm: "Are you sure"
+    filter:
+      active: "Active"
+      inactive: "Inactive"
+      search: "Search"
   sessions:
     new:
       login: "Log in"

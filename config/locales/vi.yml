@@ -35,6 +35,9 @@ vi:
       vietnamese: "Tiếng Việt"
       language: "Ngôn ngữ"
       profile: "Hồ sơ"
+      stats: "Thống kê"
+      orders: "Đơn đặt sân"
+      users: "Nguời dùng"
     sign_up: "Đăng ký"
   fields:
     errors:
@@ -122,6 +125,7 @@ vi:
       check_email: "Vui lòng kiểm tra email của bạn để kích hoạt tài khoản."
     show:
       user_not_found: "Không tìm thấy người dùng"
+      profile_picture: "Ảnh đại diện"
     errors:
       require_login: "Vui lòng đăng nhập để tiếp tục"
       invalid: "Người dùng không hợp lệ"
@@ -132,6 +136,26 @@ vi:
     update:
       failed: "Cập nhật thất bại"
       success: "Cập nhật thành công"
+    index:
+      all_user: "Tất cả người dùng"
+    table:
+      name: "Tên"
+      email: "Email"
+      money: "Số Tiền"
+      activated: "Kích Hoạt"
+      created_at: "Ngày Tạo"
+      updated_at: "Ngày Cập Nhật"
+      actions: "Hành Động"
+    user:
+      show: "Xem"
+    action:
+      ban: "Cấm"
+      activate: "Kích Hoạt"
+      confirm: "Bạn có chắc chắn"
+    filter:
+      active: "Kích Hoạt"
+      inactive: "Chưa Kích Hoạt"
+      search: "Tìm kiếm"
   sessions:
     new:
       login: "Đăng nhập"

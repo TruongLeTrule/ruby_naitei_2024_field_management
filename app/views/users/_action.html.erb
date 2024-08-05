@@ -1,0 +1,5 @@
+<% if user.activated? %>
+  <%= link_to t(".ban"), active_user_path(user, {activated: false}), data: { "turbo-method": :post, turbo_confirm: t(".confirm") } ,class: "text-red-600 hover:underline" %>
+<% else %>
+  <%= link_to t(".activate"), active_user_path(user, {activated: true}), data: { "turbo-method": :post, turbo_confirm: t(".confirm") }, class: "text-green-600 hover:underline" %>
+<% end %>

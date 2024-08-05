@@ -1,0 +1,17 @@
+<table class="min-w-full bg-white border border-gray-300">
+  <thead class="bg-primary text-white">
+    <tr>
+      <th class="px-4 py-2 border-b border-gray-300 text-center">#</th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :id %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :name, t(".name") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :email, t(".email") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :money, t(".money") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :activated, t(".activated") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :created_at, t(".created_at") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= t ".actions" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "user", collection: @users %>
+  </tbody>
+</table>
