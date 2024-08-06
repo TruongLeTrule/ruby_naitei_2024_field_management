@@ -1,0 +1,19 @@
+<table class="min-w-full bg-white border border-gray-300">
+  <thead class="bg-primary text-white">
+    <tr>
+      <th class="px-4 py-2 border-b border-gray-300 text-center">#</th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable "fields.name", t("orders.table.field") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :date, t("orders.table.date") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :started_time, t("orders.table.started_time") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :finished_time, t("orders.table.finished_time") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :final_price, t("orders.table.price") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :status, t("orders.table.status") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :created_at, t("orders.table.created_at") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= sortable :updated_at, t("orders.table.updated_at") %></th>
+      <th class="px-4 py-2 border-b border-gray-300 text-center"><%= t "orders.table.actions" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "user_order", collection: @user_orders %>
+  </tbody>
+</table>

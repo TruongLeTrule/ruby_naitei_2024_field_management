@@ -295,6 +295,9 @@ vi:
   favourites:
     errors:
      invalid: "Không hợp lệ"
+  booking_history:
+    index:
+      history: "Lịch sử đặt sân"
   activerecord:
     attributes:
       order_field:
