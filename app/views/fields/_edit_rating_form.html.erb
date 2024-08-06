@@ -1,0 +1,13 @@
+<%= form_for find_rating(@field), local: true do |f| %>
+  <%= render "rating_input", f: f %>
+  <div class="mt-4 flex gap-x-8">
+    <%= f.submit t("ratings.edit.submit"), class: "inline-flex items-center px-4 py-2 bg-primary hover:bg-secondary
+                                                    text-white rounded focus:outline-none focus:shadow-outline cursor-pointer" %>
+    <%= link_to rating_path(find_rating(@field)), data: {"turbo-method": :delete, turbo_confirm: t("ratings.delete.confirm")} do %>
+      <button class="inline-flex items-center px-4 py-2 bg-red-500 hover:bg-red-700
+                  text-white rounded focus:outline-none focus:shadow-outline cursor-pointer">
+        <%= t("ratings.delete.submit") %>
+      </button>
+    <% end %>
+  </div>
+<% end %>

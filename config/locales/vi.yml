@@ -74,7 +74,7 @@ vi:
       book: "Đặt sân"
       load: "Tải lịch sân"
     create_order:
-      success: "Đặt sân thành công"
+      success: "Tiếp tục đặt sân"
       failed: "Đặt sân thất bại"
       open_time: "Giờ mở cửa"
     explain:
@@ -103,6 +103,11 @@ vi:
     destroy:
       success: "Xóa sân %{field} thành công"
       has_uncompleted_order: "Không thể xóa vì tồn tại lịch đặt sân"
+    rating:
+      rating: "Đánh giá"
+      comment: "Bình luận"
+      here: "Viết vài điều ở đây"
+      submit: "Tạo bài"
     filters:
       most_rated: "Đánh giá cao"
       newest: "Mới nhất"
@@ -298,6 +303,23 @@ vi:
   booking_history:
     index:
       history: "Lịch sử đặt sân"
+  ratings:
+    errors:
+      not_found: "Không tìm thấy bài đánh giá"
+    create:
+      success: "Tạo bài đánh giá thành công"
+      failed: "Tạo bài đánh giá thất bại"
+    edit:
+      submit: "Chỉnh sửa"
+    delete:
+      confirm: "Bạn có chắc chắn muốn xóa bài viết này?"
+      submit: "Xóa"
+    update:
+      success: "Cập nhật thành công"
+      failed: "Cập nhật thất bại"
+    destroy:
+      success: "Xóa thành công"
+      failed: "Xóa thất bại"
   activerecord:
     attributes:
       order_field:

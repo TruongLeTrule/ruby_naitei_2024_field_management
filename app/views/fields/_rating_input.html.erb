@@ -1,0 +1,16 @@
+<%= hidden_field_tag :field, @field.id %>
+<div class="mt-4">
+  <%= f.label :rating, t("fields.rating.rating"), class: "block text-2xl font-semibold" %>
+  <div id="star-rating" class="flex text-3xl space-x-2 mt-4">
+    <% (1..5).each do |i| %>
+      <i data-value="<%= i %>" class="fa fa-star text-gray-300 cursor-pointer"></i>
+    <% end %>
+  </div>
+  <%= f.hidden_field :rating, id: "rating-input" %>
+</div>
+
+<div class="mt-4">
+  <%= f.label :description, t("fields.rating.comment"), class: "block text-xl font-medium text-gray-700" %>
+  <%= f.text_area :description, placeholder: t("fields.rating.here"),
+                                class: "block w-full mt-2 h-32 shadow-sm focus:ring-0 focus:border-primary rounded-md" %>
+</div>

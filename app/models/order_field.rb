@@ -23,6 +23,7 @@ class OrderField < ApplicationRecord
   }
   scope :search_by_date, ->(date){where(date:) if date.present?}
   scope :search_by_status, ->(status){where(status:) if status.present?}
+  scope :approved_order, ->{where(approved: true)}
 
   def send_delete_order_email
     OrderMailer.delete_order(self).deliver_now
