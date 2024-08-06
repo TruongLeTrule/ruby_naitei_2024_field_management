@@ -1,0 +1,10 @@
+<% if @review.errors.any? %>
+  <%= turbo_stream.replace "review-form" do %>
+    <%= render "reviews/form", review: @review %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.append "#{dom_id @rating}-reviews" do %>
+    <%= render @review, rating: @rating %>
+  <% end %>
+  <%= turbo_stream.remove "review-form" %>
+<% end %>

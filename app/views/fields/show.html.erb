@@ -47,7 +47,7 @@
   <h3 class="text-2xl font-semibold"><%= t ".rating" %></h3>
   <%= render("selected_rating_form") if current_user&.order_field?(@field) %>
   <% if @ratings.present? %>
-    <div class="mb-8 mt-6" id="rating-container">
+    <div class="my-8" id="rating-container">
       <%= render @ratings %>
     </div>
     <%== pagy_nav @pagy %>

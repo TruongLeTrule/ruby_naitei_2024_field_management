@@ -20,10 +20,14 @@ Rails.application.routes.draw do
         post :active, to: "users#update_active"
       end
     end
+    resources :ratings do
+      member do
+        resources :reviews, except: %i(show index)
+      end
+    end
     resources :account_activations, only: :edit
     resources :password_resets, except: %i(index show destroy)
     resources :orders
     resources :favourites, only: %i(create destroy)
-    resources :ratings
   end
 end
