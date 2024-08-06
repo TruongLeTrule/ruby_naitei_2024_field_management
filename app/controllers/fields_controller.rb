@@ -4,9 +4,11 @@ class FieldsController < ApplicationController
   before_action :admin_user, only: %i(new create edit update destroy)
   before_action :set_default_params, only: :index
 
-  def show; end
-
   def edit; end
+
+  def show
+    @pagy, @ratings = pagy @field.ratings
+  end
 
   def index
     type = params[:type] == "all" ? nil : params[:type]

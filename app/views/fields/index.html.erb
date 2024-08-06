@@ -11,7 +11,7 @@
 </div>
 <% if @fields.present? %>
   <%= render "shared/search_result", search_input: params[:search], success: true %>
-  <section class="grid grid-cols-4 gap-x-24 gap-y-14 mt-10 mb-16">
+  <section class="grid grid-cols-4 gap-x-24 gap-y-14 mt-10 mb-24">
     <%= render @fields %>
   </section>
   <%== pagy_nav @pagy %>

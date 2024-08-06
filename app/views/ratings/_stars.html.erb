@@ -1,0 +1,10 @@
+<% rating.floor.times do %>
+  <span class="text-primary">
+    <%= fa_icon "star" %>
+  </span>
+<% end %>
+<% (Settings.max_ratings - rating.floor).times do %>
+  <span class="text-stone-400">
+    <%= fa_icon "star" %>
+  </span>
+<% end %>

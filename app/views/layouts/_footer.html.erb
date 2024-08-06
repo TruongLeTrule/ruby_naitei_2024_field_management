@@ -1,3 +1,13 @@
+<footer class="bg-gray-200 shadow-md w-screen h-28 text-black font-light">
+  <div class="container flex items-center h-full justify-between">
+    <p class="text-lg"><%= t ".copyright" %></p>
+    <div>
+      <%= link_to t(".about"), "#", class: "border-r-2 border-gray-400 pr-3 mr-2 hover:text-primary transition:colors" %>
+      <%= link_to t(".contact"), "#", class: "border-r-2 border-gray-400 pr-3 mr-2 hover:text-primary transition:colors" %>
+      <%= link_to t(".maps"), "#", class: "hover:text-primary transition:colors" %>
+    </div>
+  </div>
+</footer>
 <script type="text/javascript">
   I18n.defaultLocale = "<%= I18n.default_locale %>";
   I18n.locale = "<%= I18n.locale %>";

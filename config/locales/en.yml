@@ -39,6 +39,11 @@ en:
       orders: "Orders"
       users: "Users"
     sign_up: "Sign up"
+    footer:
+      about: "About"
+      contact: "Contact"
+      maps: "Maps"
+      copyright: "@Copyright by Premium Field Soccer"
   fields:
     errors:
       invalid: "Invalid field"
@@ -64,6 +69,8 @@ en:
       book: "Book"
       description: "Description"
       edit: "Edit"
+      rating: "Ratings"
+      no_rating: "This field haven't rated yet"
     new_order:
       order: "Order"
       date: "Date"
@@ -321,6 +328,11 @@ en:
     destroy:
       success: "Delete success"
       failed: "Delete failed"
+    rating:
+      posted: "Posted %{time} ago"
+      report: "Report"
+      edit: "Edit"
+      delete: "Delete"
   activerecord:
     attributes:
       order_field:
