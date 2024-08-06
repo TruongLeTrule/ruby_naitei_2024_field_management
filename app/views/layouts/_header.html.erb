@@ -11,10 +11,9 @@
         <div>
           <button type="button"
                   id="language-dropdown-btn"
-                  class="text-xl font-semi-bold hover:opacity-50 transition-opacity focus:outline-none
-                        cursor-pointer inline-flex gap-x-3 items-center">
+                  class="text-xl font-semi-bold hover:opacity-50 transition-opacity focus:outline-none cursor-pointer">
             <%= t ".language" %>
-            <%= fa_icon "caret-down" %>
+            <%= fa_icon "caret-down", class: "ml-1 text-gray-500 h-4 w-4" %>
           </button>
         </div>
 
@@ -43,9 +42,9 @@
           <button type="button"
                   id="stats-dropdown-btn"
                   class="text-xl font-semi-bold hover:opacity-50 transition-opacity focus:outline-none
-                        cursor-pointer inline-flex gap-x-3 items-center">
+                        cursor-pointer">
             <%= t ".stats" %>
-            <%= fa_icon "caret-down" %>
+            <%= fa_icon "caret-down", class: "ml-1 text-gray-500 h-4 w-4" %>
           </button>
         </div>
 
@@ -66,7 +65,7 @@
         <li>
           <%= link_to t(".logout"), logout_path,
               class: "text-xl font-semi-bold hover:opacity-50 transition-opacity",
-              data: { "turbo-method": :delete } %>
+              data: {"turbo-method": :delete} %>
         </li>
       <% else %>
         <li>

@@ -47,4 +47,14 @@ module FieldsHelper
                                  .to_a
     (active_params - request.query_parameters.to_a).empty?
   end
+
+  def get_uri active_params
+    unless active? active_params
+      return request.query_parameters.merge(active_params)
+    end
+
+    remain_params = request.query_parameters.dup
+    active_params.each_key{|key| remain_params.delete key}
+    remain_params
+  end
 end

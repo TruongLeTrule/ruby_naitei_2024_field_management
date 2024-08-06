@@ -1,6 +1,7 @@
-<%= link_to request.query_parameters.merge(active_params) do %>
+<%= link_to get_uri(active_params) do %>
   <% rounded = defined?(not_rounded) ? "" : "rounded-md" %>
-  <button class="w-28 h-10 bg-gray-200 text-xs hover:opacity-70 transition-opacity
+  <button class="w-28 h-10 bg-gray-200 text-xs hover:opacity-70
+                transition-opacity flex items-center justify-center gap-1
                 <%= rounded %> <%= "active-filter" if active? active_params %>">
     <%= label %>
   </button>
