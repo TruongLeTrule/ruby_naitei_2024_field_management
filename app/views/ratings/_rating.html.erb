@@ -1,33 +1,26 @@
-<div class="flex gap-6 mt-6 border-b-2 border-gray-200 pb-6 relative"
-     id="<%= dom_id rating %>">
-  <div class="w-12 h-12 flex items-start shrink-0">
-    <%= image_tag get_profile_image(rating.user),
-                  alt: rating.user.name,
-                  class: "w-full h-full rounded-full object-cover"
-    %>
-  </div>
-  <div class="flex-1 w-11/12 max-w-full flex flex-col gap-1">
-    <h4 class="text-lg <%= "text-primary" if current_user?(rating.user) %>">
-      <%= current_user?(rating.user) ? t(".you") : rating.user.name %>
-    </h4>
-    <span class="font-light text-gray-600"><%= t ".posted", deep_intepolation: true, time: time_ago_in_words(rating.created_at) %></span>
-    <span><%= render "ratings/stars", rating: rating.rating %></span>
-    <p class="break-words whitespace-normal mt-1"><%= rating.description %></p>
-  </div>
-  <div class="absolute right-0 top-0">
-    <button id="<%= dom_id rating %>-dropdown-btn" class="text-gray-600 text-2xl p-4"><%= fa_icon "ellipsis-v" %></button>
-    <div id="<%= dom_id rating %>-dropdown-list"
-         class="absolute right-5 top-12 w-32 rounded-md shadow-lg py-1 bg-white
-                ring-1 ring-black ring-opacity-5 z-50 hidden">
-      <% if current_user? rating.user %>
-      <%= link_to t(".edit"), "#",
-                    class: "block px-4 py-1 text-md hover:opacity-50 transition-opacity" %>
-      <%= link_to t(".delete"), "#",
-                    class: "block px-4 py-1 text-md hover:opacity-50 transition-opacity" %>
-      <% else %>
-        <%= link_to t(".report"), "#",
-                    class: "block px-4 py-1 text-md hover:opacity-50 transition-opacity" %>
-      <% end %>
+<div class="mt-6 border-b-2 border-gray-200 pb-4" id="<%= dom_id rating %>">
+  <div class="flex gap-6 relative">
+    <div class="w-12 h-12 flex items-start shrink-0">
+      <%= image_tag get_profile_image(rating.user),
+                    alt: rating.user.name,
+                    class: "w-full h-full rounded-full object-cover"
+      %>
     </div>
+    <div class="flex-1 w-11/12 max-w-full flex flex-col gap-1">
+      <h4 class="text-lg <%= "text-primary" if current_user?(rating.user) %>">
+        <%= current_user?(rating.user) ? t(".you") : rating.user.name %>
+      </h4>
+      <span class="font-light text-gray-600"><%= t ".posted", deep_intepolation: true, time: time_ago_in_words(rating.created_at) %></span>
+      <span><%= render "ratings/stars", rating: rating.rating %></span>
+      <p class="break-words whitespace-normal mt-1"><%= rating.description %></p>
+      <%= link_to t(".reply"), new_review_path(rating), class: "text-primary underline mt-2",
+                               data: {turbo_frame: "#{dom_id rating}-new-review"} %>
+    </div>
+  </div>
+  <div class="w-full pt-2 pl-8">
+    <div id="<%= dom_id rating %>-reviews">
+      <%= render rating.reviews, rating: rating %>
+    </div>
+    <%= turbo_frame_tag "#{dom_id rating}-new-review" %>
   </div>
 </div>

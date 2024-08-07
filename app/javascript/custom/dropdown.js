@@ -7,7 +7,6 @@ document.addEventListener('turbo:load', () => {
   const languageMenu = document.getElementById('language-dropdown-menu')
   const statsBtn = document.getElementById('stats-dropdown-btn')
   const statsMenu = document.getElementById('stats-dropdown-menu')
-  const ratingContainer = document.getElementById('rating-container')
 
   if (filterPriceBtn && filterPriceList) {
     dropDown(filterPriceBtn, filterPriceList)
@@ -23,16 +22,6 @@ document.addEventListener('turbo:load', () => {
 
   if (statsBtn && statsMenu) {
     dropDown(statsBtn, statsMenu)
-  }
-
-  if (ratingContainer) {
-    const ratings = Array.from(ratingContainer.children)
-
-    ratings.forEach((rating) => {
-      const dropdownBtn = rating.querySelector(`#${rating.id}-dropdown-btn`)
-      const dropdownList = rating.querySelector(`#${rating.id}-dropdown-list`)
-      dropDown(dropdownBtn, dropdownList)
-    })
   }
 })
 

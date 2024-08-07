@@ -1,0 +1,10 @@
+<%= form_with model: review, id: "review-form",
+              class: "mt-2 border-t-2 border-gray-200 pt-4" do |form| %>
+  <%= render "shared/error_messages", single: true, object: review %>
+  <%= form.text_area :description, placeholder: t(".type_review"),
+                        class: "w-full border-none ring-2 ring-gray-200 focus:ring-primary rounded-md" %>
+  <div class="flex justify-end gap-4 mt-4">
+    <%= link_to t(".cancel"), review.parent_rating.field, class: "flex justify-center items-center w-28 h-8 rounded-md bg-gray-200 hover:opacity-50 transition:opacity cursor-pointer" %>
+    <%= form.submit t(".send"), class: "text-white w-28 h-8 rounded-md bg-primary hover:opacity-50 transition:opacity cursor-pointer" %>
+  </div>
+<% end %>

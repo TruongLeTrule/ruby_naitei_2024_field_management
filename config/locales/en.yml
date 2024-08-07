@@ -333,6 +333,21 @@ en:
       report: "Report"
       edit: "Edit"
       delete: "Delete"
+      reply: "Reply"
+      report: "Report"
+  reviews:
+    errors:
+      invalid_review: "Invalid review"
+    review:
+      edit: "Edit"
+      reply: "Reply"
+      report: "Report"
+      delete: "Delete"
+      confirm: "Are you sure to delete this comment?"
+    form:
+      type_review: "Type comment here"
+      cancel: "Cancel"
+      send: "Send"
   activerecord:
     attributes:
       order_field:

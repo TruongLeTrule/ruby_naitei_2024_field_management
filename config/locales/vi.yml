@@ -332,6 +332,20 @@ vi:
       report: "Báo cáo"
       edit: "Chỉnh sửa"
       delete: "Xóa"
+      reply: "Trả lời"
+  reviews:
+    errors:
+      invalid_review: "Bình luận không tồn tại"
+    review:
+      reply: "Trả lời"
+      edit: "Chỉnh sửa"
+      report: "Báo cáo"
+      delete: "Xóa"
+      confirm: "Bạn có chắc là muốn xóa bình luận này?"
+    form:
+      type_review: "Nhập bình luận ở đây"
+      send: "Gửi"
+      cancel: "Hủy"
   activerecord:
     attributes:
       order_field:
