@@ -1,6 +1,8 @@
 <% provide :title, @field.name %>
-<section class="grid grid-cols-5 gap-x-14 mt-8">
-  <%= image_tag get_image(@field), class: "col-span-3 w-full rounded-xl shadow-2xl" %>
+<section class="grid grid-cols-5 gap-12 p-12 bg-white rounded-lg">
+  <div class="flex items-center col-span-3">
+    <%= image_tag get_image(@field), class: "w-full rounded-xl shadow-2xl" %>
+  </div>
   <div class="col-span-2 flex flex-col justify-center">
     <h2 class="text-3xl font-semibold">
       <%= @field.name %>
@@ -35,10 +37,23 @@
     </div>
   </div>
 </section>
-<section class="mt-16">
-  <h3 class="text-2xl font-semibold"><%= t ".description" %></h3>
-  <p class="mt-4 text-lg"><%= @field.description %></p>
-  <% if current_user&.order_field?(@field) %>
-    <%= render "selected_rating_form" %>
+<% if @field.description.present? %>
+  <section class="mt-12 p-12 bg-white rounded-lg">
+    <h3 class="text-2xl font-semibold"><%= t ".description" %></h3>
+    <p class="mt-4 text-lg"><%= @field.description %></p>
+  </section>
+<% end %>
+<section class="mt-12 p-12 bg-white rounded-lg">
+  <h3 class="text-2xl font-semibold"><%= t ".rating" %></h3>
+  <%= render("selected_rating_form") if current_user&.order_field?(@field) %>
+  <% if @ratings.present? %>
+    <div class="mb-8 mt-6" id="rating-container">
+      <%= render @ratings %>
+    </div>
+    <%== pagy_nav @pagy %>
+  <% else %>
+    <p class="text-center w-full mt-8">
+      <%= t ".no_rating" %>
+    </p>
   <% end %>
 </section>

@@ -49,7 +49,7 @@ source: :user
   scope :favourite_by_current_user, ->(ids){where id: ids if ids.present?}
 
   def average_rating
-    ratings.average(:rating).to_f
+    ratings.average(:rating).to_f.round(1)
   end
 
   def has_any_uncompleted_order?

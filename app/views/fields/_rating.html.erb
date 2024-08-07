@@ -3,16 +3,7 @@
     <strong class="text-primary font-medium border-b border-primary pb-0.5 mr-2">
       <%= average_rating %>
     </strong>
-    <% average_rating.floor.times do %>
-      <span class="text-primary">
-        <%= fa_icon "star" %>
-      </span>
-    <% end %>
-    <% (Settings.max_ratings - average_rating.floor).times do %>
-      <span class="text-stone-400">
-        <%= fa_icon "star" %>
-      </span>
-    <% end %>
+    <%= render "ratings/stars", rating: average_rating %>
   </div>
   <strong class="font-medium border-b border-stone-400 pb-0.5">
     <%= pluralize total_ratings, t(".rating") %>

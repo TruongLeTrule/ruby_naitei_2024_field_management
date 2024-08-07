@@ -39,6 +39,11 @@ vi:
       orders: "Đơn đặt sân"
       users: "Nguời dùng"
     sign_up: "Đăng ký"
+    footer:
+      about: "Về chúng tôi"
+      contact: "Liên hệ"
+      maps: "Bản đồ"
+      copyright: "@Copyright by Premium Field Soccer"
   fields:
     errors:
       invalid: "Sân không tồn tại"
@@ -62,6 +67,8 @@ vi:
       book: "Đặt sân"
       description: "Mô tả"
       edit: "Cập nhật"
+      rating: "Các bài đánh giá"
+      no_rating: "Sân này chưa có bài đánh giá"
     new_order:
       order: "Đặt sân"
       date: "Ngày"
@@ -320,6 +327,11 @@ vi:
     destroy:
       success: "Xóa thành công"
       failed: "Xóa thất bại"
+    rating:
+      posted: "Đã đăng %{time} trước"
+      report: "Báo cáo"
+      edit: "Chỉnh sửa"
+      delete: "Xóa"
   activerecord:
     attributes:
       order_field:
