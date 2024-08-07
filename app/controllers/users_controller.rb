@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
+    @user.image.attach params.dig(:user, :image)
     if @user.save
       @user.send_activation_email
       flash[:info] = t ".check_email"
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
     if @user.update user_params
       flash[:success] = t ".success"
       redirect_to @user
+      create_action(@user, :updated, @user)
     else
       flash.now[:danger] = t ".failed"
       render :edit, status: :unprocessable_entity

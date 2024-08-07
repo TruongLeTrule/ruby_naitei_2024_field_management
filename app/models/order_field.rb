@@ -7,6 +7,7 @@ class OrderField < ApplicationRecord
   belongs_to :user
   belongs_to :field
   has_one :unavailable_field_schedule, dependent: :destroy
+  has_many :activities, as: :trackable, dependent: :destroy
 
   validates :date, :started_time, :finished_time, :status, presence: true
   validate :date_is_valid
@@ -24,6 +25,9 @@ class OrderField < ApplicationRecord
   scope :search_by_date, ->(date){where(date:) if date.present?}
   scope :search_by_status, ->(status){where(status:) if status.present?}
   scope :approved_order, ->{where(approved: true)}
+
+  after_create :create_activity
+  after_update :update_activity
 
   def send_delete_order_email
     OrderMailer.delete_order(self).deliver_now
@@ -132,5 +136,13 @@ class OrderField < ApplicationRecord
 
     current_range.overlaps?(schedule_range) ||
       schedule_range.cover?(current_range)
+  end
+
+  def create_activity
+    create_action(user, :created, self)
+  end
+
+  def update_activity
+    create_action(user, :updated, self)
   end
 end
