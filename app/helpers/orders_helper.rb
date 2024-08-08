@@ -16,7 +16,7 @@ module OrdersHelper
   end
 
   def can_delete? order
-    order.pending? || order.cancelling?
+    order.approved? || order.cancelling?
   end
 
   def order_status_class status

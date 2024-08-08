@@ -33,8 +33,8 @@ class OrderField < ApplicationRecord
     OrderMailer.delete_order(self).deliver_now
   end
 
-  def send_confirm_delete_email
-    OrderMailer.confirm_delete(self).deliver_now
+  def send_confirm_delete_email reason
+    OrderMailer.confirm_delete(self, reason).deliver_now
   end
 
   def uncomplete?

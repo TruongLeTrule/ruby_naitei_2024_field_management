@@ -306,6 +306,8 @@ en:
     account_info:
       current_account: "Current account"
       remain_account: "Remain account"
+    delete:
+      reason: "Write some reasons to cancel this order"
   order_mailer:
     delete_order:
       subject: "Order canceled"
