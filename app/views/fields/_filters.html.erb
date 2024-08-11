@@ -22,7 +22,15 @@
   <div id="filter-type-list" class="flex-col hidden absolute shadow-lg">
     <%= render "filter_btn", active_params: {type: :all}, label: t(".all"), not_rounded: true %>
     <% all_field_types.each do |type| %>
-      <%= render "filter_btn", active_params: {type: type.id}, label: type.name, not_rounded: true %>
+      <div class="relative group">
+        <%= render "filter_btn", active_params: {type: type.id},
+                   label: type.name, not_rounded: true %>
+        <span class="absolute inset-0 bg-primary text-white text-xs font-normal flex
+                     opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 items-center justify-center">
+          <%= pluralize type.capacity, t(".person") %>,
+          <%= t ".#{type.ground}" %>
+        </span>
+      </div>
     <% end %>
   </div>
 </div>

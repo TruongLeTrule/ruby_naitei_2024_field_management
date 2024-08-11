@@ -5,8 +5,20 @@
       field
   %>
   <div class="px-6 py-5">
-    <h3 class="font-medium text-xl"><%= field.name %></h3>
-    <p class="text-md mt-2 mb-1 line-clamp-2"><%= field.description %></p>
-    <%= link_to t(".view_details"), field_path(field), class: "underline text-sm text-secondary py-4" %>
+    <div class="flex justify-between items-center">
+      <h3 class="font-medium text-xl flex-1 line-clamp-1"><%= field.name %></h3>
+      <strong class="text-secondary font-normal text-sm w-14 text-right">
+        <span><%= fa_icon "star" %></span>
+        <%= field.average_rating < 1 ? field.average_rating.floor : field.average_rating %>
+      </strong>
+    </div>
+    <strong class="font-semibold text-primary text-lg block mt-1">
+      <%= exchange_money field.default_price %>
+    </strong>
+    <strong class="text-base font-normal block mt-0.5">
+      <%= pluralize field.field_type.capacity, t(".person") %>,
+      <%= t ".#{field.field_type.ground}" %>
+    </strong>
+    <%= link_to t(".view_details"), field_path(field), class: "block underline text-sm text-secondary py-2 font-light" %>
   </div>
 </div>

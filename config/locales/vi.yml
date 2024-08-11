@@ -52,6 +52,11 @@ vi:
       valid_time: "Giờ đóng cửa phải trễ hơn giờ mở cửa"
     field:
       view_details: "Xem chi tiết"
+      person: "người"
+      grass: "Cỏ thật"
+      concrete: "Bê tông"
+      artificial_grass: "Cỏ nhân tạo"
+      indoor: "Trong nhà"
     rating:
       rating: "đánh giá"
     price:
@@ -124,6 +129,11 @@ vi:
       price: "Giá"
       all: "Tất cả"
       favourite: "Yêu thích"
+      person: "người"
+      grass: "Cỏ thật"
+      concrete: "Bê tông"
+      artificial_grass: "Cỏ nhân tạo"
+      indoor: "Trong nhà"
   field_type:
     grass: "Sân cỏ thật"
     concrete: "Sân xi măng"
