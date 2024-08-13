@@ -54,6 +54,11 @@ en:
       valid_time: "Close time must be later than open time"
     field:
       view_details: "View details"
+      person: "person"
+      grass: "Grass"
+      concrete: "Concrete"
+      artificial_grass: "Artificial grass"
+      indoor: "Indoor"
     rating:
       rating: "rating"
     price:
@@ -122,6 +127,11 @@ en:
       price: "Price"
       all: "All"
       favourite: "Favourite"
+      person: "person"
+      grass: "Grass"
+      concrete: "Concrete"
+      artificial_grass: "Artificial grass"
+      indoor: "Indoor"
   field_type:
     grass: "Grass"
     concrete: "Concrete"
