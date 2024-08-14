@@ -1,5 +1,5 @@
 class FavouritesController < ApplicationController
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :find_field_by_id, only: :create
   before_action :load_favourite, only: :destroy
 

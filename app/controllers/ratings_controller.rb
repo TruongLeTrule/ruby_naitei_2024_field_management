@@ -1,5 +1,5 @@
 class RatingsController < ApplicationController
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :find_field_by_id, only: :create
   before_action :load_rating, only: %i(update destroy)
   before_action :load_field_in_rating, only: %i(update destroy)

@@ -2,7 +2,10 @@ class User < ApplicationRecord
   PERMITTED_ATTRIBUTES = %i(name email password password_confirmation).freeze
   RESET_PASSWORD_ATTRIBUTES = %i(password password_confirmation).freeze
 
-  attr_accessor :activation_token, :remember_token, :reset_token
+  attr_accessor :activation_token, :reset_token
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   has_many :vouchers, dependent: :destroy
   has_many :favourite_relationships, class_name: FavouriteField.name,
@@ -23,11 +26,8 @@ source: :field
   validates :name, presence: true, length: {maximum: Settings.max_name_length}
   validates :email, presence: true,
                     length: {maximum: Settings.max_length_255},
-                    format: {with: Regexp.new(Settings.valid_email_regex, "i")},
                     uniqueness: true
-  has_secure_password
   validates :password, presence: true,
-                    length: {minimum: Settings.min_password_length},
                     allow_nil: true
   validate :password_complexity
 
@@ -72,12 +72,6 @@ source: :field
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
-  end
-
-  def remember
-    self.remember_token = User.new_token
-    update_attribute :remember_digest, User.digest(remember_token)
-    remember_digest
   end
 
   def authenticated? attribute, token

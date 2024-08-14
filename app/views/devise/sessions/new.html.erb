@@ -1,0 +1,41 @@
+<% provide :title, t("sessions.new.login") %>
+<div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
+  <div class="bg-white items-center justify-center px-6 py-8 rounded shadow-md text-black w-full">
+    <h1 class="mb-8 text-3xl text-center"><%= t "sessions.new.login" %></h1>
+    <div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "flex-1 flex flex-col") do |f| %>
+        <div class="mb-4 space-y-2">
+          <%= f.label :email, t(".email") %>
+          <%= f.email_field :email,
+                            class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
+                            autofocus: true,
+                            autocomplete: "email" %>
+        </div>
+
+        <div class="mb-4 space-y-2">
+          <%= f.label :password, t("sessions.new.password") %>
+          <%= link_to t("sessions.new.forgot_password"), new_password_path(resource_name), class: "text-green-500 hover:text-green-700" %>
+          <%= f.password_field :password,
+                                class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
+                                autocomplete: "current-password" %>
+        </div>
+
+        <div class="mb-4">
+          <%= f.label :remember_me do %>
+            <%= f.check_box :remember_me, class:"text-green-500 shadow appearance-none border rounded focus:ring-0 focus:border-green-500" %>
+            <span><%= t "sessions.new.remember_me" %></span>
+          <% end %>
+        </div>
+
+        <div class="flex-1 flex-col flex items-center justify-between">
+          <%= f.submit t("sessions.new.submit"), class: "bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-4 w-2/3 rounded focus:outline-none focus:shadow-outline cursor-pointer" %>
+        </div>
+      <% end %>
+
+      <div class="mt-4 text-center">
+        <%= t "sessions.new.do_not_have_account" %>
+        <%= link_to t("sessions.new.sign_up"), new_registration_path(resource_name), class: "text-green-500 hover:text-green-700" %>
+      </div>
+    </div>
+  </div>
+</div>

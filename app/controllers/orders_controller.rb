@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :find_order_by_id, only: %i(show edit update destroy)
   before_action :find_schedule_by_order_id, only: :update
   before_action :admin_user, only: %i(index show)
