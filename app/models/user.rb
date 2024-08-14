@@ -30,6 +30,8 @@ source: :field
   validates :password, presence: true,
                     allow_nil: true
   validate :password_complexity
+  validate :new_and_old_password_must_be_different, on: :update
+  validate :password_different_from_name, on: :update
 
   scope :search_by_name, lambda {|name|
     where("name LIKE ?", "%#{name}%") if name.present?
@@ -167,6 +169,26 @@ source: :field
     return unless types < Settings.min_password_types
 
     errors.add :base, I18n.t("users.create.password_complexity")
+  end
+
+  def new_and_old_password_must_be_different
+    return if changed.exclude?("encrypted_password")
+
+    password_is_same = Devise::Encryptor.compare(User, encrypted_password_was,
+                                                 password)
+
+    return unless password_is_same
+
+    errors.add :password, I18n.t("users.update.old_password")
+  end
+
+  def password_different_from_name
+    return if password.blank?
+
+    return unless password.downcase == email.downcase ||
+                  password.downcase == name.downcase
+
+    errors.add :base, I18n.t("users.update.different_password")
   end
 
   def create_activity

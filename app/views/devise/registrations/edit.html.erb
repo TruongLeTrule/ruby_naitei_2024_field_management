@@ -1,0 +1,70 @@
+<% provide :title, t("users.edit.edit_profile") %>
+<div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
+  <div class="bg-white items-center justify-center px-6 py-8 rounded shadow-md text-black w-full">
+    <h1 class="mb-8 text-3xl text-center"><%= t "users.edit.edit_profile" %></h1>
+    <div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name),  html: { method: :put }, class: "flex-1 flex flex-col") do |f| %>
+        <%= render "devise/shared/error_messages", object: f.object %>
+        <div class="mb-4 space-y-2">
+          <div class="flex items-center justify-center">
+            <%= image_tag get_profile_image(@user),
+                          alt: t("users.show.profile_picture"),
+                          id: "preview-profile-img",
+                          class: "h-32 w-32 rounded-full border-4 border-white"
+            %>
+          </div>
+          <div class="flex items-center justify-center">
+            <%= f.file_field :image,
+                                accept: Settings.image_format,
+                                class: "block w-full text-sm text-slate-400
+                                        file:mr-4 file:py-2 file:px-4
+                                        file:rounded-full file:border-0
+                                        file:text-sm file:font-semibold
+                                        file:text-primary file:underline
+                                        file:cursor-pointer file:bg-transparent
+                                        hover:file:text-light-green cursor-pointer
+                                        focus:outline-none",
+                                direct_upload: true
+            %>
+          </div>
+        </div>
+        <div class="mb-4 space-y-2">
+          <%= f.label :name, t("users.new.name") %>
+          <%= f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
+        </div>
+
+        <div class="mb-4 space-y-2">
+          <%= f.label :email, t("users.new.email") %>
+          <%= f.email_field :email,
+              class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
+              autocomplete: "email" %>
+        </div>
+
+        <div class="mb-4 space-y-2">
+          <%= f.label :password, t(".current_password") %>
+          <%= f.password_field :current_password,
+              class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
+              autocomplete: "new-password" %>
+        </div>
+
+        <div class="mb-4 space-y-2">
+          <%= f.label :password, t(".new_password") %>
+          <%= f.password_field :password,
+              class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
+              autocomplete: "new-password" %>
+        </div>
+
+        <div class="mb-8 space-y-2">
+          <%= f.label :password_confirmation, t("users.new.password_confirmation") %>
+          <%= f.password_field :password_confirmation,
+                                class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
+                                autocomplete: "new-password" %>
+        </div>
+
+        <div class="flex-1 flex-col flex items-center justify-between mb-4">
+          <%= f.submit t("users.edit.submit"), class: "bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-4 w-2/3 rounded focus:outline-none focus:shadow-outline cursor-pointer" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
