@@ -114,7 +114,7 @@ class OrdersController < ApplicationController
   end
 
   def handle_cancel
-    @order.send_confirm_delete_email
+    @order.send_confirm_delete_email params[:reason]
     @order.user.charge @order.final_price
   end
 end

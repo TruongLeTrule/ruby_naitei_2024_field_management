@@ -7,8 +7,9 @@ class OrderMailer < ApplicationMailer
     mail to: @admin.email, subject: t("order_mailer.delete_order.subject")
   end
 
-  def confirm_delete order
+  def confirm_delete order, reason
     @order = order
+    @reason = reason
     mail to: @order.user.email,
          subject: t("order_mailer.confirm_delete.subject")
   end

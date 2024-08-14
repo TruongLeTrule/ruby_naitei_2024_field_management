@@ -305,6 +305,8 @@ vi:
       current_account: "Tài khoản hiện tại"
       remain_account: "Tài khoản còn lại"
       confirm_apply: "Áp dụng mã giảm giá này?"
+    delete:
+      reason: "Lý do hủy đơn đặt sân"
   order_mailer:
     delete_order:
       subject: "Hủy đơn đặt sân"
