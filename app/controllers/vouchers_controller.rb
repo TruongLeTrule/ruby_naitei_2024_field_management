@@ -1,5 +1,5 @@
 class VouchersController < ApplicationController
-  before_action :logged_in_user, :find_order_by_id, :find_voucher_by_id
+  before_action :authenticate_user!, :find_order_by_id, :find_voucher_by_id
 
   def apply
     @price = @voucher.calculate_discount_price @order.final_price

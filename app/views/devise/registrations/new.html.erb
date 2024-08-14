@@ -1,0 +1,45 @@
+<% provide :title, t("users.new.sign_up") %>
+<div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
+  <div class="bg-white items-center justify-center px-6 py-8 rounded shadow-md text-black w-full">
+    <h1 class="mb-8 text-3xl text-center"><%= t "users.new.sign_up" %></h1>
+    <div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "flex-1 flex flex-col") do |f| %>
+        <%= render "devise/shared/error_messages", object: f.object %>
+        <div class="mb-4 space-y-2">
+          <%= f.label :name, t("users.new.name") %>
+          <%= f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
+        </div>
+
+        <div class="mb-4 space-y-2">
+          <%= f.label :email, t("users.new.email") %>
+          <%= f.email_field :email,
+              class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
+              autocomplete: "email" %>
+        </div>
+
+        <div class="mb-4 space-y-2">
+          <%= f.label :password, t("users.new.password") %>
+          <%= f.password_field :password,
+              class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
+              autocomplete: "new-password" %>
+        </div>
+
+        <div class="mb-8 space-y-2">
+          <%= f.label :password_confirmation, t("users.new.password_confirmation") %>
+          <%= f.password_field :password_confirmation,
+                                class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
+                                autocomplete: "new-password" %>
+        </div>
+
+        <div class="flex-1 flex-col flex items-center justify-between mb-4">
+          <%= f.submit t("users.new.sign_up"), class: "bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-4 w-2/3 rounded focus:outline-none focus:shadow-outline cursor-pointer" %>
+        </div>
+      <% end %>
+
+      <div class="mt-4 text-center">
+        <%= t "users.new.already_have_account" %>
+        <%= link_to t("users.new.login"), new_session_path(resource_name), class: "text-green-500 hover:text-green-700" %>
+      </div>
+    </div>
+  </div>
+</div>

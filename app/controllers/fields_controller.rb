@@ -1,6 +1,6 @@
 class FieldsController < ApplicationController
   before_action :find_field_by_id, except: %i(create new index)
-  before_action :logged_in_user, only: %i(new_order create_order)
+  before_action :authenticate_user!, only: %i(new_order create_order)
   before_action :admin_user, only: %i(new create edit update destroy)
   before_action :set_default_params, only: :index
 
