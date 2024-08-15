@@ -169,6 +169,8 @@ en:
     update:
       failed: "Update failed"
       success: "Profile updated"
+      old_password: "Password can not be the same"
+      different_password: "Password must be different from name and email"
     index:
       all_user: "All users"
     table:
@@ -375,6 +377,11 @@ en:
       favouritefield: "favourite field"
       rating: "rating"
       review: "review"
+  devise:
+    registrations:
+      edit:
+        current_password: "Current Password"
+        new_password: "New Password"
   activerecord:
     attributes:
       order_field:

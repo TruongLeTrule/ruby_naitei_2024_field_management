@@ -167,6 +167,8 @@ vi:
     update:
       failed: "Cập nhật thất bại"
       success: "Cập nhật thành công"
+      old_password: "Mật khẩu không được trùng như cũ"
+      different_password: "Mật khẩu phải khác tên và email"
     index:
       all_user: "Tất cả người dùng"
     table:
@@ -373,6 +375,11 @@ vi:
       favouritefield: "sân yêu thích"
       rating: "đánh giá"
       review: "nhận xét"
+  devise:
+    registrations:
+      edit:
+        current_password: "Mật khẩu hiện tại"
+        new_password: "Mật khẩu mới"
   activerecord:
     attributes:
       order_field:

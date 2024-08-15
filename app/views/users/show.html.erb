@@ -10,7 +10,7 @@
       <% if current_user?(@user) %>
         <h1 class="text-xl text-emerald-400 font-semibold mb-4"><%= exchange_money(@user.money) %></h1>
         <div class="flex justify-center items-center gap-x-12">
-          <%= link_to edit_user_path(@user) do %>
+          <%= link_to edit_user_registration_path do %>
             <%= render "shared/primary_btn", label: t("users.edit.edit_profile") %>
           <% end %>
           <%= link_to booking_history_path do %>
