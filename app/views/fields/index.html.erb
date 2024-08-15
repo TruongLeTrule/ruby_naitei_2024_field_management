@@ -3,11 +3,6 @@
     <%= render "shared/search_bar", search_path: fields_path %>
     <%= render "filters" %>
   </div>
-  <% if current_user&.admin? %>
-    <%= link_to new_field_path do %>
-      <%= render "shared/primary_btn", label: t(".create") %>
-    <% end %>
-  <% end %>
 </div>
 <% if @fields.present? %>
   <%= render "shared/search_result", search_input: params[:search], success: true %>

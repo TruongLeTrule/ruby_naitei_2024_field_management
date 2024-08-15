@@ -1,0 +1,22 @@
+<% provide :title, t(".title") %>
+<div class="relative">
+  <h1 class="text-2xl text-primary font-semibold text-center">
+    <%= t ".title" %>
+  </h1>
+  <%= link_to t(".create"), new_admin_field_path,
+              class: "absolute right-0 top-1/2 transform -translate-y-1/2 h-1/2
+                      cursor-pointer bg-primary w-28 h-10 rounded-lg text-white
+                      text-sm hover:opacity-50 transition-opacity flex
+                      items-center justify-center font-medium" %>
+</div>
+<%= render "search_form", q: @q,
+    search_url: admin_fields_path(@field, locale: params[:locale]) %>
+<%= render "shared/table",
+           header_keys: field_header_keys,
+           q: @q,
+           resources: handle_render_fields(@fields),
+           render_keys: field_render_keys
+%>
+<div class="mt-10">
+  <%== pagy_nav @pagy %>
+</div>

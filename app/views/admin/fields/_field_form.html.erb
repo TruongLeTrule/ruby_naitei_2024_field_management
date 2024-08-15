@@ -1,4 +1,5 @@
 <%= form_with model: field,
+              url: action_url,
               class: "grid grid-cols-2 mt-14" do |form|
 %>
   <div class="flex flex-col gap-8 text-xl items-center">
@@ -6,7 +7,7 @@
     <div class="flex items-center">
       <%= form.label t(".field_type"), class: "inline-block w-32 mr-4" %>
       <%= form.select :field_type_id,
-                      options_for_select(get_field_types,
+                      options_for_select(field_type_options,
                                         selected: field.field_type_id || first_field_type
                                         ),
                       {},
@@ -66,5 +67,5 @@
                                 file:bg-transparent text-center cursor-pointer"
     %>
   </div>
-  <%= form.submit t(".submit"), class: "mt-14 col-span-2 block mx-auto bg-primary w-32 h-12 rounded-lg text-white font-semibold text-xl hover:opacity-50 transition-opacity cursor-pointer" %>
+  <%= form.submit yield(:submit_text), class: "mt-14 col-span-2 block mx-auto bg-primary w-32 h-12 rounded-lg text-white font-semibold text-xl hover:opacity-50 transition-opacity cursor-pointer" %>
 <% end %>

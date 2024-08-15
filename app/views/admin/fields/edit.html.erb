@@ -1,0 +1,22 @@
+<% provide :title, t(".title", deep_intepolation: true, name: @field.name) %>
+<% provide :submit_text, t(".update") %>
+<div class="flex justify-center items-center relative">
+  <%= link_to admin_fields_path,
+              class: "absolute left-0 top-1/2 transform -translate-y-1/2 gap-x-2
+                      cursor-pointer text-primary font-medium flex items-center
+                      text-lg hover:opacity-50 transition-opacity" do %>
+    <%= fa_icon("chevron-left") + t(".back") %>
+  <% end %>
+  <h1 class="text-2xl font-semibold text-primary">
+    <%= t(".title", deep_intepolation: true, name: @field.name) %>
+  </h1>
+  <div class="absolute right-0 top-1/2 transform -translate-y-1/2">
+    <%= link_to t(".view_busy_schedule"), admin_unavailable_field_schedules_path(@field),
+        class: "hover:underline text-xl text-primary ml-4" %>
+    <%= link_to @field, data: {"turbo-method": :delete,
+                                 "turbo-confirm": t(".delete_confirm", deep_intepolation: true, field: @field.name)} do %>
+      <strong class="hover:underline text-xl text-light-red ml-4"><%= t ".delete_field" %></strong>
+    <% end %>
+  </div>
+</div>
+<%= render "field_form", field: @field, action_url: admin_field_path(@field) %>

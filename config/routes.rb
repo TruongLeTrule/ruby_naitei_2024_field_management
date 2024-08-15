@@ -24,7 +24,8 @@ Rails.application.routes.draw do
       end
     end
     namespace :admin do
-      resources :fields, param: :id do
+      root to: "fields#index"
+      resources :fields, param: :id, except: :show do
         member do
           resources :unavailable_field_schedules, param: :schedule_id
         end

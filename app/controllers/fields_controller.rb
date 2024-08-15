@@ -1,9 +1,6 @@
 class FieldsController < ApplicationController
-  before_action :find_field_by_id, except: %i(create new index)
-  before_action :admin_user, only: %i(new create edit update destroy)
+  before_action :find_field_by_id, except: :index
   before_action :set_default_params, only: :index
-
-  def edit; end
 
   def show
     @pagy, @ratings = pagy @field.ratings.lastest
@@ -18,47 +15,6 @@ class FieldsController < ApplicationController
                                .favourite_by_current_user(
                                  find_favourite_field_ids
                                )
-  end
-
-  def new
-    @field = Field.new
-  end
-
-  def create
-    @field = Field.new field_params
-    @field.image.attach params.dig(:field, :image)
-
-    if @field.save
-      flash[:success] = t ".success"
-      redirect_to root_path
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
-  def update
-    if params.dig(:field, :image).present?
-      @field.image.attach(params.dig(:field, :image))
-    end
-
-    if @field.update field_params
-      flash.now[:success] =
-        t ".success", deep_intepolation: true, field: @field.name
-      render :edit, status: :see_other
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
-    if @field.has_any_uncompleted_order?
-      flash.now[:danger] = t ".has_uncompleted_order"
-      return render :edit, status: :see_other
-    end
-
-    @field.destroy
-    flash[:success] = t ".success", deep_intepolation: true, field: @field.name
-    redirect_to root_path, status: :see_other
   end
 
   def new_order
@@ -80,9 +36,6 @@ class FieldsController < ApplicationController
   end
 
   private
-  def field_params
-    params.require(:field).permit Field::CREATE_ATTRIBUTES
-  end
 
   def order_params
     params.require(:order_field).permit OrderField::CREATE_ATTRIBUTES

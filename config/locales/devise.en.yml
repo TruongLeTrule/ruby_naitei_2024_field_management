@@ -30,7 +30,6 @@ en:
         confirm_account: "Confirm account"
       reset_password_instructions:
         subject: "Reset password instructions"
-        unlock_account: "Unlock account"
         title: "Hi %{name}"
         content: "Someone request to reset your account password."
         reset_password: "Click here to reset your password"

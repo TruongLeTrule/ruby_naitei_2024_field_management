@@ -27,8 +27,8 @@ started_time finished_time field_id).freeze
     )
   end)
   scope :within_date_range, lambda {|current_date|
-    where("started_date <= ? AND finished_date >= ?",
-          current_date, current_date)
+    where("? BETWEEN started_date AND finished_date",
+          current_date)
   }
 
   class << self

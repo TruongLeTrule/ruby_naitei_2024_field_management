@@ -1,4 +1,10 @@
 <div class="relative">
+  <%= link_to edit_admin_field_path(@field),
+              class: "absolute left-0 top-1/2 transform -translate-y-1/2 gap-x-2
+                      cursor-pointer text-primary font-medium flex items-center
+                      text-lg hover:opacity-50 transition-opacity" do %>
+    <%= fa_icon("chevron-left") + t(".back") %>
+  <% end %>
   <h1 class="text-2xl text-primary font-semibold text-center">
     <%= t ".title", deep_intepolation: true, field: @field.name %>
   </h1>
@@ -9,12 +15,12 @@
                       items-center justify-center font-medium" %>
 </div>
 <%= render "search_form", q: @q,
-    search_url: admin_unavailable_field_schedules_path(@field) %>
+    search_url: admin_unavailable_field_schedules_path(@field, locale: params[:locale]) %>
 <%= render "shared/table",
-           headers: header_keys,
+           header_keys: schedule_header_keys,
            q: @q,
            resources: handle_render_schedules(@unavailable_field_schedules),
-           render_keys: render_keys
+           render_keys: schedule_render_keys
 %>
 <div class="mt-10">
   <%== pagy_nav @pagy %>
