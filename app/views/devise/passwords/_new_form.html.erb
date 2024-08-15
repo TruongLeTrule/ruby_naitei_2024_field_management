@@ -1,0 +1,19 @@
+<%= form_for resource, as: resource_name,
+                       url: user_password_path,
+                       class: "flex-1 flex flex-col" do |f| %>
+  <div class="mb-4 space-y-2">
+    <%= f.label :email %>
+    <%= f.email_field :email,
+                      placeholder: t(".type_email_here"),
+                      class: "shadow appearance-none border rounded
+                              w-full py-2 px-3 text-gray-700 leading-tight
+                              focus:outline-none focus:ring-0 focus:border-green-500" %>
+  </div>
+  <div class="flex-1 flex-col flex items-center justify-between">
+    <%= f.submit t(".send"),
+        class: "mx-auto block mt-4 bg-green-500
+                hover:bg-primary text-white font-semibold
+                py-2 px-10 rounded focus:outline-none
+                focus:shadow-outline cursor-pointer" %>
+  </div>
+<% end %>
