@@ -21,6 +21,7 @@ vi:
       timeout: Phiên làm việc của bạn đã kết thúc, bạn cần đăng nhập lại để tiếp tục.
       unauthenticated: Bạn cần phải đăng nhập hoặc đăng ký trước khi tiếp tục.
       unconfirmed: Bạn cần phải xác nhận tài khoản trước khi tiếp tục.
+      last_attempt: "Bạn chỉ còn 1 lần thử"
     mailer:
       confirmation_instructions:
         subject: Hướng dẫn xác nhận tài khoản
@@ -31,6 +32,9 @@ vi:
         subject: Hướng dẫn thiết lập lại mật khẩu
       unlock_instructions:
         subject: Hướng dẫn mở khóa tài khoản
+        title: "Chào %{name},"
+        content: "Tài khoản của bạn đã bị khóa sau 5 lần đăng nhập thất bại."
+        unlock_account: "Mở khóa tài khoản"
     omniauth_callbacks:
       failure: Không thể đăng nhập qua tài khoản %{kind} vì "%{reason}".
       success: Đăng nhập thành công bằng tài khoản %{kind}.
