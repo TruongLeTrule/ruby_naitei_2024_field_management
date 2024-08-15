@@ -1,0 +1,5 @@
+<h1><%= t ".title", deep_intepolation: true, name: @resource.name %></h1>
+<p><%= t ".content" %></p>
+<p><%= link_to t(".confirm_account"),
+                user_confirmation_url(confirmation_token: @token) %>
+</p>

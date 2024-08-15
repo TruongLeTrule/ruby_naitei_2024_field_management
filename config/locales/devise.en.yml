@@ -4,6 +4,13 @@ en:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      new:
+        resend_email: "Resend email"
+      form:
+        type_email_here: "Type email here"
+        send: "Send"
+        already_have_account: "Already have account?"
+        login: "Login"
     failure:
       already_authenticated: "You are already signed in."
       inactive: "Your account is not activated yet."
@@ -17,6 +24,9 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
+        title: "Hi %{name},"
+        content: "Welcome to Premium Soccer Field. Please confirm your account to access our page!"
+        confirm_account: "Confirm account"
       reset_password_instructions:
         subject: "Reset password instructions"
       unlock_instructions:
@@ -61,3 +71,9 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  activerecord:
+    models:
+      user: "User"
+    attributes:
+      user:
+        current_password: "Current password"

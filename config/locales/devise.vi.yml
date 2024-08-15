@@ -4,6 +4,13 @@ vi:
       confirmed: Xác nhận tài khoản thành công! Bạn hiện đang đăng nhập.
       send_instructions: Bạn sẽ nhận được email hướng dẫn xác nhận tài khoản trong vài phút nữa.
       send_paranoid_instructions: Nếu email của bạn có trong hệ thống, bạn sẽ nhận được email hướng dẫn xác nhận tài khoản trong một vài phút nữa.
+      new:
+        resend_email: "Gửi lại email"
+      form:
+        type_email_here: "Nhập email"
+        send: "Gửi"
+        already_have_account: "Đã có tài khoản?"
+        login: "Đăng nhập"
     failure:
       already_authenticated: Bạn đã đăng nhập.
       inactive: Tài khoản của bạn chưa được kích hoạt.
@@ -17,6 +24,9 @@ vi:
     mailer:
       confirmation_instructions:
         subject: Hướng dẫn xác nhận tài khoản
+        title: "Chào %{name},"
+        content: "Chào mừng bạn đã đến với Premium Soccer Field. Xin hãy xác nhận tài khoản để truy cập vào trang web của chúng tôi!"
+        confirm_account: "Xác nhận tài khoản"
       reset_password_instructions:
         subject: Hướng dẫn thiết lập lại mật khẩu
       unlock_instructions:
@@ -55,3 +65,9 @@ vi:
       not_saved:
         one: ! '1 lỗi khi lưu %{resource}:'
         other: ! '%{count} lỗi khi lưu %{resource}:'
+  activerecord:
+    models:
+      user: "Người dùng"
+    attributes:
+      user:
+        current_password: "Mật khẩu hiện tại"
