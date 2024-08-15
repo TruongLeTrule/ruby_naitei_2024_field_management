@@ -1,0 +1,9 @@
+<% provide :submit_text, t(".create") %>
+<setion class="h-screen flex flex-col justify-center items-center -mt-44">
+  <div class="bg-white rounded-md p-8">
+    <h1 class="text-center text-2xl font-semibold text-primary">
+      <%= t ".title", deep_intepolation: true, field: @field.name %>
+    </h1>
+    <%= render "form", schedule: @schedule, action_url: admin_unavailable_field_schedules_path %>
+  </div>
+</section>

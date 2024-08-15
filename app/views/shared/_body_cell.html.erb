@@ -1,0 +1,7 @@
+<td class="px-4 py-2 border border-gray-300 text-center">
+  <% if value.is_a? String %>
+    <%= value.html_safe %>
+  <% else %>
+    <%= value %>
+  <% end %>
+</td>

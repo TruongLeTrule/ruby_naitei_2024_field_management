@@ -10,12 +10,12 @@
         <%= render "clock",
                     type: "am",
                     open_close_time: get_display_hour(@field.open_time, "am"),
-                    unavailable_schedules: (@field.unavailable_field_schedules.date Date.today).am
+                    unavailable_schedules: (@field.unavailable_field_schedules.within_date_range Date.today).am
         %>
         <%= render "clock",
                     type: "pm",
                     open_close_time: get_display_hour(@field.close_time, "pm"),
-                    unavailable_schedules: (@field.unavailable_field_schedules.date Date.today).pm
+                    unavailable_schedules: (@field.unavailable_field_schedules.within_date_range Date.today).pm
         %>
       <% end %>
       <div class="grid grid-cols-2 w-32 h-10 mx-auto mt-20">

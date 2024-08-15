@@ -141,12 +141,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_16_021708) do
   create_table "unavailable_field_schedules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.time "started_time"
     t.time "finished_time"
-    t.date "date"
     t.integer "status"
     t.bigint "field_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "order_field_id"
+    t.date "started_date"
+    t.date "finished_date"
     t.index ["field_id"], name: "index_unavailable_field_schedules_on_field_id"
     t.index ["order_field_id"], name: "index_unavailable_field_schedules_on_order_field_id"
   end

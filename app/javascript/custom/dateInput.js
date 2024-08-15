@@ -7,7 +7,7 @@ document.addEventListener('turbo:load', () => {
   findScheduleLink &&
     findScheduleLink.setAttribute(
       'href',
-      `${baseUrl}&date=${today.getFullYear()}-${
+      `${baseUrl}?date=${today.getFullYear()}-${
         today.getMonth() + 1
       }-${today.getDate()}`
     )
@@ -16,7 +16,7 @@ document.addEventListener('turbo:load', () => {
     dateInput.addEventListener('change', () => {
       findScheduleLink.setAttribute(
         'href',
-        `${baseUrl}&date=${dateInput.value}`
+        `${baseUrl}?date=${dateInput.value}`
       )
     })
 })

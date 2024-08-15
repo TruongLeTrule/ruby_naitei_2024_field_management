@@ -1,0 +1,15 @@
+<table class="border-collapse mt-8 mx-auto w-full
+              bg-white border border-gray-300">
+  <thead class="bg-primary text-white">
+    <tr>
+      <%= render partial: "shared/header_cell",
+                 collection: header_keys,
+                 locals: {q: q} %>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "shared/body_row",
+               collection: resources,
+               locals: {render_keys: render_keys} %>
+  </tbody>
+</table>

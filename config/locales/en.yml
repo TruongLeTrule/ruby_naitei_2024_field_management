@@ -385,6 +385,47 @@ en:
       edit:
         current_password: "Current Password"
         new_password: "New Password"
+  admin:
+    unavailable_field_schedules:
+      errors:
+        finish_date_smaller_than_start: "Finish date should not be smaller than start date"
+        finish_time_smaller_than_start: "Finish time should not be smaller than start time"
+        date_should_be_future: "Date should be in future"
+        order_existing: "This time and date have existing order"
+        invalid_schedule: "Invalid busy schedule"
+      index:
+        title: "All busy schedules of %{field} field"
+        create: "Create new"
+        view: "View"
+      new:
+        title: "Create new busy schedule for %{field} field"
+        create: "Create"
+      create:
+        success: "Create busy schedule successful"
+      edit:
+        title: "Edit busy schedule for %{field} field"
+        update: "Update"
+        confirm: "Are you sure to delete this schedule"
+        delete: "Delete"
+        or: "Or"
+      update:
+        success: "Update busy schedule successful"
+      destroy:
+        success: "Delete busy schedule successful"
+      form:
+        started_date: "Start date"
+        finished_date: "Finish date"
+        create: "Create"
+        option: "Option"
+        choose_time: "Choose time"
+        all_day: "All day"
+      search_form:
+        from: "From"
+        to: "To"
+        status: "Status"
+        start_time: "Start time"
+        finish_time: "Finish time"
+        search: "Search"
   activerecord:
     attributes:
       order_field:
@@ -411,3 +452,17 @@ en:
         password: "Password"
         email: "Email"
         password_confirmation: "Password confirmation"
+      unavailable_field_schedule:
+        date: "Date"
+        status: "Status"
+        started_time: "Start time"
+        finished_time: "Finish time"
+        created_at: "Created at"
+        action: "Action"
+        started_date: "Start date"
+        finished_date: "Finish date"
+        statuses:
+          maintain: "Maintain"
+          pending: "Pending"
+          rent: "Rent"
+          closed: "Closed"

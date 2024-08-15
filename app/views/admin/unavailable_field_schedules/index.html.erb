@@ -1,0 +1,21 @@
+<div class="relative">
+  <h1 class="text-2xl text-primary font-semibold text-center">
+    <%= t ".title", deep_intepolation: true, field: @field.name %>
+  </h1>
+  <%= link_to t(".create"), new_admin_unavailable_field_schedule_path,
+              class: "absolute right-0 top-1/2 transform -translate-y-1/2 h-1/2
+                      cursor-pointer bg-primary w-28 h-10 rounded-lg text-white
+                      text-sm hover:opacity-50 transition-opacity flex
+                      items-center justify-center font-medium" %>
+</div>
+<%= render "search_form", q: @q,
+    search_url: admin_unavailable_field_schedules_path(@field) %>
+<%= render "shared/table",
+           headers: header_keys,
+           q: @q,
+           resources: handle_render_schedules(@unavailable_field_schedules),
+           render_keys: render_keys
+%>
+<div class="mt-10">
+  <%== pagy_nav @pagy %>
+</div>

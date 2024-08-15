@@ -43,11 +43,13 @@ source: :user
   scope :order_by, lambda {|attribute, direction|
                      order(attribute || :created_at => direction || :asc)
                    }
-  scope :most_rated, (lambda do
-    left_outer_joins(:ratings)
-      .group(:id)
-      .order("AVG(ratings.rating) DESC")
-      .includes(image_attachment: :blob)
+  scope :most_rated, (lambda do |option|
+    if option
+      left_outer_joins(:ratings)
+       .group(:id)
+       .order("AVG(ratings.rating) DESC")
+       .includes(image_attachment: :blob)
+    end
   end)
   scope :field_type, lambda {|field_type_id|
                        if field_type_id.present? && field_type_id != "all"
