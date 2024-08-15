@@ -5,7 +5,8 @@ class User < ApplicationRecord
   attr_accessor :activation_token, :reset_token
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_many :vouchers, dependent: :destroy
   has_many :favourite_relationships, class_name: FavouriteField.name,
@@ -65,6 +66,18 @@ source: :field
 
     def new_token
       SecureRandom.urlsafe_base64
+    end
+
+    def from_omniauth access_token
+      data = access_token.info
+      provider = access_token.provider
+      user = User.find_by email: data["email"]
+
+      user ||= User.create(name: data["name"],
+                           email: data["email"],
+                           password: Settings.default_password,
+                           provider:)
+      user
     end
   end
 

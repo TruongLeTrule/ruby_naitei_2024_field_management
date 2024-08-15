@@ -26,6 +26,9 @@ en:
     error_messages:
       error: "errors"
       form_contain: "The form contains"
+    google_button:
+      or: "Or"
+      continue: "Continue with Google"
   layouts:
     header:
       home: "Home"

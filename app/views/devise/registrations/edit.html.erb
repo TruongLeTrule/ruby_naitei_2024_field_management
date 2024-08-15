@@ -33,12 +33,14 @@
           <%= f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500" %>
         </div>
 
-        <div class="mb-4 space-y-2">
-          <%= f.label :email, t("users.new.email") %>
-          <%= f.email_field :email,
-              class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
-              autocomplete: "email" %>
-        </div>
+        <% unless f.object.provider.present? %>
+          <div class="mb-4 space-y-2">
+            <%= f.label :email, t("users.new.email") %>
+            <%= f.email_field :email,
+                class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:border-green-500",
+                autocomplete: "email" %>
+          </div>
+        <% end %>
 
         <div class="mb-4 space-y-2">
           <%= f.label :password, t(".current_password") %>

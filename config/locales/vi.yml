@@ -26,6 +26,9 @@ vi:
     error_messages:
       error: "lỗi"
       form_contain: "Biểu mẫu chứa"
+    google_button:
+      or: "Hoặc"
+      continue: "Tiếp tục với Google"
   layouts:
     header:
       home: "Trang chủ"

@@ -36,6 +36,8 @@
         </div>
       <% end %>
 
+      <%= render "shared/google_button" %>
+
       <div class="mt-4 text-center">
         <%= t "users.new.already_have_account" %>
         <%= link_to t("users.new.login"), new_session_path(resource_name), class: "text-green-500 hover:text-green-700" %>

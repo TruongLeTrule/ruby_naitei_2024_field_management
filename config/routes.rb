@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, only: :omniauth_callbacks, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   scope "(:locale)", locale: /en|vi/ do
     root to: "fields#index"
-    devise_for :users
+    devise_for :users, skip: :omniauth_callbacks
     get "/unavailable_field_schedules", to: "unavailable_field_schedules#index"
     post "/apply_voucher", to: "vouchers#apply"
     get "/booking_history", to: "booking_history#index"

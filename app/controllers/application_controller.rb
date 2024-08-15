@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
     return I18n.locale = params[:locale] if params[:locale].present?
 
     I18n.locale = I18n.default_locale
+    return if request.params.keys.include?("authuser")
+
     redirect_to url_for(request.params.merge(locale: I18n.default_locale))
   end
 
