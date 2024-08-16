@@ -203,6 +203,11 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
+    public_activity (3.0.1)
+      actionpack (>= 6.1.0)
+      activerecord (>= 6.1)
+      i18n (>= 0.5.0)
+      railties (>= 6.1.0)
     public_suffix (5.0.3)
     puma (5.6.6)
       nio4r (~> 2.0)
@@ -374,6 +379,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pagy (~> 9.0)
+  public_activity
   puma (~> 5.0)
   rails (~> 7.0.5)
   rails-i18n

@@ -1,4 +1,4 @@
-class Activity < ApplicationRecord
+class NewActivity < ApplicationRecord
   enum action: {created: 0, viewed: 1, updated: 2, deleted: 3}
 
   belongs_to :user

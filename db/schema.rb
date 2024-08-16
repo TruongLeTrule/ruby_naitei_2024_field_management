@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_15_063157) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_16_021708) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,15 +40,22 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_15_063157) do
   end
 
   create_table "activities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "action"
-    t.string "name"
     t.string "trackable_type"
     t.bigint "trackable_id"
+    t.string "owner_type"
+    t.bigint "owner_id"
+    t.string "key"
+    t.text "parameters"
+    t.string "recipient_type"
+    t.bigint "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
+    t.index ["owner_type", "owner_id"], name: "index_activities_on_owner"
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
+    t.index ["recipient_type", "recipient_id"], name: "index_activities_on_recipient"
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable"
-    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
   create_table "favourite_fields", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -80,6 +87,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_15_063157) do
     t.index ["field_type_id", "name"], name: "index_fields_on_field_type_id_and_name", unique: true
     t.index ["field_type_id"], name: "index_fields_on_field_type_id"
     t.index ["name"], name: "index_fields_on_name"
+  end
+
+  create_table "new_activities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "action"
+    t.string "name"
+    t.string "trackable_type"
+    t.bigint "trackable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trackable_type", "trackable_id"], name: "index_new_activities_on_trackable"
+    t.index ["user_id"], name: "index_new_activities_on_user_id"
   end
 
   create_table "order_fields", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -180,10 +199,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_15_063157) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "activities", "users"
   add_foreign_key "favourite_fields", "fields"
   add_foreign_key "favourite_fields", "users"
   add_foreign_key "fields", "field_types"
+  add_foreign_key "new_activities", "users"
   add_foreign_key "order_fields", "fields"
   add_foreign_key "order_fields", "users"
   add_foreign_key "ratings", "fields"

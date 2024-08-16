@@ -369,10 +369,10 @@ en:
     index:
       activity: "Activity List"
     actions:
-      created: "created"
-      updated: "updated"
-      deleted: "deleted"
-      viewed: "viewed"
+      create: "created"
+      update: "updated"
+      destroy: "deleted"
+      view: "viewed"
     trackable_types:
       user: "user"
       field: "field"

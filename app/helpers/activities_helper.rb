@@ -1,6 +1,6 @@
 module ActivitiesHelper
   def create_action user, action, trackable
-    Activity.create(
+    NewActivity.create(
       user:,
       action:,
       name: find_name(trackable),
@@ -17,13 +17,13 @@ module ActivitiesHelper
 
   def activity_action_class action
     case action
-    when "created"
+    when "create"
       "text-primary"
-    when "viewed"
+    when "view"
       "text-blue-500"
-    when "updated"
+    when "update"
       "text-yellow"
-    when "deleted"
+    when "destroy"
       "text-red-500"
     else
       "text-gray-500"

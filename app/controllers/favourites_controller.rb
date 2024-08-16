@@ -13,7 +13,8 @@ class FavouritesController < ApplicationController
 
   def destroy
     @field = @favourite.field
-    create_action(current_user, :deleted, @favourite)
+    @favourite.create_activity key: "favourite_field.destroy",
+                               owner: current_user
     current_user.remove_favourite_field(@field)
     respond_to do |format|
       format.html{redirect_to @field}

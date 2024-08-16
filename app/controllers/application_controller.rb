@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include UsersHelper
   include ActivitiesHelper
   include Pagy::Backend
+  include PublicActivity::StoreController
 
   protect_from_forgery with: :exception
 
