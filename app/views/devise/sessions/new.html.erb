@@ -27,10 +27,12 @@
           <% end %>
         </div>
 
-        <div class="flex-1 flex-col flex items-center justify-between">
+        <div class="flex-1 flex-col flex items-center justify-between mb-4">
           <%= f.submit t("sessions.new.submit"), class: "bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-4 w-2/3 rounded focus:outline-none focus:shadow-outline cursor-pointer" %>
         </div>
       <% end %>
+
+      <%= render "shared/google_button" %>
 
       <div class="mt-4 text-center">
         <%= t "sessions.new.do_not_have_account" %>
