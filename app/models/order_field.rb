@@ -32,9 +32,6 @@ class OrderField < ApplicationRecord
     Arel.sql("DATE(date)")
   end
 
-  after_create :create_activity
-  after_update :update_activity
-
   class << self
     def ransackable_associations _auth_object = nil
       %w(activities field unavailable_field_schedule user)
