@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root to: "fields#index"
     devise_for :users, skip: :omniauth_callbacks
-    get "/unavailable_field_schedules", to: "unavailable_field_schedules#index"
     post "/apply_voucher", to: "vouchers#apply"
     get "/booking_history", to: "booking_history#index"
     resources :fields do
       member do
         get :order, to: "fields#new_order"
         post :order, to: "fields#create_order"
+        resources :unavailable_field_schedules, only: :index
       end
     end
     resources :users do
@@ -20,6 +20,13 @@ Rails.application.routes.draw do
     resources :ratings do
       member do
         resources :reviews, except: %i(show index)
+      end
+    end
+    namespace :admin do
+      resources :fields, param: :id do
+        member do
+          resources :unavailable_field_schedules, param: :schedule_id
+        end
       end
     end
     resources :account_activations, only: :edit

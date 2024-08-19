@@ -28,6 +28,23 @@ class OrderField < ApplicationRecord
   scope :search_by_status, ->(status){where(status:) if status.present?}
   scope :approved_order, ->{where(approved: true)}
 
+  ransacker :date_range do
+    Arel.sql("DATE(date)")
+  end
+
+  after_create :create_activity
+  after_update :update_activity
+
+  class << self
+    def ransackable_associations _auth_object = nil
+      %w(activities field unavailable_field_schedule user)
+    end
+
+    def ransackable_attributes _auth_object = nil
+      %w(date_range)
+    end
+  end
+
   def send_delete_order_email
     OrderMailer.delete_order(self).deliver_now
   end
@@ -106,12 +123,12 @@ class OrderField < ApplicationRecord
 
   def find_overlapping_schedule
     field.unavailable_field_schedules.find do |schedule|
-      same_date?(schedule) && times_overlap?(schedule)
+      between_date?(schedule) && times_overlap?(schedule)
     end
   end
 
-  def same_date? schedule
-    schedule.date == date
+  def between_date? schedule
+    date.between? schedule.started_date, schedule.finished_date
   end
 
   def too_short_time

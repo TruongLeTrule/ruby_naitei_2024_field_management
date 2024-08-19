@@ -1,0 +1,34 @@
+<%= search_form_for q,
+    url: search_url,
+    class: "mt-8 flex items-center justify-between" do |form| %>
+  <div class="flex items-center gap-x-4">
+    <%= form.label :started_date_gteq, t(".from") %>
+    <%= form.date_field :started_date_gteq,
+                        class: "w-44 h-10 rounded-md text-center ring-2
+                                ring-gray-200 cursor-pointer focus:ring-primary
+                                outline-none border-none" %>
+    <%= form.label :finished_date_lteq, t(".to") %>
+    <%= form.date_field :finished_date_lteq,
+                        class: "w-44 h-10 rounded-md text-center ring-2
+                                ring-gray-200 cursor-pointer focus:ring-primary
+                                outline-none border-none" %>
+    <%= form.label :started_time_gteq, t(".start_time") %>
+    <%= form.time_field :started_time_gteq,
+                        class: "w-32 h-10 rounded-md text-center ring-2
+                                ring-gray-200 cursor-pointer focus:ring-primary
+                                outline-none border-none" %>
+    <%= form.label :finished_time_gteq, t(".finish_time") %>
+    <%= form.time_field :finished_time_gteq,
+                        class: "w-32 h-10 rounded-md text-center ring-2
+                                ring-gray-200 cursor-pointer focus:ring-primary
+                                outline-none border-none" %>
+    <%= form.label :status_eq, t(".status") %>
+    <%= form.select :status_eq, all_statuses, {},
+                    {class: "w-32 h-10 rounded-md text-center ring-2
+                            ring-gray-200 cursor-pointer focus:ring-primary
+                            outline-none border-none"} %>
+  </div>
+  <%= form.submit t(".search"),
+                  class: "text-primary hover:underline text-lg
+                          font-normal cursor-pointer" %>
+<% end %>

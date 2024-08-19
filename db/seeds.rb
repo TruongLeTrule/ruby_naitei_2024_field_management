@@ -75,7 +75,8 @@ fields.each do |field|
 
     field.unavailable_field_schedules.create! started_time: "16:00",
                                               finished_time: "17:00",
-                                              date: Time.zone.today + (id + 1).days,
+                                              started_date: Time.zone.today + (id + 1).days,
+                                              finished_date: Time.zone.today + (id + 1).days,
                                               status: 2,
                                               order_field_id: $order_id + 1
     $order_id = $order_id + 1

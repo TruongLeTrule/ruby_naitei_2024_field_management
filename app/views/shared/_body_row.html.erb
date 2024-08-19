@@ -1,0 +1,6 @@
+<tr class="hover:bg-green-100">
+  <%= render partial: "shared/body_cell", locals: {value: body_row_counter + 1} %>
+  <% render_keys.each do |item| %>
+    <%= render partial: "shared/body_cell", locals: {value: body_row.send(item)} %>
+  <% end %>
+</tr>

@@ -1,0 +1,62 @@
+<%= form_with model: schedule,
+              url: action_url,
+              class: "flex flex-col items-center mt-8 gap-4" do |form| %>
+  <div>
+    <%= form.hidden_field :field_id, value: schedule.field.id %>
+    <%= form.label :started_date, t(".started_date"), class: "w-36 inline-block" %>
+    <%= form.date_field :started_date,
+                            value: Time.zone.today,
+                            class: "w-48 h-10 rounded-lg text-center ring-2
+                                    ring-gray-200 cursor-pointer focus:ring-primary
+                                    outline-none border-none",
+                            min: Time.zone.today %>
+  </div>
+  <div>
+    <%= form.label :finished_date, t(".finished_date"), class: "w-36 inline-block" %>
+    <%= form.date_field :finished_date,
+                            value: Time.zone.today,
+                            class: "w-48 h-10 rounded-lg text-center ring-2
+                                    ring-gray-200 cursor-pointer focus:ring-primary
+                                    outline-none border-none",
+                            min: Time.zone.today %>
+  </div>
+  <div>
+    <%= form.label :status, class: "w-36 inline-block" %>
+    <%= form.select :status,
+                    options_for_select(all_statuses,
+                                selected: schedule.status_before_type_cast || first_status),
+                    {},
+                    {class: "w-48 h-10 rounded-lg text-center ring-2
+                             ring-gray-200 cursor-pointer focus:ring-primary
+                             outline-none border-none"} %>
+  </div>
+  <div>
+    <%= label_tag :option, t(".option"), class: "w-36 inline-block" %>
+    <%= select_tag :option,
+                   options_for_select(time_options),
+                   class: "w-48 h-10 rounded-lg text-center ring-2
+                           ring-gray-200 cursor-pointer focus:ring-primary
+                           outline-none border-none",
+                   id: "unavailable-schedule-option" %>
+  </div>
+  <div class="choose-schedule-time hidden">
+    <%= form.label :started_time, class: "w-36 inline-block" %>
+    <%= form.time_field :started_time,
+                        include_seconds: false,
+                        class: "w-48 h-10 rounded-lg text-center ring-2
+                                ring-gray-200 cursor-pointer focus:ring-primary
+                                outline-none border-none" %>
+  </div>
+  <div class="choose-schedule-time hidden">
+    <%= form.label :finished_time, class: "w-36 inline-block" %>
+    <%= form.time_field :finished_time,
+                            include_seconds: false,
+                            class: "w-48 h-10 rounded-lg text-center ring-2
+                                    ring-gray-200 cursor-pointer focus:ring-primary
+                                    outline-none border-none" %>
+  </div>
+  <%= form.submit yield(:submit_text),
+                  class: "cursor-pointer mx-auto mt-4 bg-primary w-36 h-12
+                          rounded-lg text-white font-semibold text-xl
+                          hover:opacity-50 transition-opacity" %>
+<% end %>

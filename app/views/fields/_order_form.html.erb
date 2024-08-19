@@ -11,7 +11,7 @@
                         class: "border-none bg-transparent cursor-pointer text-lg"
     %>
     <%= link_to t("fields.form.load"),
-                unavailable_field_schedules_path(field_id: @field.id),
+                unavailable_field_schedules_path,
                 data: {turbo_frame: "clock-container"},
                 id: "find-schedule-link",
                 class: "underline ml-4 text-primary text-base ml-2"

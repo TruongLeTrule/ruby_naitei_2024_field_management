@@ -12,13 +12,13 @@ class FieldsController < ApplicationController
   end
 
   def index
-    @pagy, @fields = pagy Field.order_by(params[:order], params[:sort])
+    @pagy, @fields = pagy Field.most_rated(params[:most_rated])
+                               .order_by(params[:order], params[:sort])
                                .name_like(params[:search])
                                .field_type(params[:type])
                                .favourite_by_current_user(
                                  find_favourite_field_ids
                                )
-                               .most_rated
   end
 
   def new
@@ -116,7 +116,9 @@ class FieldsController < ApplicationController
       field_id: @field.id,
       order_field_id: @order.id,
       status: :pending,
-      **order_params
+      started_date: order_params[:date],
+      finished_date: order_params[:date],
+      **order_params.except(:date)
     )
   end
 
