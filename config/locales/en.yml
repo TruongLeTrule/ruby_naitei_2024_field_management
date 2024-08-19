@@ -154,6 +154,8 @@ en:
       submit: "Create my account"
       already_have_account: "Already have an account?"
       login: "Log in"
+      have_not_received: "Haven't received email?"
+      resend: "Resend"
     create:
       password_complexity: "Password must contain at least 3 types of characters: lowercase, uppercase, number, special character"
       welcome: "Welcome!"

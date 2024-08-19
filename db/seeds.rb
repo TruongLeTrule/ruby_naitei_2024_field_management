@@ -1,27 +1,31 @@
 # User
-User.create! name: "admin",
-             email: "admin@gmail.com",
-             money: 1000000,
-             password: "*Password123",
-             activated: true,
-             activated_at: Time.zone.now,
-             admin: true
-30.times do
+puts "Seeding users..."
+
+admin = User.new name: "admin",
+                     email: "admin@gmail.com",
+                     money: 1000000,
+                     password: "*Password123",
+                     admin: true
+admin.skip_confirmation!
+admin.save!
+30.times do |i|
   name = Faker::Name.name
   email = Faker::Internet.email
   money = rand 100_000..1000_000
   password = "*Password123"
   activated = true
   activated_at = Time.zone.now
-  User.create! name: name,
-               email: email,
-               money: money,
-               password: password,
-               activated:  activated,
-               activated_at: activated_at
+  user = User.new name: name,
+                  email: email,
+                  money: money,
+                  password: password
+  user.skip_confirmation!
+  user.save!
 end
 
 # Field Type
+puts "Seeding fields..."
+
 4.times do |i|
   name = "Type ##{i}"
   capacity = case i
@@ -43,7 +47,7 @@ field_types = FieldType.all
 field_types.each do |field_type|
   name = Faker::Sports::Football.unique.team
   default_price = rand 100_000..500_000
-  description = Faker::Lorem.sentence(word_count: 10)
+  description = Faker::Lorem.sentence(word_count: 50)
   open_time = "08:00am"
   close_time = "09:00pm"
   field_type_id = field_type.id
@@ -56,6 +60,8 @@ field_types.each do |field_type|
 end
 
 # Rating + Favourite + Order
+puts "Seeding rating + favourite + order..."
+
 $order_id = 0
 fields = Field.limit 5
 fields.each do |field|
@@ -84,6 +90,8 @@ fields.each do |field|
 end
 
 # Voucher
+puts "Seeding vouchers..."
+
 users = User.limit 5
 users.each do |user|
   5.times do |i|

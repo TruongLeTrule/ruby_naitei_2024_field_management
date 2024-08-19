@@ -152,6 +152,8 @@ vi:
       submit: "Tạo tài khoản của tôi"
       already_have_account: "Đã có tài khoản?"
       login: "Đăng nhập"
+      have_not_received: "Chưa nhận được email?"
+      resend: "Gửi lại"
     create:
       password_complexity: "Mật khẩu có ít nhất 3 loại ký tự: chữ thường, viết hoa, số, ký tự đặc biệt"
       welcome: "Chào mừng!"
