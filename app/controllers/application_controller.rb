@@ -4,11 +4,22 @@ class ApplicationController < ActionController::Base
   include ActivitiesHelper
   include Pagy::Backend
   include PublicActivity::StoreController
+  include CanCan::ControllerAdditions
 
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+
+  rescue_from CanCan::AccessDenied do |_exception|
+    if user_signed_in?
+      flash[:danger] = t "users.errors.not_correct_user"
+      redirect_to root_path, status: :see_other
+    else
+      flash[:danger] = t "users.errors.require_login"
+      redirect_to new_user_session_path
+    end
+  end
 
   protected
 

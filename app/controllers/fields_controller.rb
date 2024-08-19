@@ -1,6 +1,5 @@
 class FieldsController < ApplicationController
   before_action :find_field_by_id, except: %i(create new index)
-  before_action :authenticate_user!, only: %i(new_order create_order)
   before_action :admin_user, only: %i(new create edit update destroy)
   before_action :set_default_params, only: :index
 
@@ -63,10 +62,12 @@ class FieldsController < ApplicationController
   end
 
   def new_order
+    authorize! :create, OrderField
     @order = OrderField.new
   end
 
   def create_order
+    authorize! :create, OrderField
     ActiveRecord::Base.transaction do
       @order = build_order
       @order.save!
