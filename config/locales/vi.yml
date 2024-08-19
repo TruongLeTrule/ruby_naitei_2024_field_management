@@ -367,10 +367,10 @@ vi:
     index:
       activity: "Hoạt động"
     actions:
-      created: "tạo"
-      updated: "cập nhật"
-      deleted: "xóa"
-      viewed: "xem"
+      create: "tạo"
+      update: "cập nhật"
+      destroy: "xóa"
+      view: "xem"
     trackable_types:
       user: "người dùng"
       field: "sân"

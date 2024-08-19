@@ -1,15 +1,15 @@
 <li class="bg-white shadow-md rounded-lg p-4 hover:shadow-lg hover:bg-green-200 border border-primary transition duration-300">
   <div class="flex items-center justify-between">
     <div class="flex items-center flex-grow">
-      <%= image_tag get_profile_image(activity.user),
+      <%= image_tag get_profile_image(activity.owner),
                     alt: t("user.show.profile_img"),
                     class: "h-16 w-16 rounded-full border-4 border-white"
       %>
       <p class="ml-4 text-xl">
-        <span class="font-bold"><%= activity.user.name %></span>
-        <span class="<%= activity_action_class(activity.action) %>"><%= t("activities.actions.#{activity.action}") %></span>
+        <span class="font-bold"><%= activity.owner.name %></span>
+        <span class="<%= activity_action_class(activity.key.split(".").second) %>"><%= t("activities.actions.#{activity.key.split(".").second}") %></span>
         <span class="font-medium"><%= t("activities.trackable_types.#{activity&.trackable_type&.downcase}") %></span>
-        <span class="text-blue-700"><%= activity.name %></span>
+        <span class="text-blue-700"><%= find_name(activity.trackable) %></span>
       </p>
     </div>
     <p class="text-sm text-gray-500 whitespace-nowrap ml-4">

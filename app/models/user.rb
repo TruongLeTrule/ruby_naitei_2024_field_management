@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include PublicActivity::Model
+
   PERMITTED_ATTRIBUTES = %i(name email password password_confirmation).freeze
   RESET_PASSWORD_ATTRIBUTES = %i(password password_confirmation).freeze
 
@@ -202,13 +204,5 @@ source: :field
                   password.downcase == name.downcase
 
     errors.add :base, I18n.t("users.update.different_password")
-  end
-
-  def create_activity
-    create_action(:created, self)
-  end
-
-  def update_activity
-    create_action(:updated, self)
   end
 end

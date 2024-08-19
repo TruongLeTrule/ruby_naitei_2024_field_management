@@ -1,5 +1,7 @@
 class Field < ApplicationRecord
   include UsersHelper
+  include PublicActivity::Model
+  tracked owner: ->(_controller, _model){User.find_by admin: true}
 
   CREATE_ATTRIBUTES = %i(field_type_id name default_price open_time
 close_time description image).freeze
@@ -15,7 +17,6 @@ source: :user
   has_many :ordered_users, through: :order_relationships,
 source: :user
   has_many :ratings, dependent: :destroy
-  has_many :activities, as: :trackable, dependent: nil
   has_one_attached :image do |attachable|
     attachable.variant :display, resize_to_limit: [Settings.limit_img_size,
                                                   Settings.limit_img_size]
@@ -55,10 +56,6 @@ source: :user
                      }
   scope :favourite_by_current_user, ->(ids){where id: ids if ids.present?}
 
-  after_create :create_activity
-  after_update :update_activity
-  before_destroy :destroy_activity
-
   def average_rating
     ratings.average(:rating).to_f.round(1)
   end
@@ -76,17 +73,5 @@ source: :user
     return if close_time.nil? || open_time.nil? || close_time > open_time
 
     errors.add :base, I18n.t("fields.errors.valid_time")
-  end
-
-  def create_activity
-    create_action(admin, :created, self)
-  end
-
-  def update_activity
-    create_action(admin, :updated, self)
-  end
-
-  def destroy_activity
-    create_action(admin, :deleted, self)
   end
 end

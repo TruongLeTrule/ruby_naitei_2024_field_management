@@ -1,3 +1,26 @@
+# User
+User.create! name: "admin",
+             email: "admin@gmail.com",
+             money: 1000000,
+             password: "*Password123",
+             activated: true,
+             activated_at: Time.zone.now,
+             admin: true
+30.times do
+  name = Faker::Name.name
+  email = Faker::Internet.email
+  money = rand 100_000..1000_000
+  password = "*Password123"
+  activated = true
+  activated_at = Time.zone.now
+  User.create! name: name,
+               email: email,
+               money: money,
+               password: password,
+               activated:  activated,
+               activated_at: activated_at
+end
+
 # Field Type
 4.times do |i|
   name = "Type ##{i}"
@@ -30,29 +53,6 @@ field_types.each do |field_type|
                             field_type_id:field_type_id,
                             open_time: open_time,
                             close_time: close_time
-end
-
-# User
-User.create! name: "admin",
-             email: "admin@gmail.com",
-             money: 1000000,
-             password: "*Password123",
-             activated: true,
-             activated_at: Time.zone.now,
-             admin: true
-30.times do
-  name = Faker::Name.name
-  email = Faker::Internet.email
-  money = rand 100_000..1000_000
-  password = "*Password123"
-  activated = true
-  activated_at = Time.zone.now
-  User.create! name: name,
-               email: email,
-               money: money,
-               password: password,
-               activated:  activated,
-               activated_at: activated_at
 end
 
 # Rating + Favourite + Order
