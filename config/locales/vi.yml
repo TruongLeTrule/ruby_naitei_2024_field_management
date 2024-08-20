@@ -287,6 +287,9 @@ vi:
       user: "Người dùng"
       field: "Tên sân"
       date: "Ngày"
+      name: "Tên"
+      from_date: "Từ ngày"
+      to_date: "Đến ngày"
       status: "Trạng thái"
       search: "Tìm kiếm"
     index:
