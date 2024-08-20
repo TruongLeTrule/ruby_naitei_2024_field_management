@@ -1,26 +1,51 @@
-<%= form_with url: orders_path, method: :get, local: true, html: { class: "space-y-4" } do |f| %>
+<%= search_form_for @q, url: orders_path, html: { class: "space-y-4" } do |f| %>
   <div class="flex items-center gap-x-12">
     <div class="flex flex-col">
+      <%= f.label :combined_name_cont, t(".name"), class: "mb-1 font-medium text-gray-700" %>
+      <%= f.search_field :combined_name_cont,
+                          value: params.dig(:q, :combined_name_cont),
+                          class: "px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" %>
+    </div>
+
+    <div class="flex flex-col">
       <%= f.label :user, t(".user"), class: "mb-1 font-medium text-gray-700" %>
-      <%= f.search_field :user, value: params[:user], class: "px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" %>
+      <%= f.search_field :user_name_cont, class: "px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" %>
     </div>
 
     <div class="flex flex-col">
       <%= f.label :field, t(".field"), class: "mb-1 font-medium text-gray-700" %>
-      <%= f.search_field :field, value: params[:field], class: "px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" %>
+      <%= f.search_field :field_name_cont, class: "px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" %>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-x-12">
+    <div class="flex flex-col">
+      <%= f.label :from_date, t(".from_date"), class: "mb-1 font-medium text-gray-700" %>
+      <%= f.date_field :date_gteq, class: "px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" %>
     </div>
 
     <div class="flex flex-col">
-      <%= f.label :date, t(".date"), class: "mb-1 font-medium text-gray-700" %>
-      <%= f.date_field :date, value: params[:date], class: "px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" %>
+      <%= f.label :to_date, t(".to_date"), class: "mb-1 font-medium text-gray-700" %>
+      <%= f.date_field :date_lteq, class: "px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" %>
+    </div>
+
+     <div class="flex flex-col">
+      <%= f.label :started_time, class: "mb-1 font-medium text-gray-700" %>
+      <%= f.time_field :started_time_gteq, class: "px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" %>
+    </div>
+
+    <div class="flex flex-col">
+      <%= f.label :finished_time, class: "mb-1 font-medium text-gray-700" %>
+      <%= f.time_field :finished_time_lteq, class: "px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" %>
     </div>
 
     <div class="flex flex-col">
       <%= f.label :status, t(".status"), class: "mb-1 font-medium text-gray-700" %>
-      <%= f.select :status,
+      <%= f.select :status_in,
                   OrderField.statuses.keys.map {|status| [t("activerecord.attributes.order_field.status.#{status}"), OrderField.statuses[status]]},
-                  {include_blank: true, selected: params[:status]},
-                  class: "pl-3 pr-8 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary cursor-pointer" %>
+                  {include_blank: true},
+                  {multiple: true, size: Settings.size_5,
+                  class: "pl-3 pr-8 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary cursor-pointer"} %>
     </div>
     <div class="flex flex-col">
       <%= f.submit t(".search"), class: "w-full mt-6 px-4 py-2 text-white bg-primary rounded-md hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary cursor-pointer" %>

@@ -11,9 +11,8 @@ class OrdersController < ApplicationController
   end
 
   def index
-    filter_order
-    sort_order
-    @pagy, @orders = pagy(@orders)
+    @q = OrderField.ransack(params[:q])
+    @pagy, @orders = pagy(@q.result(distance: true).includes(:user, :field))
   end
 
   def new
@@ -80,19 +79,6 @@ class OrdersController < ApplicationController
 
   def find_all_orders
     @orders = OrderField.includes(:user, :field).all
-  end
-
-  def filter_order
-    @orders = @orders.search_by_user_name(params[:user])
-                     .search_by_field_name(params[:field])
-                     .search_by_date(params[:date])
-                     .search_by_status(params[:status])
-  end
-
-  def sort_order
-    sort_column = params[:sort_column] || "id"
-    sort_direction = params[:sort_direction] || "asc"
-    @orders = @orders.order(sort_column => sort_direction)
   end
 
   def handle_payment

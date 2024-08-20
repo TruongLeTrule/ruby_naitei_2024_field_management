@@ -17,5 +17,6 @@ hours_expired: 2
 min_book_time: 1
 image_format: "image/jpeg,image/png"
 max_img_size: 5
+size_5: 5
 limit_img_size: 500
 default_password: "*Password123"

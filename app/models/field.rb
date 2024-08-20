@@ -58,6 +58,16 @@ source: :user
                      }
   scope :favourite_by_current_user, ->(ids){where id: ids if ids.present?}
 
+  class << self
+    def ransackable_associations _auth_object = nil
+      %w(order_field)
+    end
+
+    def ransackable_attributes _auth_object = nil
+      %w(name)
+    end
+  end
+
   def average_rating
     ratings.average(:rating).to_f.round(1)
   end

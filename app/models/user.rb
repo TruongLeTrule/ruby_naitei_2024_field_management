@@ -58,6 +58,14 @@ source: :field
   before_create :create_activation_digest
 
   class << self
+    def ransackable_associations _auth_object = nil
+      %w(order_field)
+    end
+
+    def ransackable_attributes _auth_object = nil
+      %w(name)
+    end
+
     def digest string
       cost = if ActiveModel::SecurePassword.min_cost
                BCrypt::Engine::MIN_COST

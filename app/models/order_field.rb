@@ -28,6 +28,8 @@ class OrderField < ApplicationRecord
   scope :search_by_status, ->(status){where(status:) if status.present?}
   scope :approved_order, ->{where(approved: true)}
 
+  ransack_alias :combined_name, :user_name_or_field_name
+
   ransacker :date_range do
     Arel.sql("DATE(date)")
   end
@@ -38,7 +40,8 @@ class OrderField < ApplicationRecord
     end
 
     def ransackable_attributes _auth_object = nil
-      %w(date_range)
+      %w(date_range date started_time finished_time final_price status
+      created_at updated_at combined_name)
     end
   end
 

@@ -289,6 +289,9 @@ en:
       user: "User"
       field: "Field"
       date: "Date"
+      name: "Name"
+      from_date: "From Date"
+      to_date: "To Date"
       status: "Status"
       search: "Search"
     index:
