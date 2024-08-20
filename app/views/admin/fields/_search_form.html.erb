@@ -1,0 +1,67 @@
+<%= search_form_for q,
+    url: search_url,
+    class: "mt-8 flex items-center justify-between" do |form| %>
+  <div class="flex gap-y-5 flex-col">
+    <div class="flex gap-x-6 items-center">
+      <%= form.label :name %>
+      <%= form.text_field :name_cont,
+                          placeholder: t(".type_field_name_here"),
+                          class: "w-44 h-10 rounded-md text-center ring-2
+                                  ring-gray-200 focus:ring-primary
+                                  outline-none border-none" %>
+      <%= form.label :field_type_id %>
+      <%= form.select :field_type_id_eq,
+                      options_for_select(field_type_options, nil),
+                      {include_blank: t(".all")},
+                      class: "w-28 h-10 rounded-md text-center ring-2
+                              ring-gray-200 focus:ring-primary
+                              outline-none border-none" %>
+      <%= form.label :open_time, t(".open_from") %>
+      <%= form.time_field :open_time_gteq,
+                          value: format_input_time(params.dig :q, :open_time_gteq),
+                          class: "w-28 h-10 rounded-md text-center ring-2
+                                  ring-gray-200 focus:ring-primary
+                                  outline-none border-none" %>
+      <%= form.label :close_time, t(".open_to") %>
+      <%= form.time_field :close_time_lteq,
+                          value: format_input_time(params.dig :q, :close_time_lteq),
+                          class: "w-28 h-10 rounded-md text-center ring-2
+                                  ring-gray-200 focus:ring-primary
+                                  outline-none border-none" %>
+    </div>
+    <div class="flex gap-x-6 items-center">
+      <%= form.label :revenue, t(".revenue_from") %>
+      <%= form.number_field :revenue_gteq,
+                            placeholder: t(".type_value"),
+                            class: "w-44 h-10 rounded-md text-center ring-2
+                                    ring-gray-200 focus:ring-primary
+                                    outline-none border-none" %>
+      <%= form.label :revenue, t(".revenue_to") %>
+      <%= form.number_field :revenue_lteq,
+                            placeholder: t(".type_value"),
+                            class: "w-44 h-10 rounded-md text-center ring-2
+                                    ring-gray-200 focus:ring-primary
+                                    outline-none border-none" %>
+      <%= form.label :rating %>
+      <%= form.select :rating_lteq,
+                      options_for_select(rating_options, nil),
+                      {include_blank: t(".none")},
+                      class: "w-28 h-10 rounded-md text-center ring-2
+                              ring-gray-200 focus:ring-primary
+                              outline-none border-none" %>
+    </div>
+  </div>
+  <div class="w-1/5 flex items-center justify-center gap-8">
+    <div class="cursor-pointer hover:opacity-50 transition-opacity
+                text-primary text-lg font-normal">
+        <%= fa_icon "search" %>
+        <%= form.submit t(".search"), class: "ml-2" %>
+    </div>
+    <div class="cursor-pointer hover:opacity-50 transition-opacity
+                text-light-red text-lg font-normal">
+        <%= fa_icon "close" %>
+        <%= link_to t(".clear"), admin_fields_path(locale: params[:locale]),
+                                 class: "ml-2" %>
+    </div>
+  </div>
+<% end %>

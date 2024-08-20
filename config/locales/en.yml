@@ -94,28 +94,6 @@ en:
       success: "Continue order"
       failed: "Order failed"
       open_time: "Open time"
-    index:
-      create: "Create new"
-    new:
-      create: "Create new field"
-    create:
-      success: "Create field successful"
-    edit:
-      title: "Update %{name} field"
-      delete_confirm: "Are you sure to delete %{field} field"
-      delete_field: "Delete field"
-    update:
-      success: "Update field %{field} successful"
-    field_form:
-      field_type: "Field type"
-      submit: "Submit"
-      type_default_price: "Type default price here"
-      type_field_name: "Type field name here"
-      type_description: "Type description here"
-      preview_img: "Preview image"
-    destroy:
-      success: "Delete %{field} field successful"
-      has_uncompleted_order: "Cannot delete because uncompleted order exists"
     rating:
       rating: "Rating"
       comment: "Comment"
@@ -391,6 +369,45 @@ en:
         current_password: "Current Password"
         new_password: "New Password"
   admin:
+    fields:
+      index:
+        title: "Premium Soccer Field Management"
+        create: "Create new"
+        view: "View"
+      new:
+        title: "Create new field"
+        create: "Create"
+      create:
+        success: "Create field successful"
+      edit:
+        back: "Back"
+        update: "Update"
+        title: "%{name} field"
+        view_busy_schedule: "View busy schedule"
+        delete_confirm: "Are you sure to delete %{field} field?"
+      update:
+        success: "Update field successful"
+      destroy:
+        has_uncompleted_order: "Has uncompleted order"
+        success: "Delete field successful"
+      search_form:
+        name: "Field name"
+        type_field_name_here: "Type field name"
+        search: "Search"
+        open_from: "Open from"
+        open_to: "To"
+        all: "All"
+        revenue_from: "Revenue from"
+        revenue_to: "To"
+        type_value: "Type value"
+        clear: "Clear"
+        none: "None"
+      field_form:
+        field_type: "Field type"
+        type_field_name: "Type field name"
+        type_default_price: "Type default price"
+        type_description: "Type description"
+        preview_img: "Preview image"
     unavailable_field_schedules:
       errors:
         finish_date_smaller_than_start: "Finish date should not be smaller than start date"
@@ -449,6 +466,15 @@ en:
         close_time: "Close time"
         description: "Description"
         image: "Image"
+        type: "Type"
+        current_status: "Status"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        action: "Action"
+        revenue: "Revenue"
+        rating: "Rating"
+        booking_count: "Bookings"
+        field_type_id: "Field type"
       user:
         activated:
           true: "True"

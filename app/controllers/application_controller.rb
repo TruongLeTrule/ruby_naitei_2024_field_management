@@ -10,6 +10,15 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  before_action :redirect_admin_root_path
+
+  def after_sign_in_path_for resource
+    if resource.admin?
+      admin_root_path
+    else
+      root_path
+    end
+  end
 
   rescue_from CanCan::AccessDenied do |_exception|
     if user_signed_in?
@@ -94,5 +103,11 @@ class ApplicationController < ActionController::Base
 
     flash["danger"] = t "ratings.errors.not_found"
     redirect_to root_path
+  end
+
+  def redirect_admin_root_path
+    return unless current_user&.admin? && request.path == root_path
+
+    redirect_to admin_root_path
   end
 end

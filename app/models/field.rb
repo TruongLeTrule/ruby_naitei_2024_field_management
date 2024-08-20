@@ -6,6 +6,10 @@ class Field < ApplicationRecord
   CREATE_ATTRIBUTES = %i(field_type_id name default_price open_time
 close_time description image).freeze
 
+  attr_accessor :display_type, :display_price, :display_open_time,
+                :display_close_time, :display_created_at,
+                :display_rating, :action, :revenue, :booking_count
+
   belongs_to :field_type
   has_many :unavailable_field_schedules, dependent: :destroy
   has_many :favourite_relationships, class_name: FavouriteField.name,
@@ -58,13 +62,44 @@ source: :user
                      }
   scope :favourite_by_current_user, ->(ids){where id: ids if ids.present?}
 
+  ransacker :revenue,
+            formatter: lambda {|value|
+                         value.to_f / I18n.t("number.money.exchange_rate")
+                       } do
+    Arel.sql("(
+      SELECT SUM(order_fields.final_price)
+      FROM order_fields
+      WHERE order_fields.field_id = fields.id
+      GROUP BY fields.id
+    )")
+  end
+  ransacker :rating do
+    Arel.sql("(
+      SELECT AVG(ratings.rating)
+      FROM ratings
+      WHERE ratings.field_id = fields.id
+      GROUP BY fields.id
+    )")
+  end
+  ransacker :booking_count do
+    Arel.sql("(
+      SELECT COUNT(order_fields.id)
+      FROM order_fields
+      WHERE order_fields.field_id = fields.id
+      GROUP BY fields.id
+    )")
+  end
+
   class << self
     def ransackable_associations _auth_object = nil
-      %w(order_field)
+      %w(activities favourite_relationships favourite_users
+field_type image_attachment image_blob order_relationships ordered_users ratings
+unavailable_field_schedules)
     end
 
     def ransackable_attributes _auth_object = nil
-      %w(name)
+      %w(close_time created_at default_price description
+name open_time updated_at field_type_id revenue rating booking_count)
     end
   end
 

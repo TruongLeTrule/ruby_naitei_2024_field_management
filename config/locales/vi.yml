@@ -96,28 +96,6 @@ vi:
       available: "Có thể đặt"
       unavailable: "Không thể đặt"
       choosing: "Đang chọn"
-    index:
-      create: "Tạo sân"
-    new:
-      create: "Tạo sân mới"
-    create:
-      success: "Tạo sân thành công"
-    edit:
-      title: "Cập nhật sân %{name}"
-      delete_confirm: "Bạn có chắc là muốn xóa sân %{field}"
-      delete_field: "Xóa sân"
-    update:
-      success: "Cập nhật sân %{field} thành công"
-    field_form:
-      field_type: "Loại sân"
-      submit: "Lưu"
-      type_default_price: "Nhập giá mặc định"
-      type_field_name: "Nhập tên sân"
-      type_description: "Nhập mô tả"
-      preview_img: "Ảnh xem trước"
-    destroy:
-      success: "Xóa sân %{field} thành công"
-      has_uncompleted_order: "Không thể xóa vì tồn tại lịch đặt sân"
     rating:
       rating: "Đánh giá"
       comment: "Bình luận"
@@ -389,6 +367,46 @@ vi:
         current_password: "Mật khẩu hiện tại"
         new_password: "Mật khẩu mới"
   admin:
+    fields:
+      index:
+        title: "Quản lý Premium Soccer Field"
+        create: "Tạo sân"
+        view: "Xem"
+      new:
+        title: "Tạo sân mới"
+        create: "Tạo"
+      create:
+        success: "Tạo sân thành công"
+      edit:
+        back: "Trở về"
+        update: "Cập nhật"
+        title: "Sân %{name}"
+        delete_confirm: "Bạn có chắc là muốn xóa sân %{field}"
+        delete_field: "Xóa sân"
+        view_busy_schedule: Xem lịch bận
+      update:
+        success: "Cập nhật sân %{field} thành công"
+      destroy:
+        success: "Xóa sân %{field} thành công"
+        has_uncompleted_order: "Không thể xóa vì tồn tại lịch đặt sân"
+      field_form:
+        field_type: "Loại sân"
+        type_default_price: "Nhập giá mặc định"
+        type_field_name: "Nhập tên sân"
+        type_description: "Nhập mô tả"
+        preview_img: "Ảnh xem trước"
+      search_form:
+        search: "Tìm kiếm"
+        type_field_name_here: "Nhập tên sân"
+        name: "Tên sân"
+        open_from: "Mở cửa từ"
+        open_to: "Đến"
+        all: "Tất cả"
+        revenue_from: "Doanh thu từ"
+        revenue_to: "Đến"
+        type_value: "Nhập giá trị"
+        clear: "Xóa"
+        none: "Không"
     unavailable_field_schedules:
       errors:
         finish_date_smaller_than_start: "Ngày kết thúc không nên nhỏ hơn ngày bắt đầu"
@@ -400,6 +418,7 @@ vi:
         title: "Tất cả lịch bận của sân %{field}"
         create: "Tạo mới"
         view: "Xem"
+        back: "Trở về"
       new:
         title: "Tạo lịch bận cho sân %{field}"
         create: "Tạo"
@@ -443,10 +462,19 @@ vi:
       field:
         name: "Tên sân"
         default_price: "Giá mặc định"
-        open_time: "Giờ mở cửa"
-        close_time: "Giờ đóng cửa"
+        open_time: "Mở cửa"
+        close_time: "Đóng cửa"
         description: "Mô tả"
         image: "Hình ảnh"
+        type: "Loại sân"
+        current_status: "Tình trạng"
+        created_at: "Ngày tạo"
+        updated_at: "Ngày cập nhật"
+        action: "Hành động"
+        revenue: "Doanh thu"
+        rating: "Đánh giá"
+        booking_count: "Đã đặt"
+        field_type_id: "Loại sân"
       user:
         activated:
           true: "Đúng"
