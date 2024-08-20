@@ -23,10 +23,12 @@
                                 ring-gray-200 cursor-pointer focus:ring-primary
                                 outline-none border-none" %>
     <%= form.label :status_eq, t(".status") %>
-    <%= form.select :status_eq, all_statuses, {},
-                    {class: "w-32 h-10 rounded-md text-center ring-2
+    <%= form.select :status_eq,
+                    options_for_select(all_statuses, nil),
+                    {include_blank: t(".all")},
+                    class: "w-32 h-10 rounded-md text-center ring-2
                             ring-gray-200 cursor-pointer focus:ring-primary
-                            outline-none border-none"} %>
+                            outline-none border-none" %>
   </div>
   <%= form.submit t(".search"),
                   class: "text-primary hover:underline text-lg

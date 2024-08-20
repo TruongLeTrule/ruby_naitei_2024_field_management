@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
+  authorize_resource
   before_action :load_rating, only: %i(new create)
   before_action :load_review, only: %i(edit update destroy)
 

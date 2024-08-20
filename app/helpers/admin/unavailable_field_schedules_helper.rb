@@ -60,26 +60,28 @@ module Admin::UnavailableFieldSchedulesHelper
   end
 
   def resolve_schedule_status_to_html schedule
-    case schedule.status
-    when "maintain"
-      "<span class=\"text-light-red\">#{schedule
-    .translate_enum :status, schedule.status}</span>"
-    when "closed"
-      "<span class=\"text-red-500\">#{schedule
-    .translate_enum :status, schedule.status}</span>"
-    when "rent"
-      "<span class=\"text-primary\">#{schedule
-    .translate_enum :status, schedule.status}</span>"
+    case schedule.status.to_sym
+    when :maintain
+      content_tag :span,
+                  schedule.translate_enum(:status, schedule.status),
+                  class: "text-light-red"
+    when :closed
+      content_tag :span,
+                  schedule.translate_enum(:status, schedule.status),
+                  class: "text-red-500"
+    when :rent
+      content_tag :span,
+                  schedule.translate_enum(:status, schedule.status),
+                  class: "text-primary"
     else
       schedule.translate_enum :status, schedule.status
     end
   end
 
   def resolve_schedule_action_to_html schedule
-    "<a href=\"#{edit_admin_unavailable_field_schedule_path(schedule.field,
-                                                            schedule)}\"
-        class=\"hover:underline text-blue-600\">
-      #{t('admin.unavailable_field_schedules.index.view')}
-     </a>"
+    link_to t("admin.unavailable_field_schedules.index.view"),
+            edit_admin_field_unavailable_field_schedule_path(schedule.field,
+                                                             schedule),
+            class: "hover:underline text-blue-600"
   end
 end

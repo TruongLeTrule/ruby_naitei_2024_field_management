@@ -406,7 +406,6 @@ vi:
         revenue_to: "Đến"
         type_value: "Nhập giá trị"
         clear: "Xóa"
-        none: "Không"
     unavailable_field_schedules:
       errors:
         finish_date_smaller_than_start: "Ngày kết thúc không nên nhỏ hơn ngày bắt đầu"
@@ -448,6 +447,7 @@ vi:
         start_time: "Giờ bắt đầu"
         finish_time: "Giờ kết thúc"
         search: "Tìm kiếm"
+        all: "Tất cả"
   activerecord:
     attributes:
       order_field:
