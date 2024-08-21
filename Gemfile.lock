@@ -119,6 +119,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
     erubi (1.12.0)
+    et-orbi (1.2.11)
+      tzinfo
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
     faraday (2.10.1)
@@ -131,6 +133,9 @@ GEM
       thor (>= 0.14.0, < 2)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
+    fugit (1.11.1)
+      et-orbi (~> 1, >= 1.2.11)
+      raabro (~> 1.4)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
@@ -225,6 +230,7 @@ GEM
     public_suffix (5.0.3)
     puma (5.6.6)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.7.1)
     rack (2.2.8)
     rack-protection (3.2.0)
@@ -320,6 +326,8 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (2.3.2)
+    rufus-scheduler (3.9.1)
+      fugit (~> 1.1, >= 1.1.6)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -338,6 +346,10 @@ GEM
       logger
       rack (>= 2.2.4)
       redis-client (>= 0.22.2)
+    sidekiq-scheduler (5.0.6)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 6, < 8)
+      tilt (>= 1.4.0, < 3)
     sidekiq-status (3.0.3)
       chronic_duration
       sidekiq (>= 6.0, < 8)
@@ -422,6 +434,7 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   sidekiq
+  sidekiq-scheduler
   sidekiq-status
   sprockets-rails
   stimulus-rails

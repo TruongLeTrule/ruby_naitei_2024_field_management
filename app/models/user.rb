@@ -53,6 +53,9 @@ source: :field
   scope :order_by, lambda {|attribute = :id, direction = :asc|
                      order(Arel.sql("#{attribute} #{direction}"))
                    }
+  scope :inactive_unconfirmed, lambda {|threshold_time|
+    where("confirmation_sent_at < ? AND confirmed_at IS NULL", threshold_time)
+  }
 
   before_save :downcase_email
   before_create :create_activation_digest
