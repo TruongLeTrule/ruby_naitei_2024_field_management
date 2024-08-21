@@ -49,6 +49,44 @@ class OrdersController < ApplicationController
 
   def destroy; end
 
+  def export
+    @q = OrderField.ransack(params[:q])
+    @orders_for_excel = @q.result(distance: true).includes(:user, :field)
+    respond_to do |format|
+      format.json do
+        @job_id = OrderExportJob.perform_async(@orders_for_excel.as_json(
+                                                 include: [:user, :field]
+                                               ))
+        render json: {
+          jid: @job_id
+        }
+      end
+    end
+  end
+
+  def export_status
+    respond_to do |format|
+      format.json do
+        job_id = params[:job_id]
+        job_status = Sidekiq::Status.get_all(job_id).symbolize_keys
+        render json: {
+          status: job_status[:status],
+          percentage: job_status[:pct_complete]
+        }
+      end
+    end
+  end
+
+  def export_download
+    job_id = params[:job_id]
+
+    respond_to do |format|
+      format.xlsx do
+        send_file Rails.root.join("public", "data", "orders_#{job_id}.xlsx")
+      end
+    end
+  end
+
   private
 
   def order_params

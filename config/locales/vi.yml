@@ -273,6 +273,7 @@ vi:
       search: "Tìm kiếm"
     index:
       all_orders: "Tất cả đơn đặt sân"
+      download: "Tải xuống"
     show:
       order: "Đơn đặt sân"
       order_id: "Mã số đơn đặt sân #%{order_id}"
@@ -449,6 +450,10 @@ vi:
         finish_time: "Giờ kết thúc"
         search: "Tìm kiếm"
         all: "Tất cả"
+  export:
+    begin: "Xuất file 0% ..."
+    percent: "Xuất file %{percent}% ..."
+    download: "Xuất file xong. Tải xuống ..."
   activerecord:
     attributes:
       order_field:

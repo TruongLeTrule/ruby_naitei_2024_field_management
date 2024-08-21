@@ -44,3 +44,6 @@ config/environments/*.local.yml
 config/application.yml
 
 public/javascripts/translations.js
+public/data
+
+dump.rdb

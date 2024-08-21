@@ -5,6 +5,7 @@ ruby "3.2.2"
 gem "active_storage_validations", "0.9.8"
 gem "bootsnap", require: false
 gem "cancancan"
+gem "caxlsx_rails"
 gem "config"
 gem "devise"
 gem "faker"

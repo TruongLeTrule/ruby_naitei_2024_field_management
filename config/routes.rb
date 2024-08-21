@@ -1,4 +1,8 @@
+require "sidekiq/web"
+require "sidekiq-status/web"
+
 Rails.application.routes.draw do
+  mount Sidekiq::Web => "/sidekiq"
   devise_for :users, only: :omniauth_callbacks, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   scope "(:locale)", locale: /en|vi/ do
     root to: "fields#index"
@@ -35,7 +39,13 @@ Rails.application.routes.draw do
     end
     resources :account_activations, only: :edit
     resources :password_resets, except: %i(index show destroy)
-    resources :orders
+    resources :orders do
+      collection do
+        get :export
+        get :export_status
+        get :export_download
+      end
+    end
     resources :favourites, only: %i(create destroy)
     resources :activities
   end

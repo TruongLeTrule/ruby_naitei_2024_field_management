@@ -260,7 +260,7 @@ en:
       actions: "Actions"
       created_at: "Created at"
       updated_at: "Updated at"
-      final_price: "Price"
+      price: "Price"
       show: "Show"
       edit: "Edit"
       destroy: "Cancel"
@@ -275,6 +275,7 @@ en:
       search: "Search"
     index:
       all_orders: "All orders"
+      download: "Download"
     show:
       order: "Order"
       order_id: "Order ID #%{order_id}"
@@ -449,6 +450,10 @@ en:
         finish_time: "Finish time"
         search: "Search"
         all: "All"
+  export:
+    begin: "Exporting 0% ..."
+    percent: "Exporting %{percent}% ..."
+    download: "Complete exproting. Download..."
   activerecord:
     attributes:
       order_field:
