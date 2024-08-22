@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     root to: "fields#index"
     devise_for :users, skip: :omniauth_callbacks,
                controllers: {confirmations: "confirmations"}
-    post "/apply_voucher", to: "vouchers#apply"
     get "/booking_history", to: "booking_history#index"
     resources :fields do
       member do
@@ -18,17 +17,20 @@ Rails.application.routes.draw do
         post :active, to: "users#update_active"
       end
     end
-    resources :ratings do
+    resources :ratings, only: %i(create update destroy) do
       member do
         resources :reviews, except: %i(show index)
       end
     end
+    resources :vouchers, only: :apply do
+      member do
+        post "apply"
+      end
+    end
     namespace :admin do
       root to: "fields#index"
-      resources :fields, param: :id, except: :show do
-        member do
-          resources :unavailable_field_schedules, param: :schedule_id
-        end
+      resources :fields, except: :show do
+        resources :unavailable_field_schedules
       end
     end
     resources :account_activations, only: :edit

@@ -396,12 +396,11 @@ en:
         search: "Search"
         open_from: "Open from"
         open_to: "To"
-        all: "All"
         revenue_from: "Revenue from"
         revenue_to: "To"
         type_value: "Type value"
         clear: "Clear"
-        none: "None"
+        all: "All"
       field_form:
         field_type: "Field type"
         type_field_name: "Type field name"
@@ -448,6 +447,7 @@ en:
         start_time: "Start time"
         finish_time: "Finish time"
         search: "Search"
+        all: "All"
   activerecord:
     attributes:
       order_field:

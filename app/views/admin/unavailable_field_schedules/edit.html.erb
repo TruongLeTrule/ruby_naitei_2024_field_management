@@ -4,11 +4,11 @@
     <h1 class="text-center text-2xl font-semibold text-primary">
       <%= t ".title", deep_intepolation: true, field: @field.name %>
     </h1>
-    <%= render "form", schedule: @schedule,
-                       action_url: admin_unavailable_field_schedule_path(@field, @schedule) %>
+    <%= render "form", schedule: @unavailable_field_schedule,
+                       action_url: admin_field_unavailable_field_schedule_path(@field, @unavailable_field_schedule) %>
     <div class="mt-4 text-center text-lg">
       <span><%= t(".or") %></span>
-      <%= link_to t(".delete"), admin_unavailable_field_schedule_path,
+      <%= link_to t(".delete"), admin_field_unavailable_field_schedule_path,
                 data: {turbo_method: :delete,
                        turbo_confirm: t(".confirm")},
                 class: "cursor-pointer underline text-xl

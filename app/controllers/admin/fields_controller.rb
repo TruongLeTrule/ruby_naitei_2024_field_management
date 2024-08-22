@@ -1,16 +1,12 @@
-class Admin::FieldsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :admin_user
-  before_action :find_field_by_id, only: %i(edit update destroy)
+class Admin::FieldsController < Admin::AdminController
+  load_resource except: %i(create)
 
   def index
-    @q = Field.ransack params[:q]
+    @q = @fields.ransack params[:q]
     @pagy, @fields = pagy @q.result.includes(:field_type, :order_relationships)
   end
 
-  def new
-    @field = Field.new
-  end
+  def new; end
 
   def create
     @field = Field.new field_params

@@ -18,13 +18,11 @@
                               outline-none border-none" %>
       <%= form.label :open_time, t(".open_from") %>
       <%= form.time_field :open_time_gteq,
-                          value: format_input_time(params.dig :q, :open_time_gteq),
                           class: "w-28 h-10 rounded-md text-center ring-2
                                   ring-gray-200 focus:ring-primary
                                   outline-none border-none" %>
       <%= form.label :close_time, t(".open_to") %>
       <%= form.time_field :close_time_lteq,
-                          value: format_input_time(params.dig :q, :close_time_lteq),
                           class: "w-28 h-10 rounded-md text-center ring-2
                                   ring-gray-200 focus:ring-primary
                                   outline-none border-none" %>
@@ -45,7 +43,7 @@
       <%= form.label :rating %>
       <%= form.select :rating_lteq,
                       options_for_select(rating_options, nil),
-                      {include_blank: t(".none")},
+                      {include_blank: t(".all")},
                       class: "w-28 h-10 rounded-md text-center ring-2
                               ring-gray-200 focus:ring-primary
                               outline-none border-none" %>

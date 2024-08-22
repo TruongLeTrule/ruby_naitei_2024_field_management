@@ -1,14 +1,8 @@
 class RatingsController < ApplicationController
-  before_action :authenticate_user!
+  authorize_resource
   before_action :find_field_by_id, only: :create
   before_action :load_rating, only: %i(update destroy)
   before_action :load_field_in_rating, only: %i(update destroy)
-
-  def index; end
-
-  def show; end
-
-  def new; end
 
   def create
     @rating = current_user.ratings.build(
@@ -22,8 +16,6 @@ class RatingsController < ApplicationController
     end
     redirect_to @field
   end
-
-  def edit; end
 
   def update
     if @rating.update rating_params
