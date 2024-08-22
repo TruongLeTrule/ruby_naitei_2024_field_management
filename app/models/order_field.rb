@@ -34,6 +34,8 @@ class OrderField < ApplicationRecord
     Arel.sql("DATE(date)")
   end
 
+  after_create :delete_pending
+
   class << self
     def ransackable_associations _auth_object = nil
       %w(activities field unavailable_field_schedule user)
@@ -152,5 +154,13 @@ class OrderField < ApplicationRecord
 
     current_range.overlaps?(schedule_range) ||
       schedule_range.cover?(current_range)
+  end
+
+  def delete_pending
+    return unless pending?
+
+    DeletePendingOrderJob.perform_in(
+      Settings.delete_pending_order_in_minutes.minutes.to_i, id
+    )
   end
 end

@@ -1,0 +1,7 @@
+<div id="count-down-container"
+     data-created-at="<%= created_at %>"
+     data-duration="<%= Settings.delete_pending_order_in_minutes.minutes %>"
+     class="absolute right-0 top-0 py-3 px-8 rounded-md text-lg bg-white">
+  <%= t "orders.edit.remain_time" %>
+  <span id="count-down-clock" class="font-medium ml-2 text-xl"></span>
+</div>
