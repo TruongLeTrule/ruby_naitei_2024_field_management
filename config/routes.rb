@@ -50,5 +50,16 @@ Rails.application.routes.draw do
     end
     resources :favourites, only: %i(create destroy)
     resources :activities
+    namespace :api do
+      namespace :v1 do
+        resources :orders do
+          collection do
+            get :export
+            get :export_status
+            get :export_download
+          end
+        end
+      end
+    end
   end
 end

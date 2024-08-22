@@ -22,11 +22,11 @@ class OrderField < ApplicationRecord
     joins(:user).where("users.name LIKE ?", "%#{name}%") if name.present?
   }
   scope :search_by_field_name, lambda {|name|
-    joins(:user).where("fields.name LIKE ?", "%#{name}%") if name.present?
+    joins(:field).where("fields.name LIKE ?", "%#{name}%") if name.present?
   }
   scope :search_by_date, ->(date){where(date:) if date.present?}
   scope :search_by_status, ->(status){where(status:) if status.present?}
-  scope :approved_order, ->{where(approved: true)}
+  scope :approved_order, ->{where(status: :approved)}
   scope :group_revenue_by_field, (lambda do
     joins(:field).group("fields.name").sum :final_price
   end)
