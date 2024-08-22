@@ -243,6 +243,7 @@ en:
       confirm: "Are you sure?"
       cancel_order: "This order is being cancelled. Please wait for the confirmation."
       cancel_success: "This order has been cancelled."
+      remain_time: "Remaining time"
     update:
       success: "Order updated"
       failed: "Order update failed"

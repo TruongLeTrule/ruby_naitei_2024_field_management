@@ -241,6 +241,7 @@ vi:
       confirm: "Bạn có chắc chắn?"
       cancel_order: "Đơn đặt sân đang được hủy. Vui lòng chờ xác nhận."
       cancel_success: "Đơn đặt sân đã được hủy"
+      remain_time: "Thời gian còn lại"
     update:
       success: "Đơn đặt sân đã được cập nhật"
       failed: "Cập nhật đơn đặt sân thất bại"
