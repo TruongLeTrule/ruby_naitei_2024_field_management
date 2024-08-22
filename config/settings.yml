@@ -23,3 +23,11 @@ default_password: "*Password123"
 sql_time_format: "%H:%M:%S"
 delete_pending_order_in_minutes: 5
 minutes_expired: 2
+am_unavailable_field_schedules_sql: |
+                                    EXTRACT(HOUR FROM
+                                    CONVERT_TZ(started_time, '+00:00', 'Asia/Ho_Chi_Minh')) < 12
+pm_unavailable_field_schedules_sql: |
+                                    EXTRACT(HOUR FROM
+                                    CONVERT_TZ(started_time, '+00:00', 'Asia/Ho_Chi_Minh')) >= 12
+                                    OR EXTRACT(HOUR FROM
+                                    CONVERT_TZ(finished_time, '+00:00', 'Asia/Ho_Chi_Minh')) >= 12

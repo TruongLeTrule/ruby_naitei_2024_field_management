@@ -41,6 +41,7 @@ en:
       stats: "Stats"
       orders: "Orders"
       users: "Users"
+      revenue: "Revenue"
     sign_up: "Sign up"
     footer:
       about: "About"
@@ -401,7 +402,6 @@ en:
         revenue_from: "Revenue from"
         revenue_to: "To"
         type_value: "Type value"
-        clear: "Clear"
         all: "All"
       field_form:
         field_type: "Field type"
@@ -450,6 +450,32 @@ en:
         finish_time: "Finish time"
         search: "Search"
         all: "All"
+    order_fields:
+      stats:
+        title: "Revenue"
+        revenue: "Revenue"
+        day: "day"
+        week: "week"
+        month: "month"
+        time: "Time"
+        revenue_chart: "Revenue chart"
+        all_field_types: "all field types"
+        of: "of"
+        group_by: "group by"
+        total: "Toal"
+        revenue_by_field: "Revenue by field"
+        revenue_by_field_type: "Revenue by field type"
+        no_appropiate_result: "There is no appropriate result to your search"
+        loading: "Loading..."
+      search_form:
+        all: "All"
+        search: "Search"
+        clear: "Clear"
+        group_by: "Group by"
+        clear: "Clear"
+        field_type: "Field type"
+        from_date: "From"
+        to_date: "To"
   export:
     begin: "Exporting 0% ..."
     percent: "Exporting %{percent}% ..."
@@ -460,6 +486,7 @@ en:
         date: "Date"
         started_time: "Start time"
         finished_time: "Finish time"
+        field_id: "Field"
         status:
           approved: "Approved"
           pending: "Pending"

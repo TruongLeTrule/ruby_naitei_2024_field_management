@@ -27,6 +27,12 @@ class OrderField < ApplicationRecord
   scope :search_by_date, ->(date){where(date:) if date.present?}
   scope :search_by_status, ->(status){where(status:) if status.present?}
   scope :approved_order, ->{where(approved: true)}
+  scope :group_revenue_by_field, (lambda do
+    joins(:field).group("fields.name").sum :final_price
+  end)
+  scope :group_revenue_by_field_type, (lambda do
+    joins(field: :field_type).group("field_types.name").sum :final_price
+  end)
 
   ransack_alias :combined_name, :user_name_or_field_name
 
@@ -43,7 +49,17 @@ class OrderField < ApplicationRecord
 
     def ransackable_attributes _auth_object = nil
       %w(date_range date started_time finished_time final_price status
-      created_at updated_at combined_name)
+      created_at updated_at combined_name field_id)
+    end
+
+    def group_by_time type
+      group_methods = {
+        week: :group_by_week,
+        month: :group_by_month,
+        day: :group_by_day
+      }
+      grouping_method = group_methods.fetch type
+      send(grouping_method, :date).sum :final_price
     end
   end
 

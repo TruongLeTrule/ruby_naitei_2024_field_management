@@ -8,7 +8,7 @@ vi:
       exchange_rate: 1
     currency:
       format:
-        delimiter: "."
+        delimiter: ","
         format: "%u%n"
         precision: 0
         separator: "."
@@ -41,6 +41,7 @@ vi:
       stats: "Thống kê"
       orders: "Đơn đặt sân"
       users: "Nguời dùng"
+      revenue: "Doanh thu"
     sign_up: "Đăng ký"
     footer:
       about: "Về chúng tôi"
@@ -450,6 +451,31 @@ vi:
         finish_time: "Giờ kết thúc"
         search: "Tìm kiếm"
         all: "Tất cả"
+    order_fields:
+      stats:
+        title: "Doanh thu"
+        day: "ngày"
+        week: "tuần"
+        month: "tháng"
+        revenue: "Doanh thu"
+        time: "Thời gian"
+        revenue_chart: "Biểu đồ doanh thu"
+        all_field_types: "tất cả loại sân"
+        of: "của"
+        group_by: "nhóm theo"
+        total: "Tổng doanh thu"
+        revenue_by_field: "Doanh thu theo sân"
+        revenue_by_field_type: "Doanh thu theo loại sân"
+        no_appropiate_result: "Không có kết quả phù hợp với nội dung tìm kiếm"
+        loading: "Đang tải..."
+      search_form:
+        all: "Tất cả"
+        search: "Tìm kiếm"
+        group_by: "Nhóm theo"
+        field_type: "Loại sân"
+        clear: "Xóa"
+        from: "Từ"
+        to: "Đến"
   export:
     begin: "Xuất file 0% ..."
     percent: "Xuất file %{percent}% ..."
@@ -460,6 +486,7 @@ vi:
         date: "Ngày"
         started_time: "Thời gian bắt đầu"
         finished_time: "Thời gian kết thúc"
+        field_id: "Sân"
         status:
           approved: "Chấp thuận"
           pending: "Đang chờ"

@@ -19,13 +19,8 @@ started_time finished_time field_id).freeze
   validate :validate_date_range
   validate :order_existing
 
-  scope :am, ->{where "EXTRACT(HOUR FROM started_time) < 12"}
-  scope :pm, (lambda do
-    where(
-      "EXTRACT(HOUR FROM started_time) >= 12 " \
-      "OR EXTRACT(HOUR FROM finished_time) >= 12"
-    )
-  end)
+  scope :am, ->{where Settings.am_unavailable_field_schedules_sql}
+  scope :pm, ->{where Settings.pm_unavailable_field_schedules_sql}
   scope :within_date_range, lambda {|current_date|
     where("? BETWEEN started_date AND finished_date",
           current_date)
