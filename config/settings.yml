@@ -22,3 +22,4 @@ limit_img_size: 500
 default_password: "*Password123"
 sql_time_format: "%H:%M:%S"
 delete_pending_order_in_minutes: 5
+minutes_expired: 2
