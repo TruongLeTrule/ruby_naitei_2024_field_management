@@ -8,13 +8,11 @@ class FieldsController < ApplicationController
   end
 
   def index
-    @pagy, @fields = pagy Field.most_rated(params[:most_rated])
-                               .order_by(params[:order], params[:sort])
-                               .name_like(params[:search])
-                               .field_type(params[:type])
-                               .favourite_by_current_user(
-                                 find_favourite_field_ids
-                               )
+    @pagy, @fields = pagy(if params[:favourite]
+                            handle_favourite_fields
+                          else
+                            handle_normal_fields
+                          end)
   end
 
   def new_order
@@ -100,5 +98,18 @@ class FieldsController < ApplicationController
     return if time.nil?
 
     time.hour + (time.min / 60.0).round(1)
+  end
+
+  def handle_favourite_fields
+    handle_normal_fields.favourite_by_current_user(
+      find_favourite_field_ids
+    )
+  end
+
+  def handle_normal_fields
+    Field.most_rated(params[:most_rated])
+         .order_by(params[:order], params[:sort])
+         .name_like(params[:search])
+         .field_type(params[:type])
   end
 end

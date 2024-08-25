@@ -44,10 +44,10 @@ source: :user
   scope :name_like, lambda {|name|
                       where("name LIKE ?", "%#{name}%") if name.present?
                     }
-  scope :order_by, lambda {|attribute, direction|
+  scope :order_by, lambda {|attribute = :created_at, direction = :asc|
                      order(attribute || :created_at => direction || :asc)
                    }
-  scope :most_rated, (lambda do |option|
+  scope :most_rated, (lambda do |option = false|
     if option
       left_outer_joins(:ratings)
        .group(:id)
@@ -55,12 +55,14 @@ source: :user
        .includes(image_attachment: :blob)
     end
   end)
-  scope :field_type, lambda {|field_type_id|
-                       if field_type_id.present? && field_type_id != "all"
+  scope :field_type, lambda {|field_type_id = "all"|
+                       if field_type_id != "all" && field_type_id.present?
                          where(field_type_id:)
                        end
                      }
-  scope :favourite_by_current_user, ->(ids){where id: ids if ids.present?}
+  scope :favourite_by_current_user, lambda {|ids = nil|
+                                      ids.present? ? where(id: ids) : none
+                                    }
 
   ransacker :revenue,
             formatter: lambda {|value|
