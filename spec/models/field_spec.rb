@@ -317,7 +317,6 @@ RSpec.describe Field, type: :model do
     let!(:field_1){create :field}
     let!(:field_2){create :field}
     let!(:field_3){create :field}
-
     let!(:rating_1){create :rating, field: field_1, rating: 1.0}
     let!(:rating_2){create :rating, field: field_1, rating: 3.0}
     let!(:rating_3){create :rating, field: field_2, rating: 4.0}
