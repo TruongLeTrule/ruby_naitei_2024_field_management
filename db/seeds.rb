@@ -63,9 +63,9 @@ end
 puts "Seeding rating + favourite + order..."
 
 $order_id = 0
-fields = Field.limit 5
+fields = Field.limit 4
 fields.each do |field|
-  10.times do |id|
+  30.times do |id|
     field.ratings.create! user_id: id + 1,
                           rating: rand(1..5),
                           description: Faker::Lorem.sentence(word_count: 20)

@@ -1,0 +1,42 @@
+<% provide :title, t(".title") %>
+<%= render "search_form", q: @q, search_url: admin_revenue_path %>
+<div class="mt-12">
+  <div>
+    <%= t ".total" %>
+    <strong class="ml-2 font-semibold text-lg">
+      <%= exchange_money @orders.sum(:final_price) %>
+    </strong>
+  </div>
+  <%= area_chart @line_chart_data,
+                title: resolve_chart_title(params[:group_by],
+                       params.dig(:q, :field_field_type_id_eq),
+                       params.dig(:q, :field_id_eq)),
+                height: "450px",
+                colors: ["#84cc16", "#292929"],
+                xtitle: "#{t(".time")} (#{resolve_group_by(params[:group_by])})",
+                ytitle: t(".revenue"),
+                prefix: t("number.currency.format.unit"),
+                loading: t(".loading"),
+                empty: t(".no_appropiate_result")
+  %>
+  <div class="grid grid-cols-2 items-center justify-center mt-32">
+    <%= pie_chart @field_type_pie_chart_data,
+                  height: "400px",
+                  title: t(".revenue_by_field_type"),
+                  donut: true,
+                  label: true,
+                  prefix: t("number.currency.format.unit"),
+                  loading: t(".loading"),
+                  empty: t(".no_appropiate_result")
+    %>
+    <%= pie_chart @field_pie_chart_data,
+                  height: "400px",
+                  title: t(".revenue_by_field"),
+                  donut: true,
+                  label: true,
+                  prefix: t("number.currency.format.unit"),
+                  loading: t(".loading"),
+                  empty: t(".no_appropiate_result")
+    %>
+  </div>
+</div>

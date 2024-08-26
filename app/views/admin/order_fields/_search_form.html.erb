@@ -1,0 +1,48 @@
+<%= search_form_for q,
+    url: search_url,
+    class: "mt-8 flex items-center justify-between" do |form| %>
+  <div class="flex gap-x-6 items-center">
+    <%= form.label :field_field_type_id, t(".field_type") %>
+    <%= form.select :field_field_type_id_eq,
+                    options_for_select(field_type_options, nil),
+                    {include_blank: t(".all")},
+                    class: "w-28 h-10 rounded-md text-center ring-2
+                            ring-gray-200 focus:ring-primary
+                            outline-none border-none" %>
+    <%= form.label :field_id %>
+    <%= form.select :field_id_eq,
+                    options_for_select(field_options, nil),
+                    {include_blank: t(".all")},
+                    class: "w-40 h-10 rounded-md text-center ring-2
+                            ring-gray-200 focus:ring-primary
+                            outline-none border-none" %>
+    <%= label_tag :group_by, t(".group_by") %>
+    <%= select_tag :group_by,
+                   options_for_select(group_by_options),
+                   class: "w-28 h-10 rounded-md text-center ring-2
+                           ring-gray-200 focus:ring-primary
+                           outline-none border-none" %>
+    <%= form.label :date, t(".from") %>
+    <%= form.date_field :date_gteq,
+                        class: "w-44 h-10 rounded-md text-center ring-2
+                                ring-gray-200 cursor-pointer focus:ring-primary
+                                outline-none border-none" %>
+    <%= form.label :date, t(".to") %>
+    <%= form.date_field :date_lteq,
+                        class: "w-44 h-10 rounded-md text-center ring-2
+                                ring-gray-200 cursor-pointer focus:ring-primary
+                                outline-none border-none" %>
+    <div class="flex flex-col items-center gap-4">
+      <div class="cursor-pointer hover:opacity-50 transition-opacity
+                  text-primary text-lg font-normal">
+        <%= fa_icon "search" %>
+        <%= form.submit t(".search"), class: "ml-2" %>
+      </div>
+      <div class="cursor-pointer hover:opacity-50 transition-opacity
+                  text-light-red text-lg font-normal">
+        <%= fa_icon "close" %>
+        <%= link_to t(".clear"), admin_revenue_path(locale: params[:locale]), class: "ml-2" %>
+      </div>
+    </div>
+  </div>
+<% end %>

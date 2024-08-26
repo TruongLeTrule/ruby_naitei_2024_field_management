@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     end
     namespace :admin do
       root to: "fields#index"
+      get "/revenue", to: "order_fields#stats"
       resources :fields, except: :show do
         resources :unavailable_field_schedules
       end
