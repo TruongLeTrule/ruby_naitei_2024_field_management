@@ -24,6 +24,10 @@ jobs:
           MYSQL_USER: user-test
           MYSQL_PASSWORD: password-test
           MYSQL_ROOT_PASSWORD: password-test
+      - image: redis/redis-stack-server:7.2.0-v6
+        name: redis-test
+        ports:
+          - 6379:6379
     before_script:
       - bundle _2.1.4_ install --path vendor/bundle # _2.1.4_ if ruby 2.7.1 or 3.0.2
     script:
