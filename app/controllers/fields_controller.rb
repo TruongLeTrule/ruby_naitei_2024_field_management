@@ -29,8 +29,7 @@ class FieldsController < ApplicationController
       successful_create
     end
   rescue ActiveRecord::RecordInvalid => e
-    Rails.logger.error e.message
-    failed_create
+    failed_create e.message.split(", ")[0]
   end
 
   private
@@ -44,8 +43,8 @@ class FieldsController < ApplicationController
     redirect_to edit_order_path(@order)
   end
 
-  def failed_create
-    flash[:danger] = t "fields.create_order.failed"
+  def failed_create msg
+    flash[:danger] = msg
     redirect_to new_order_path(@order), status: :unprocessable_entity
   end
 
@@ -93,7 +92,7 @@ class FieldsController < ApplicationController
   end
 
   def get_hour time
-    return if time.nil?
+    return if time.blank?
 
     time = Time.zone.parse(time) if time.is_a? String
     time.hour + (time.min / 60.0).round(1)

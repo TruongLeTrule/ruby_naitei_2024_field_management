@@ -1,5 +1,5 @@
 class Api::V1::Admin::FieldsController < ApplicationController
-  before_action :load_field, except: :index
+  before_action :load_field, except: %i(index create)
   protect_from_forgery unless: ->{request.format.json?}
 
   def index

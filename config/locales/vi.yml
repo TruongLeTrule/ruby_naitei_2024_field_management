@@ -247,6 +247,7 @@ vi:
       success: "Đơn đặt sân đã được cập nhật"
       failed: "Cập nhật đơn đặt sân thất bại"
       destroy: "Đơn đặt sân đã bị hủy"
+      payment_fail: "Thanh toán thất bại, hãy kiểm tra lại tài khoản"
     price:
       price: "%{price}"
     table:

@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     ActiveRecord::Base.transaction do
       case order_params[:status]
       when "approved"
-        return failed_update unless handle_payment
+        return failed_update(t(".payment_fail")) unless handle_payment
 
         @schedule.update! status: :rent
       when "cancelling"
@@ -37,8 +37,7 @@ class OrdersController < ApplicationController
       successful_update
     end
   rescue ActiveRecord::RecordInvalid => e
-    Rails.logger.error e.message
-    failed_update
+    failed_update e.message.split(", ")[0]
   end
 
   def destroy; end
@@ -99,8 +98,8 @@ class OrdersController < ApplicationController
     redirect_to edit_order_path(@order)
   end
 
-  def failed_update
-    flash.now[:danger] = t "orders.update.failed"
+  def failed_update msg
+    flash.now[:danger] = msg
     render :edit, status: :unprocessable_entity
   end
 
