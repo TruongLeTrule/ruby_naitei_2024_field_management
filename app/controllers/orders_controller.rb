@@ -6,9 +6,7 @@ class OrdersController < ApplicationController
   before_action :valid_user?, only: %i(edit update destroy)
   before_action :find_all_orders, only: :index
 
-  def show
-    create_action(current_user, :viewed, @order)
-  end
+  def show; end
 
   def index
     @q = OrderField.ransack(params[:q])
@@ -21,9 +19,7 @@ class OrdersController < ApplicationController
 
   def create; end
 
-  def edit
-    create_action(current_user, :viewed, @order)
-  end
+  def edit; end
 
   def update
     ActiveRecord::Base.transaction do

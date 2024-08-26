@@ -232,8 +232,8 @@ en:
       finished_time: "Must be after started time"
       open_time: "Must be in open time"
       not_overlapped: "Must not be overlapped with other orders"
-      invalid: "Invalid order"
       too_short_time: "Time too short (< 1 hour)"
+      file_not_found: "File not found"
     edit:
       order: "Order"
       order_id: "Order ID #%{order_id}"
@@ -492,6 +492,7 @@ en:
           pending: "Pending"
           cancelling: "Cancelling"
           cancel: "Cancel"
+          other: "Other"
       field:
         name: "Field name"
         default_price: "Default price"

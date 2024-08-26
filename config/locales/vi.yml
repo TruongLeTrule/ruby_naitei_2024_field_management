@@ -230,8 +230,8 @@ vi:
       finished_time: "Phải sau thời gian bắt đầu"
       open_time: "Phải trong thời gian mở cửa"
       not_overlapped: "Không được trùng với các đơn đặt sân khác"
-      invalid: "Đơn đặt sân không hợp lệ"
       too_short_time: "Thời gian đặt quá ít (< 1 giờ)"
+      file_not_found: "Không tìm thấy file"
     edit:
       order: "Đơn đặt sân"
       order_id: "Mã số đơn đặt sân #%{order_id}"
@@ -492,6 +492,7 @@ vi:
           pending: "Đang chờ"
           cancelling: "Đang hủy"
           cancel: "Đã hủy"
+          other: "Khác"
       field:
         name: "Tên sân"
         default_price: "Giá mặc định"
