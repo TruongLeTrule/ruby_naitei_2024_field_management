@@ -16,7 +16,7 @@ module Admin::OrderFieldsHelper
   end
 
   def resolve_group_by group_by
-    case group_by.to_sym
+    case group_by&.to_sym
     when :week
       t("admin.order_fields.stats.week")
     when :month

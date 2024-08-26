@@ -480,6 +480,13 @@ en:
     begin: "Exporting 0% ..."
     percent: "Exporting %{percent}% ..."
     download: "Complete exproting. Download..."
+  admin_mailer:
+    report:
+      subject: "Frequently Revenue Report"
+      title: "Revenue report %{time}"
+      body: "This is frequently revenue report."
+      click_here: "Click here"
+      to_see_revenue_chart: "to see revenue chart of this month."
   activerecord:
     attributes:
       order_field:

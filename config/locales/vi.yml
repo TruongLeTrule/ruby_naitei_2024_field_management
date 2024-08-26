@@ -480,6 +480,13 @@ vi:
     begin: "Xuất file 0% ..."
     percent: "Xuất file %{percent}% ..."
     download: "Xuất file xong. Tải xuống ..."
+  admin_mailer:
+    send_report:
+      subject: "Báo cáo doanh thu định kỳ"
+      title: "Báo cáo doanh thu %{time}"
+      body: "Đây là báo cáo doanh thu tự động hằng tháng."
+      click_here: "Nhấn vào đây"
+      to_see_revenue_chart: "để  xem biểu đồ doanh thu tháng này."
   activerecord:
     attributes:
       order_field:
