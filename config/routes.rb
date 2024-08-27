@@ -32,13 +32,6 @@ Rails.application.routes.draw do
         post "apply"
       end
     end
-    namespace :admin do
-      root to: "fields#index"
-      get "/revenue", to: "order_fields#stats"
-      resources :fields, except: :show do
-        resources :unavailable_field_schedules
-      end
-    end
     resources :account_activations, only: :edit
     resources :password_resets, except: %i(index show destroy)
     resources :orders do
@@ -50,8 +43,12 @@ Rails.application.routes.draw do
     end
     resources :favourites, only: %i(create destroy)
     resources :activities
+
     namespace :api do
       namespace :v1 do
+        namespace :admin do
+          resources :fields, except: :show
+        end
         resources :orders do
           collection do
             get :export
@@ -59,6 +56,15 @@ Rails.application.routes.draw do
             get :export_download
           end
         end
+        resources :fields, only: %i(index show)
+      end
+    end
+
+    namespace :admin do
+      root to: "fields#index"
+      get "/revenue", to: "order_fields#stats"
+      resources :fields, except: :show do
+        resources :unavailable_field_schedules
       end
     end
   end

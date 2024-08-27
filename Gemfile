@@ -2,6 +2,7 @@ source "https://rubygems.org"
 git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
 ruby "3.2.2"
+gem "active_model_serializers"
 gem "active_storage_validations", "0.9.8"
 gem "bootsnap", require: false
 gem "cancancan"
