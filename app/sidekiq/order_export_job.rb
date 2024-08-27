@@ -24,7 +24,9 @@ class OrderExportJob
 
       add_data(sheet, orders_for_excel, data_style)
     end
-    p.serialize Rails.root.join("public", "data", "orders_#{jid}.xlsx")
+
+    file_name = jid ? "orders_#{jid}.xlsx" : "orders.xlsx"
+    p.serialize Rails.root.join("public", "data", file_name)
   end
 
   private

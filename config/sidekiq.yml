@@ -3,3 +3,6 @@
     delete_users:
       cron: "0 * * * * *"
       class: DeleteUsersJob
+    send_monthly_report:
+      cron: "0 0 L * *"
+      class: "SendReportToAdminJob"

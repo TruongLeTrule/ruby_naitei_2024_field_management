@@ -1,0 +1,5 @@
+<%= t ".title", deep_intepolation: true, time: Time.zone.today.strftime("%m-%Y") %>
+<%= t ".body" %>
+<%= link_to t(".click_here"), admin_revenue_url(q: {date_gteq: Time.zone.today.beginning_of_month,
+                                                    date_lteq: Time.zone.today.end_of_month}) %>
+<%= t ".to_see_revenue_chart"%>
