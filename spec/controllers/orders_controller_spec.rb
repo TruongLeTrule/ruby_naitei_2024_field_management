@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe OrdersController, type: :controller do
-  let(:user){create(:user, confirmed_at: Time.current)}
-  let(:admin){create(:user, :admin, confirmed_at: Time.current)}
+  let(:user){create(:user)}
+  let(:admin){create(:user, :admin)}
   let(:field){create(:field)}
   let(:order){create(:order_field, user: user, field: field)}
 

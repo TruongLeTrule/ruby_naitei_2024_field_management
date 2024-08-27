@@ -75,10 +75,8 @@ class FieldsController < ApplicationController
   end
 
   def calculate_final_price
-    started_time = get_hour Time.zone.parse(params.dig(:order_field,
-                                                       :started_time))
-    finished_time = get_hour Time.zone.parse(params.dig(:order_field,
-                                                        :finished_time))
+    started_time = get_hour params.dig(:order_field, :started_time)
+    finished_time = get_hour params.dig(:order_field, :finished_time)
     return 0 if started_time.nil? || finished_time.nil?
 
     @field.default_price * (finished_time - started_time)
@@ -97,6 +95,7 @@ class FieldsController < ApplicationController
   def get_hour time
     return if time.nil?
 
+    time = Time.zone.parse(time) if time.is_a? String
     time.hour + (time.min / 60.0).round(1)
   end
 
