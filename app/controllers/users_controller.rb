@@ -42,18 +42,19 @@ class UsersController < ApplicationController
   def index
     @users = User.search_by_name(params[:name])
                  .search_by_email(params[:email])
-                 .search_by_status(params[:activated])
+                 .search_by_status(params[:confirmed])
                  .order_by(params[:sort_column], params[:sort_direction])
 
     @pagy, @users = pagy(@users)
   end
 
   def update_active
-    if @user.update activated: params[:activated]
-      update_active_successful
-    else
-      update_active_fail
-    end
+    success = case params[:confirmed]
+              when "true" then @user.confirm_user
+              when "false" then @user.unconfirm_user
+              else false
+              end
+    success ? update_active_successful : update_active_fail
   end
 
   private

@@ -43,11 +43,11 @@ source: :field
   scope :search_by_email, lambda {|email|
     where("email LIKE ?", "%#{email}%") if email.present?
   }
-  scope :search_by_status, lambda {|activated|
-    if activated == "false"
-      where(activated: [nil, false])
-    elsif activated == "true"
-      where(activated: true)
+  scope :search_by_status, lambda {|confirmed|
+    if confirmed == "true"
+      where.not(confirmed_at: nil)
+    elsif confirmed == "false"
+      where(confirmed_at: nil)
     end
   }
   scope :order_by, lambda {|attribute = :id, direction = :asc|
@@ -93,6 +93,19 @@ source: :field
                            provider:)
       user
     end
+  end
+
+  def confirmed
+    confirmed_at.present?
+  end
+
+  def confirm_user
+    update_attribute :confirmed_at, Time.zone.now
+  end
+
+  def unconfirm_user
+    update_columns confirmed_at: nil,
+                   confirmation_sent_at: Time.zone.now + Settings.days_10.days
   end
 
   def activate

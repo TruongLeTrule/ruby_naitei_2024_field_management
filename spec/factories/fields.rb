@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :field do
-    name {Faker::Sports::Football.team}
+    sequence :name do |n|
+      "Field #{n}"
+    end
     default_price {rand 100_000..500_000}
     description  {Faker::Lorem.sentence(word_count: 50)}
     open_time  {"08:00am"}
