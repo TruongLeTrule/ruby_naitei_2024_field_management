@@ -73,7 +73,6 @@ RSpec.describe OrdersController, type: :controller do
     let(:schedule) {create(:unavailable_field_schedule, order_field: order, field: order.field)}
 
     context "when updating to approved status" do
-
       before do
         sign_in user
         allow(controller).to receive(:handle_payment).and_return(true)
@@ -110,6 +109,29 @@ RSpec.describe OrdersController, type: :controller do
 
       it "updates the schedule status" do
         expect(schedule.reload.status).to eq("pending")
+      end
+    end
+
+    context "when updating to cancel status" do
+      before do
+        sign_in user
+        controller.instance_variable_set(:@admin, admin)
+        controller.instance_variable_set(:@order, order)
+        controller.instance_variable_set(:@schedule, schedule)
+        allow(controller).to receive(:handle_cancel)
+        patch :update, params: {id: order.id, order_field: {status: "cancel"}, locale: :vi}
+      end
+
+      it "calls handle_cancel method" do
+        expect(controller).to have_received(:handle_cancel)
+      end
+
+      it "destroys the associated schedule" do
+        expect{schedule.reload}.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it "updates the order status" do
+        expect(order.reload.status).to eq("cancel")
       end
     end
   end

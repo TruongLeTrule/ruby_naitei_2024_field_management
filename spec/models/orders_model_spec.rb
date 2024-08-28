@@ -19,6 +19,33 @@ RSpec.describe OrderField, type: :model do
       let(:field) { create(:field, open_time: "08:00", close_time: "22:00") }
       let(:order_field) { build(:order_field, field: field) }
 
+      it "validates start time is not in the past for today" do
+        order_field.date = Date.today
+        order_field.started_time = 1.hour.ago
+        expect(order_field).not_to be_valid
+        expect(order_field.errors[:base]).to include(I18n.t("orders.errors.present_time"))
+      end
+
+      it "allows start time in the future for today" do
+        order_field.date = Date.today
+        order_field.started_time = 1.hour.from_now
+        expect(order_field).to be_valid
+      end
+
+      it "allows any start time for future dates" do
+        order_field.date = Date.tomorrow
+        order_field.started_time = Time.zone.now
+        expect(order_field).to be_valid
+      end
+
+      it "validates time order" do
+        order_field.date = Date.tomorrow
+        order_field.started_time = "15:00"
+        order_field.finished_time = "14:00"
+        expect(order_field).not_to be_valid
+        expect(order_field.errors[:base]).to include(I18n.t("orders.errors.finished_time"))
+      end
+
       it "validates date is not in the past" do
         order_field.date = Date.yesterday
         expect(order_field).not_to be_valid
@@ -53,10 +80,12 @@ RSpec.describe OrderField, type: :model do
   describe "scopes" do
     let!(:user1) { create(:user, name: "John Doe") }
     let!(:user2) { create(:user, name: "Jane Smith") }
-    let!(:field1) { create(:field, name: "Football Field") }
-    let!(:field2) { create(:field, name: "Basketball Court") }
-    let!(:order1) { create(:order_field, user: user1, field: field1, date: Date.tomorrow, status: :pending) }
-    let!(:order2) { create(:order_field, user: user2, field: field2, date: Date.today + 2.days, status: :approved) }
+    let!(:field_type1) { create(:field_type, name: "Outdoor") }
+    let!(:field_type2) { create(:field_type, name: "Indoor") }
+    let!(:field1) { create(:field, name: "Football Field", field_type: field_type1) }
+    let!(:field2) { create(:field, name: "Basketball Court", field_type: field_type2) }
+    let!(:order1) { create(:order_field, user: user1, field: field1, date: Date.tomorrow, status: :pending, final_price: 100) }
+    let!(:order2) { create(:order_field, user: user2, field: field2, date: Date.today + 2.days, status: :approved, final_price: 150) }
 
     it "searches by user name" do
       expect(OrderField.search_by_user_name("John")).to include(order1)
@@ -81,6 +110,22 @@ RSpec.describe OrderField, type: :model do
     it "returns approved orders" do
       expect(OrderField.approved_order).to include(order2)
       expect(OrderField.approved_order).not_to include(order1)
+    end
+
+    it "groups revenue by field name" do
+      result = OrderField.group_revenue_by_field
+      expect(result).to eq({
+        "Football Field" => 100,
+        "Basketball Court" => 150
+      })
+    end
+
+    it "groups revenue by field type name" do
+      result = OrderField.group_revenue_by_field_type
+      expect(result).to eq({
+        "Outdoor" => 100,
+        "Indoor" => 150
+      })
     end
   end
 
