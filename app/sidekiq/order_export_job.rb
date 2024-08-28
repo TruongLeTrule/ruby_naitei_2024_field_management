@@ -47,18 +47,9 @@ class OrderExportJob
 
   def add_data sheet, orders, data_style
     orders.each.with_index(1) do |order, idx|
-      sheet.add_row [
-        find_user_name(order),
-        find_field_name(order),
-        format_date(order["date"]),
-        format_time(order["started_time"]),
-        format_time(order["finished_time"]),
-        order["final_price"],
-        translate_status(order["status"]),
-        format_date_time(order["created_at"]),
-        format_date_time(order["updated_at"])
-      ], style: data_style
+      sheet.add_row formatted_row_data(order), style: data_style
       at idx
+      sleep 0.25
     end
   end
 
@@ -84,5 +75,19 @@ class OrderExportJob
 
   def find_field_name order
     order["field"]["name"]
+  end
+
+  def formatted_row_data order
+    [
+      find_user_name(order),
+      find_field_name(order),
+      format_date(order["date"]),
+      format_time(order["started_time"]),
+      format_time(order["finished_time"]),
+      order["final_price"],
+      translate_status(order["status"]),
+      format_date_time(order["created_at"]),
+      format_date_time(order["updated_at"])
+    ]
   end
 end

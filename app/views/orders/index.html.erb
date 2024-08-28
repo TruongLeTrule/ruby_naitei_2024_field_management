@@ -6,7 +6,7 @@
 <div data-controller="export" class="mb-4">
   <button id="export"
           data-action="export#export"
-          class="w-36 my-4 px-4 py-2 text-white bg-blue-500 rounded-3xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer">
+          class="w-36 my-4 px-4 py-2 text-white bg-blue-500 rounded-3xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed">
     <%= t ".download" %>
   </button>
   <div class="export-status" data-export-target="status"></div>

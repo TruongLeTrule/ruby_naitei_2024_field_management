@@ -26,14 +26,15 @@ export default class extends Controller {
         this.statusTarget.textContent = I18n.t('export.begin');
 
         window[intervalName] = setInterval(() => {
-          this.getExportJobStatus(jobId, intervalName);
+          this.getExportJobStatus(jobId, intervalName, event);
         }, 800);
       }
     })
     .catch(error => console.error(error));
   }
 
-  getExportJobStatus(jobId, intervalName) {
+  getExportJobStatus(jobId, intervalName, event) {
+    const button = event.target;
     const exportStatusUrl = `${window.location.origin}${window.location.pathname}/export_status?job_id=${jobId}`;
     fetch(exportStatusUrl, {
       headers: {
@@ -47,6 +48,8 @@ export default class extends Controller {
       if (data) {
         const percentage = data.percentage;
         this.statusTarget.textContent = I18n.t('export.percent', {percent: percentage});
+        button.disabled = true;
+        button.classList.add('disabled')
 
         if (data.status === 'complete') {
           this.statusTarget.textContent = I18n.t('export.download');
@@ -56,6 +59,7 @@ export default class extends Controller {
             const downloadUrl = `${window.location.origin}${window.location.pathname}/export_download.xlsx?job_id=${jobId}`;
             window.location.href = downloadUrl;
             this.statusTarget.textContent = '';
+            button.disabled = false;
           }, 500);
         }
       }

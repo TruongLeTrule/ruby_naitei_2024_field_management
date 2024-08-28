@@ -3,8 +3,8 @@
   <td class="px-4 py-2 border-b border-gray-300 text-center"><%= user.name %></td>
   <td class="px-4 py-2 border-b border-gray-300 text-center"><%= user.email %></td>
   <td class="px-4 py-2 border-b border-gray-300 text-center"><%= exchange_money(user.money) %></td>
-  <td class="px-4 py-2 border-b border-gray-300 text-center <%= activated_class(user.activated) %>">
-    <%= t "activerecord.attributes.user.activated.#{user.activated}" %>
+  <td class="px-4 py-2 border-b border-gray-300 text-center <%= activated_class(user.confirmed) %>">
+    <%= t "activerecord.attributes.user.activated.#{user.confirmed}" %>
   </td>
   <td class="px-4 py-2 border-b border-gray-300 text-center"><%= user.created_at.strftime(Settings.date_time_format) %></td>
   <td class="px-4 py-2 border-b border-gray-300 text-center">
