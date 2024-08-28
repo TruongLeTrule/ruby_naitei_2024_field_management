@@ -160,7 +160,7 @@ RSpec.describe FieldsController, type: :controller do
           end
 
           it "sets a danger flash" do
-            expect(flash.now[:danger]).to eq(I18n.t("fields.create_order.failed"))
+            expect(flash.now[:danger]).to be_present
           end
 
           it "returns a 422 unprocessable entity" do

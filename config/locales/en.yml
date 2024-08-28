@@ -249,6 +249,7 @@ en:
       success: "Order updated"
       failed: "Order update failed"
       destroy: "Order canceled"
+      payment_fail: "Payment fail, please check your account"
     price:
       price: "%{price}"
     table:
