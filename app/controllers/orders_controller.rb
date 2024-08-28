@@ -13,9 +13,7 @@ class OrdersController < ApplicationController
     @pagy, @orders = pagy(@q.result(distance: true).includes(:user, :field))
   end
 
-  def new
-    @order = OrderField.new
-  end
+  def new; end
 
   def create; end
 
